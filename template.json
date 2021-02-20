@@ -1,7 +1,7 @@
 {
   "variables": {
     "boot_wait": "5s",
-    "box_basename": "Ubuntu-Desktop",
+    "box_basename": "Base-Ubuntu-Desktop",
     "build_directory": "output",
     "country": "US",
     "cpus": "2",

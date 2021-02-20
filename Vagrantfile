@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
   config.ssh.insert_key = false
 
   config.vm.define "ubuntu" do |ubuntu|
-    ubuntu.vm.box="ProfessorManhattan/Ubuntu-Desktop"
+    ubuntu.vm.box="ProfessorManhattan/Base-Ubuntu-Desktop"
     ubuntu.vm.box_version = "20.04.2"
     ubuntu.vm.hostname = "vagrant-ubuntu"
     ubuntu.vm.network "private_network",
