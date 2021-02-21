@@ -19,7 +19,8 @@
     "memory": "4096",
     "no_proxy": "{{ env `NO_PROXY` }}",
     "preseed_path": "preseed.cfg",
-    "ssh_timeout": "14m",
+    "ssh_port": "22",
+    "ssh_timeout": "30m",
     "username": "vagrant",
     "username_password": "vagrant",
     "vagrantup_token": "{{ env `VAGRANTUP_TOKEN` }}",
@@ -59,7 +60,7 @@
       "disk_size": "{{ user `disk_size` }}",
       "guest_additions_path": "VBoxGuestAdditions_{{ .Version }}.iso",
       "guest_additions_url": "{{ user `guest_additions_url` }}",
-      "guest_os_type": "ubuntu-64",
+      "guest_os_type": "Ubuntu_64",
       "hard_drive_interface": "sata",
       "headless": "{{ user `headless` }}",
       "http_directory": "{{ user `http_directory` }}",
@@ -69,8 +70,10 @@
       "output_directory": "{{ user `build_directory` }}/{{ user `box_basename` }}-{{ user `iso_version` }}-{{ .Provider }}",
       "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
       "ssh_password": "{{ user `username_password` }}",
+      "ssh_port": "{{ user `ssh_port` }}",
       "ssh_timeout": "{{ user `ssh_timeout` }}",
       "ssh_username": "{{ user `username` }}",
+      "virtualbox_version_file": ".vbox_version",
       "vm_name": "{{ user `box_basename` }}-{{ user `iso_version` }}"
     }
   ],
@@ -92,6 +95,7 @@
   ],
   "provisioners": [
     {
+      "type": "shell",
       "environment_vars": [
         "HOME_DIR=/home/vagrant",
         "HTTP_PROXY={{ user `http_proxy` }}",
@@ -104,8 +108,7 @@
         "scripts/vagrant.sh",
         "scripts/sudoers.sh",
         "scripts/desktop.sh"
-      ],
-      "type": "shell"
+      ]
     }
   ]
 }
