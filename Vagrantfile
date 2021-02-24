@@ -7,7 +7,6 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "ubuntu" do |ubuntu|
     ubuntu.vm.box="ProfessorManhattan/Base-Ubuntu-Desktop"
-    ubuntu.vm.box_version = "20.04.2"
     ubuntu.vm.hostname = "vagrant-ubuntu"
     ubuntu.vm.network "private_network",
       ip:"172.24.24.2",
