@@ -20,13 +20,15 @@ The operating system is the **desktop version of Ubuntu** so you get a full GUI.
 
 ## Instructions
 
-After cloning, go to the root of this project and run:
+After cloning (and setting the `vagrantup_user` variable in `template.json`), go to the root of this project and run:
 
 ```
 VAGRANT_CLOUD_TOKEN={{ YourTokenHere }}
 git submodule update --init --recursive
 packer build -only=virtualbox-iso template.json
 ```
+
+That will build and upload a VirtualBox image to VagrantUp. You can build/upload other variants of the image by replacing `virtualbox-iso` with the types which can be found in the `template.json` file.
 
 ## Updating to the Latest Version
 
