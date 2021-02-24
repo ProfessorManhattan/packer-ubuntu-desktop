@@ -1,6 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-
+# TODO Set RAM to at least 4GB
 Vagrant.configure("2") do |config|
 
   config.ssh.insert_key = false
@@ -14,6 +14,8 @@ Vagrant.configure("2") do |config|
       netmask:"255.255.255.0"
     ubuntu.vm.provider "virtualbox" do |vb|
       vb.customize ["modifyvm", :id, "--vram", "256"]
+      vb.memory = 4096
+      vb.cpus = 4
     end
   end
 end

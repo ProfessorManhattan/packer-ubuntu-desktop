@@ -1,3 +1,4 @@
 .vagrant/
 output/
 packer_cache/
+build/
