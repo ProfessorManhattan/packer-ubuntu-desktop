@@ -1,6 +1,6 @@
 # Base Ubuntu Desktop
 
-This repository contains the files necessary for building a minimal **Ubuntu desktop** that you can run with:
+This repository contains the files necessary for building minimal **Ubuntu desktop** VM images for the following virtualization platforms:
 
 * Parallels
 * Hyper-V
