@@ -1,0 +1,4 @@
+[submodule "modules/bento"]
+	path = modules/bento
+	url = https://github.com/chef/bento.git
+	branch = master

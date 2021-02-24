@@ -1,10 +1,10 @@
 #!/bin/sh -eux
 
 echo "Install the tasksel manager utility"
-sudo apt-get install tasksel -y
+sudo apt-get install -y tasksel
 
-echo "Install Desktop environment"
-sudo apt-get install ubuntu-desktop -y
+echo "Install minimal Desktop environment"
+sudo apt install -y ubuntu-desktop --no-install-recommends
 
 echo "Rebooting"
 sudo reboot
