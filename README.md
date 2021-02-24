@@ -14,7 +14,7 @@ The operating system is the **desktop version of Ubuntu** so you get a full GUI.
 
 ## Requirements
 
-* Any combination of the above virualization platforms
+* Any combination of the above virtualization platforms
 * Packer
 * Vagrant (for spinning up the VM)
 
