@@ -8,7 +8,7 @@ This repository contains the files necessary for building a minimal **Ubuntu des
 * VirtualBox
 * VMWare
 
-The configuration file by default includes a Packer post-processor that automatically uploads the image to [VagrantUp](https://vagrantup.com). This compiled box is uploaded to the [ProfessorManhattan/Base-Ubuntu-Desktop](https://app.vagrantup.com/Megabyte/boxes/Ubuntu-Desktop) repository on VagrantUp. If you would like to use this feature (and have your builds automatically uploaded to VagrantUp), you need to set the `VAGRANT_CLOUD_TOKEN` environment variable to your VagrantUp API key and also change the `vagrantup_user` variable in `template.json` to your VagrantUp username.
+The configuration file by default includes a Packer post-processor that automatically uploads the image to [VagrantUp](https://vagrantup.com). This compiled box is uploaded to the [ProfessorManhattan/Base-Ubuntu-Desktop](https://app.vagrantup.com/ProfessorManhattan/boxes/Base-Ubuntu-Desktop) repository on VagrantUp. If you would like to use this feature (and have your builds automatically uploaded to VagrantUp), you need to set the `VAGRANT_CLOUD_TOKEN` environment variable to your VagrantUp API key and also change the `vagrantup_user` variable in `template.json` to your VagrantUp username.
 
 The operating system is the **desktop version of Ubuntu** so you get a full GUI. The username and password are both *vagrant*.
 
