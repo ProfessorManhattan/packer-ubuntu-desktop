@@ -1,6 +1,6 @@
 # Base Ubuntu Desktop
 
-This repository contains the files necessary for building a minimal **Ubuntu desktop** that you can run with:
+This repository contains the files necessary for building minimal **Ubuntu desktop** VM images for the following virtualization platforms:
 
 * Parallels
 * Hyper-V
@@ -8,25 +8,27 @@ This repository contains the files necessary for building a minimal **Ubuntu des
 * VirtualBox
 * VMWare
 
-The configuration file by default includes a Packer post-processor that automatically uploads the image to [VagrantUp](https://vagrantup.com). This compiled box is uploaded to the [ProfessorManhattan/Base-Ubuntu-Desktop](https://app.vagrantup.com/Megabyte/boxes/Ubuntu-Desktop) repository on VagrantUp. In order to use this feature, you need to set the `VAGRANT_CLOUD_TOKEN` environment variable to your VagrantUp API key.
+The configuration file by default includes a Packer post-processor that automatically uploads the image to [VagrantUp](https://vagrantup.com). This compiled box is uploaded to the [ProfessorManhattan/Base-Ubuntu-Desktop](https://app.vagrantup.com/ProfessorManhattan/boxes/Base-Ubuntu-Desktop) repository on VagrantUp but you can change it to be your own VagrantUp repository. If you would like to use this feature (and have your builds automatically uploaded to VagrantUp), you need to set the `VAGRANT_CLOUD_TOKEN` environment variable to your VagrantUp API key and also change the `vagrantup_user` variable in `template.json` to your VagrantUp username. If you do not want this feature then you will need to delete the section in `template.json` that says `"type": "vagrant-cloud"`.
 
 The operating system is the **desktop version of Ubuntu** so you get a full GUI. The username and password are both *vagrant*.
 
 ## Requirements
 
-* Any combination of the above virualization platforms
+* Any combination of the above virtualization platforms
 * Packer
 * Vagrant (for spinning up the VM)
 
 ## Instructions
 
-After cloning, go to the root of this project and run:
+After cloning (and setting the `vagrantup_user` variable in `template.json`), go to the root of this project and run:
 
 ```
 VAGRANT_CLOUD_TOKEN={{ YourTokenHere }}
 git submodule update --init --recursive
 packer build -only=virtualbox-iso template.json
 ```
+
+That will build and upload a VirtualBox image to VagrantUp. You can build/upload other variants of the image by replacing `virtualbox-iso` with the types which can be found in the `template.json` file.
 
 ## Updating to the Latest Version
 
