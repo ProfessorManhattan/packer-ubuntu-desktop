@@ -8,7 +8,7 @@ This repository contains the files necessary for building a minimal **Ubuntu des
 * VirtualBox
 * VMWare
 
-The configuration file by default includes a Packer post-processor that automatically uploads the image to [VagrantUp](https://vagrantup.com). This compiled box is uploaded to the [ProfessorManhattan/Base-Ubuntu-Desktop](https://app.vagrantup.com/Megabyte/boxes/Ubuntu-Desktop) repository on VagrantUp.
+The configuration file by default includes a Packer post-processor that automatically uploads the image to [VagrantUp](https://vagrantup.com). This compiled box is uploaded to the [ProfessorManhattan/Base-Ubuntu-Desktop](https://app.vagrantup.com/Megabyte/boxes/Ubuntu-Desktop) repository on VagrantUp. In order to use this feature, you need to set the `VAGRANT_CLOUD_TOKEN` environment variable to your VagrantUp API key.
 
 The operating system is the **desktop version of Ubuntu** so you get a full GUI. The username and password are both *vagrant*.
 
@@ -23,6 +23,11 @@ The operating system is the **desktop version of Ubuntu** so you get a full GUI.
 After cloning, go to the root of this project and run:
 
 ```
+VAGRANT_CLOUD_TOKEN={{ YourTokenHere }}
 git submodule update --init --recursive
 packer build -only=virtualbox-iso template.json
 ```
+
+## Updating to the Latest Version
+
+We created a side project called [LatestOS](https://pypi.org/project/latestos/). It is a Python module that will automatically grab the latest OS version and populate `template.json` with the results. You can use this in combination with a cron job to automatically have your VagrantUp repository up-to-date with the latest upstream OS release. Further instructions can be found on the [LatestOS page](https://pypi.org/project/latestos/).

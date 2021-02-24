@@ -24,7 +24,7 @@
     "ssh_port": "22",
     "ssh_timeout": "30m",
     "ssh_username": "vagrant",
-    "vagrantup_token": "{{ env `VAGRANTUP_TOKEN` }}",
+    "vagrantup_token": "{{ env `VAGRANT_CLOUD_TOKEN` }}",
     "vagrantup_user": "ProfessorManhattan",
     "vm_name": "{{ user `box_basename` }}-{{ user `iso_version` }}"
   },
