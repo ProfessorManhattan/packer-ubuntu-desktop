@@ -163,9 +163,9 @@
     {
       "environment_vars": [
         "HOME_DIR=/home/vagrant",
-        "HTTP_PROXY={{user `http_proxy`}}",
-        "HTTPS_PROXY={{user `https_proxy`}}",
-        "NO_PROXY={{user `no_proxy`}}"
+        "HTTP_PROXY={{ user `http_proxy` }}",
+        "HTTPS_PROXY={{ user `https_proxy` }}",
+        "NO_PROXY={{ user `no_proxy` }}"
       ],
       "execute_command": "echo 'vagrant' | {{ .Vars }} sudo -S -E sh -eux '{{ .Path }}'",
       "expect_disconnect": true,
