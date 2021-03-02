@@ -1,6 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-# TODO Set RAM to at least 4GB
+
 Vagrant.configure("2") do |config|
 
   config.ssh.insert_key = false
