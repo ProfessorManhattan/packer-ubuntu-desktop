@@ -18,6 +18,7 @@
     "iso_checksum_url": "https://mirror.arizona.edu/ubuntu-releases/20.04/SHA256SUMS",
     "iso_url": "https://mirror.arizona.edu/ubuntu-releases/20.04/ubuntu-20.04.2-live-server-amd64.iso",
     "iso_version": "20.04.2",
+    "latestos_tag": "ubuntu",
     "memory": "2048",
     "no_proxy": "{{ env `NO_PROXY` }}",
     "preseed_path": "preseed.cfg",
