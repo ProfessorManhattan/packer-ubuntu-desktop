@@ -1,4 +1,4 @@
-<!-- ⚠️ This README has been generated from the file(s) "./modules/docs/blueprint-readme.md" ⚠️--><h1 align="center">Packer Template for Ubuntu Desktop</h1>
+<!-- ⚠️ This README has been generated from the file(s) "./modules/docs/blueprint-readme.md" ⚠️--><h1 align="center" style="text-align:center;">Packer Template: Ubuntu Desktop</h1>
 
 <div align="center">
   <h4>
@@ -16,18 +16,18 @@
 <p style="text-align:center;">
   <img alt="Version" src="https://img.shields.io/badge/version-20.04.2-blue.svg?cacheSeconds=2592000" />
   <a href="https://megabyte.space/docs/packer" target="_blank">
-    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" style="margin-bottom:0;" />
   </a>
   <a href="https://gitlab.com/megabyte-space/packer/Base-Ubuntu-Desktop/-/raw/master/LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
   <a href="https://twitter.com/PrfssrManhattan" target="_blank">
-    <img alt="Twitter: PrfssrManhattan" src="https://img.shields.io/twitter/follow/@PrfssrManhattan.svg?style=social" />
+    <img alt="Twitter: PrfssrManhattan" src="https://img.shields.io/twitter/follow/PrfssrManhattan.svg?style=social" />
   </a>
 </p>
 
-<p align="center">
-  <b>Packer project that builds minimal VagrantUp Ubuntu Desktop boxes</b></br>
+<p align="center" style="text-align:center;">
+  <b>A Packer project that builds a minimal, compact, and performant VagrantUp Ubuntu Desktop boxes</b></br>
 </p>
 
 
@@ -72,7 +72,7 @@ You can check out exactly what platforms this repository supports by browsing th
 
 ## ➤ Requirements
 
-* At least one of the above virtualization platforms installed
+* At least one of the above virtualization platforms installed (VirtualBox is a good starting point if you do not already have one of the platforms installed)
 * [Packer](https://learn.hashicorp.com/tutorials/packer/getting-started-install)
 * [Vagrant](https://www.vagrantup.com/docs/installation)
 
@@ -130,7 +130,7 @@ packer build -only=virtualbox-iso template.json
 
 ## ➤ Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://gitlab.com/megabyte-space/packer/Base-Ubuntu-Desktop/-/issues). If you would like to contribute, please take a look at the [contributing guide](https://gitlab.com/megabyte-space/packer/Base-Ubuntu-Desktop/-/raw/master/CONTRIBUTING.md).
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://gitlab.com/megabyte-space/packer/Base-Ubuntu-Desktop/-/issues). If you would like to contribute, please take a look at the [contributing guide](https://gitlab.com/megabyte-space/packer/Base-Ubuntu-Desktop/-/blob/master/CONTRIBUTING.md).
 
 <details>
 <summary>Sponsorship</summary>

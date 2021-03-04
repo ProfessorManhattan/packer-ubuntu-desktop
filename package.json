@@ -1,0 +1,62 @@
+{
+  "name": "packer-project",
+  "version": "1.0.0",
+  "description": "Node files that aid in development of Packer projects",
+  "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
+  "license": "MIT",
+  "scripts": {
+    "commit": "git-cz",
+    "build": "packer build template.json",
+    "build:hyperv": "packer build -only=kvm template.json",
+    "build:kvm": "packer build -only=qemu template.json",
+    "build:parallels": "packer build -only=parallels template.json",
+    "build:virtualbox": "packer build -only=virtualbox-iso template.json",
+    "build:vmware": "packer build -only=vmware-iso template.json",
+    "fix": "run-s fix:*",
+    "fix:prettier": "prettier \"{scripts/*.sh,*.json}\" --write",
+    "info": "npm-scripts-info",
+    "launch": "vagrant up",
+    "postinstall": "husky install && bash .update.sh",
+    "prepare-release": "run-s update test version",
+    "test": "run-s test:*",
+    "test:packer": "packer validate template.json",
+    "test:prettier": "prettier \"{scripts/*custom.sh,*.json}\" --list-different",
+    "test:shellcheck": "shellcheck scripts/*.custom.sh",
+    "test:spelling": "cspell \"{README.md,CONTRIBUTING.md,CHANGELOG.md,.github/*.md,.gitlab/*.md,template.json,Vagrantfile}\"",
+    "update": "bash .update.sh",
+    "version": "standard-version --no-verify"
+  },
+  "devDependencies": {
+    "cspell": "^5.3.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^5.1.1",
+    "lint-staged": "^10.5.4",
+    "npm-run-all": "^4.1.5",
+    "npm-scripts-info": "^0.3.9",
+    "prettier": "^2.1.1",
+    "prettier-plugin-sh": "^0.6.0",
+    "shellcheck": "^1.0.0",
+    "standard-version": "^9.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "scripts-info": {
+    "build": "Build all of the images",
+    "build:hyperv": "Build a Hyper-V image",
+    "build:kvm": "Build a QEMU/KVM image",
+    "build:parallels": "Build a Parallels image",
+    "build:virtualbox": "Build a VirtualBox image",
+    "build:vmware": "Build a VMWare image",
+    "commit": "The preferred way of running git commit (instead of git commit, we prefer running 'npm run commit')",
+    "info": "Logs descriptions of all the npm tasks",
+    "fix": "Automatically fix formatting errors",
+    "launch": "Runs 'vagrant up' to automatically spin up the VM",
+    "prepare-release": "Updates the CHANGELOG with commits made using 'npm run commit'",
+    "test": "Validates the Packer configuration file (i.e. template.json) and performs some other linting",
+    "update": "Runs .update.sh to automatically update meta files and documentation",
+    "version": "Used by 'npm run prepare-release' to update the CHANGELOG"
+  }
+}
