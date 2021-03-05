@@ -14,9 +14,11 @@
   </h4>
 </div>
 <p style="text-align:center;">
-  <img alt="Version" src="https://img.shields.io/badge/version-20.04.2-blue.svg?cacheSeconds=2592000" />
+  <a href="https://gitlab.com/megabyte-space/packer/Base-Ubuntu-Desktop">
+    <img alt="Version" src="https://img.shields.io/badge/version-20.04.2-blue.svg?cacheSeconds=2592000" />
+  </a>
   <a href="https://megabyte.space/docs/packer" target="_blank">
-    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" style="margin-bottom:0;" />
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
   <a href="https://gitlab.com/megabyte-space/packer/Base-Ubuntu-Desktop/-/raw/master/LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />

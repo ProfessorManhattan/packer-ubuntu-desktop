@@ -12,10 +12,10 @@ First of all, thanks for visiting this page 😊 ❤️ ! We are totally ecstati
 	* [Virtualization Platforms](#virtualization-platforms)
 * [➤ Philosophy](#-philosophy)
 * [➤ Getting Started](#-getting-started)
-	* [How to Commit Code](#how-to-commit-code)
-	* [Pre-Commit Hook](#pre-commit-hook)
 	* [NPM Tasks Available](#npm-tasks-available)
 * [➤ Pull Requests](#-pull-requests)
+	* [How to Commit Code](#how-to-commit-code)
+	* [Pre-Commit Hook](#pre-commit-hook)
 * [➤ Formatting the Template](#-formatting-the-template)
 	* [Conversion to HCL](#conversion-to-hcl)
 
@@ -78,14 +78,6 @@ npm i
 
 This will install all the Node.js dependencies and automatically register a pre-commit hook.
 
-### How to Commit Code
-
-Instead of using `git commit`, we prefer that you use `npm run commit`. You will understand why when you try it but basically it streamlines the commit process and helps us generate better CHANGELOGs.
-
-### Pre-Commit Hook
-
-Even if you decide not to use `npm run commit`, you will see that `git commit` behaives differently since the pre-commit hook is installed when you run `npm i`. This pre-commit hook is there to test your code before committing. If you need to bypass the pre-commit hook, then you will have to add the `--no-verify` tag at the end of your `git commit` command (e.g. `git commit -m "Commit" --no-verify`).
-
 ### NPM Tasks Available
 
 With the dependencies installed, you can see a list of the available commands by running `npm run info`. This will log a help menu to the console informing you about the available commands and what they do. After running the command, you will see something that looks like this:
@@ -135,6 +127,13 @@ For example, `npm run build` will run the `build` step described above. You can 
 
 All pull requests should be associated with issues. You can find the [issues board on GitLab](https://gitlab.com/megabyte-space/packer/Base-Ubuntu-Desktop/-/issues). The pull requests should be made to [the GitLab repository](https://gitlab.com/megabyte-space/packer/Base-Ubuntu-Desktop) instead of the [GitHub repository](https://github.com/ProfessorManhattan/packer-Base-Ubuntu-Desktop). This is because we use GitLab as our primary repository and mirror the changes to GitHub for the community.
 
+### How to Commit Code
+
+Instead of using `git commit`, we prefer that you use `npm run commit`. You will understand why when you try it but basically it streamlines the commit process and helps us generate better CHANGELOGs.
+
+### Pre-Commit Hook
+
+Even if you decide not to use `npm run commit`, you will see that `git commit` behaives differently since the pre-commit hook is installed when you run `npm i`. This pre-commit hook is there to test your code before committing. If you need to bypass the pre-commit hook, then you will have to add the `--no-verify` tag at the end of your `git commit` command (e.g. `git commit -m "Commit" --no-verify`).
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)](#formatting-the-template)
 
@@ -160,3 +159,4 @@ In each of our Packer repositories, you will see a file named `template.json`. T
 ### Conversion to HCL
 
 We chose JSON for the template because nearly all the examples on the internet are written in JSON. However, the Packer team is rolling out a new markup language for creating templates called HCL. Some newer features will only be provided for use by HCL templates. Eventually, we plan on porting our templates over to HCL. If you can help with this then please open a pull request!
+
