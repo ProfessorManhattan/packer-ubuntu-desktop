@@ -184,7 +184,7 @@
         "scripts/hyperv.sh",
         "scripts/cleanup.sh",
         "scripts/minimize.sh",
-        "scripts/desktop.sh"
+        "scripts/desktop.custom.sh"
       ],
       "type": "shell"
     }

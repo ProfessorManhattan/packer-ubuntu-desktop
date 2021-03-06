@@ -1,1 +1,1 @@
-../modules/bento/packer_templates/_common/motd.sh
+../.modules/bento/packer_templates/_common/motd.sh

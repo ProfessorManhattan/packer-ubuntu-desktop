@@ -1,1 +1,1 @@
-../modules/bento/packer_templates/ubuntu/scripts/cleanup.sh
+../.modules/bento/packer_templates/ubuntu/scripts/cleanup.sh

@@ -7,11 +7,11 @@
 set -e
 REPO_TYPE=packer
 git submodule update --init --recursive
-if [ ! -f "./modules/${REPO_TYPE}/update.sh" ]; then
-  git submodule add -b master https://gitlab.com/megabyte-space/common/$REPO_TYPE.git ./modules/$REPO_TYPE
+if [ ! -f "./.modules/${REPO_TYPE}/update.sh" ]; then
+  git submodule add -b master https://gitlab.com/megabyte-space/common/$REPO_TYPE.git ./.modules/$REPO_TYPE
 else
-  cd ./modules/$REPO_TYPE
+  cd ./.modules/$REPO_TYPE
   git checkout master && git pull
   cd ../..
 fi
-bash ./modules/$REPO_TYPE/update.sh
+bash ./.modules/$REPO_TYPE/update.sh

@@ -1,1 +1,1 @@
-../modules/bento/packer_templates/_common/parallels.sh
+../.modules/bento/packer_templates/_common/parallels.sh
