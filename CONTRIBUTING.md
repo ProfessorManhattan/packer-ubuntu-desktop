@@ -1,4 +1,4 @@
-<!-- ⚠️ This README has been generated from the file(s) "./modules/docs/blueprint-contributing.md" ⚠️--><h1 align="center" style="text-align:center;">Contributing</h1>
+<!-- ⚠️ This README has been generated from the file(s) "./.modules/docs/blueprint-contributing.md" ⚠️--><h1 align="center" style="text-align:center;">Contributing</h1>
 
 First of all, thanks for visiting this page 😊 ❤️ ! We are totally ecstatic that you may be considering contributing to this project. You should read this guide if you are considering creating a pull request.
 
@@ -23,31 +23,32 @@ First of all, thanks for visiting this page 😊 ❤️ ! We are totally ecstati
 
 ## ➤ Code of Conduct
 
-This project and everyone participating in it is governed by the [Code of Conduct](https://gitlab.com/megabyte-space/packer/Base-Ubuntu-Desktop/-/blob/master/CONTRIBUTING.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [help@megabyte.space](mailto:help@megabyte.space).
+This project and everyone participating in it is governed by the [Code of Conduct](https://gitlab.com/megabyte-space/packer/Base-Ubuntu-Desktop/-/blob/master/CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [help@megabyte.space](mailto:help@megabyte.space).
 
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)](#overview)
 
 ## ➤ Overview
 
-Our VM images aim to be minimal, performant, and pretty. They are minimal because they remove unnecessary files and are compressed before uploading them to VagrantUp. Our images are performant because we choose the right configurations. We also ensure there is a seemless experience by including the Plymouth boot loader (which makes them *prettier*).
+Our VM images aim to be minimal, performant, and pretty. They are minimal because they remove unnecessary files and are compressed before uploading them to [VagrantUp](https://www.vagrantup.com/). Our images are performant because we choose the right configurations. We also ensure there is a seemless experience by including the Plymouth boot loader (which makes them *prettier*).
 
 A popular repository on GitHub called [chef/bento](https://github.com/chef/bento/tree/master/packer_templates) has already done most of the work we are trying to accomplish. They have Packer templates for everything we aim to support except [Archlinux](https://gitlab.com/megabyte-space/packer/base-archlinux-desktop) and [Mac OS X](https://gitlab.com/megabyte-space/packer/base-mac-desktop). Since it has a huge following, updates are likely to be provided. We use chef/bento's source wherever possible. They provide shell scripts that do a lot of the setup needed to initialize boxes. In each of our repositories (except Archlinux and Mac OS X), you can see that we symlink to a chef/bento submodule. By doing this, we are able to receive updates directly from our upstream code provider.
 
-However, chef/bento's work is not perfect for our use case. There are a few changes we make to each of our repositories. The `template.json` is reformatted to be neater and slightly easier to read. There are also additional scripts we run to convert the distribution into a desktop environment. These scripts that we make and add to the build routine all end with `.custom.sh`.
+However, chef/bento's work is not perfect for our use case. There are a few changes we make to each of our repositories. The `template.json` is reformatted to be neater and slightly easier to read. There are also additional scripts we run to convert the distribution into a desktop environment. These scripts that we make and add to the build routine all end with `.custom.sh` and are located in the `scripts/` folder.
 
-Ideally, five years from now, if you go to our VagrantUp repositories you will be able to browse through all the various releases in any OS distribution. Our goal is to accomplish this through automation by:
+Ideally, five years from now, if you go to [our VagrantUp repositories](https://app.vagrantup.com/ProfessorManhattan) you will be able to browse through all the various releases in any OS distribution. Our goal is to accomplish this through automation by:
 
 * Including the [vagrant-cloud post-processor](https://www.packer.io/docs/post-processors/vagrant-cloud)
 * Leveraging [LatestOS](https://pypi.org/project/latestos/) to automatically detect the latest release of the Linux variants we build boxes for
+* Running the builds on a cronjob
 
 ### Virtualization Platforms
 
 We aim to support the following virtualization platforms:
 
-* [Parallels](https://gitlab.com/megabyte-space/ansible-roles/parallels)
-* [Hyper-V]((https://gitlab.com/megabyte-space/ansible-roles/hyperv))
+* [Hyper-V](https://gitlab.com/megabyte-space/ansible-roles/hyperv)
 * [KVM](https://gitlab.com/megabyte-space/ansible-roles/kvm)
+* [Parallels](https://gitlab.com/megabyte-space/ansible-roles/parallels)
 * [VirtualBox](https://gitlab.com/megabyte-space/ansible-roles/virtualbox)
 * [VMWare](https://gitlab.com/megabyte-space/ansible-roles/vmware)
 
@@ -63,14 +64,14 @@ There are a few core principles that we stick to when designing these Packer pro
 * **Minimal** and include no bloatware
 * **Compact** in size so people can download/provision their VM quicker
 * **Pretty** (e.g. the Plymouth loader should be installed so that the boot screen looks good)
-* ***Performant**
+* **Performant**
 
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)](#getting-started)
 
 ## ➤ Getting Started
 
-This repository leverages Node.js to provide linting, auto-fixing, and streamline the commit process. With Node.js installed, you start up the project by running:
+This repository leverages Node.js to provide linting, auto-fixing, and streamline the commit process. With Node.js (version 12 or higher) installed, you can start up the project's development environment by running:
 
 ```
 npm i
@@ -118,7 +119,7 @@ version:
   Used by 'npm run prepare-release' to update the CHANGELOG
 ```
 
-For example, `npm run build` will run the `build` step described above. You can see exactly what each command is doing by checking out the `package.json` file.
+According to the help menu above, `npm run build` will run the `build` step described above. You can see exactly what each command is doing by checking out the `package.json` file.
 
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)](#pull-requests)
@@ -129,11 +130,12 @@ All pull requests should be associated with issues. You can find the [issues boa
 
 ### How to Commit Code
 
-Instead of using `git commit`, we prefer that you use `npm run commit`. You will understand why when you try it but basically it streamlines the commit process and helps us generate better CHANGELOGs.
+Instead of using `git commit`, we prefer that you use `npm run commit`. You will understand why when you try it but basically it streamlines the commit process and helps us generate better CHANGELOG.md files.
 
 ### Pre-Commit Hook
 
-Even if you decide not to use `npm run commit`, you will see that `git commit` behaives differently since the pre-commit hook is installed when you run `npm i`. This pre-commit hook is there to test your code before committing. If you need to bypass the pre-commit hook, then you will have to add the `--no-verify` tag at the end of your `git commit` command (e.g. `git commit -m "Commit" --no-verify`).
+Even if you decide not to use `npm run commit`, you will see that `git commit` behaves differently because there is a pre-commit hook that installs automatically after you run `npm i`. This pre-commit hook is there to test your code before committing and help you become a better coder. If you need to bypass the pre-commit hook, then you may add the `--no-verify` tag at the end of your `git commit` command (e.g. `git commit -m "Commit" --no-verify`).
+
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)](#formatting-the-template)
 
@@ -144,12 +146,12 @@ In each of our Packer repositories, you will see a file named `template.json`. T
 * The `"variables"` section should be at the top of the `template.json` file.
 * Make sure the variable names are consistent across [our Packer repositories](https://gitlab.com/megabyte-space/packer).
 * Prefer naming the variables after the section they will be placed.
-	* For example, the variable used for `ssh_password` should also be named `ssh_password`.
+	* For example, the variable used for `"ssh_password"` should also be named `"ssh_password"`.
 * All the JSON objects should be in alphabetical order with the following exceptions:
 	* The `"variables"` section should be at the top of the file.
 	* The `"type"` field should be at the top of its section.
-* All environment variables should be referenced in capitals. For example, `http_proxy` should be `HTTP_PROXY`. However, the actual user variables in the `variables` section should be all lowercased.
-* Any text that is shared between multiple builders should be stored as a variable. The only exception is data that is specific to each builder like `guest_os_type`.
+* All environment variables should be referenced in capitals. For example, `http_proxy` should be `HTTP_PROXY`. However, the actual user variables in the `"variables"` section should be all lowercased.
+* Any text that is shared between multiple builders should be stored as a variable. The only exception is data that is specific to each builder (e.g. `"guest_os_type"` which is only used for Parallels builds).
 * Use the https://mirror.arizona.edu as the download location.
 * All the variables should start with {{ and then a space. The same is true for the opposite side of the variable.
 	* **GOOD:** `{{ user 'variable' }}`
@@ -158,5 +160,5 @@ In each of our Packer repositories, you will see a file named `template.json`. T
 
 ### Conversion to HCL
 
-We chose JSON for the template because nearly all the examples on the internet are written in JSON. However, the Packer team is rolling out a new markup language for creating templates called HCL. Some newer features will only be provided for use by HCL templates. Eventually, we plan on porting our templates over to HCL. If you can help with this then please open a pull request!
+We chose JSON for the template because nearly all the examples on the internet are written in JSON. However, the Packer team is rolling out a new markup language for creating templates called HCL. Some newer features will only be provided for use by HCL templates. Eventually, we plan on porting our templates over to HCL. If you can help with this then please open a pull request! You can actually do a lot of the work automatically by running `packer hcl2_upgrade template.json` but some manual oversight is necessary to keep the configuration neat.
 

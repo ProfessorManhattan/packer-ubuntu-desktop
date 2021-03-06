@@ -13,16 +13,15 @@
     "build:vmware": "packer build -only=vmware-iso template.json",
     "commit": "git-cz",
     "fix": "run-s fix:*",
-    "fix:prettier": "prettier \"{scripts/*.sh,*.json}\" --write",
+    "fix:prettier": "prettier \"{scripts/*.custom.sh,*.json}\" --write",
     "info": "npm-scripts-info",
     "postinstall": "husky install && bash .update.sh",
     "launch": "vagrant up",
     "prepare-release": "run-s update test version",
     "test": "run-s test:*",
     "test:packer": "packer validate template.json",
-    "test:prettier": "prettier \"{scripts/*custom.sh,*.json}\" --list-different",
+    "test:prettier": "prettier \"{scripts/*.custom.sh,*.json}\" --list-different",
     "test:shellcheck": "shellcheck scripts/*.custom.sh",
-    "test:spelling": "cspell \"{README.md,CONTRIBUTING.md,CHANGELOG.md,.github/*.md,.gitlab/*.md,template.json,Vagrantfile}\"",
     "update": "bash .update.sh",
     "version": "standard-version --no-verify"
   },
@@ -45,11 +44,21 @@
     "shellcheck": "^1.0.0",
     "standard-version": "^9.0.0"
   },
+  "funding": [
+    {
+      "type": "opencollective",
+      "url": "https://opencollective.com/megabytelabs"
+    },
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/ProfessorManhattan"
+    }
+  ],
   "lint-staged": {
     "*.{json}": [
       "prettier --write"
     ],
-    "scripts/desktop.sh": [
+    "scripts/*.custom.sh": [
       "prettier --write"
     ],
     "package.json": [
@@ -68,9 +77,9 @@
     "info": "Logs descriptions of all the npm tasks",
     "fix": "Automatically fix formatting errors",
     "launch": "Runs 'vagrant up' to automatically spin up the VM",
-    "prepare-release": "Updates the CHANGELOG with commits made using 'npm run commit'",
+    "prepare-release": "Updates the CHANGELOG with commits made using 'npm run commit' and updates the project to be ready for release",
     "test": "Validates the Packer configuration file (i.e. template.json) and performs some other linting",
     "update": "Runs .update.sh to automatically update meta files and documentation",
-    "version": "Used by 'npm run prepare-release' to update the CHANGELOG"
+    "version": "Used by 'npm run prepare-release' to update the CHANGELOG and app version"
   }
 }
