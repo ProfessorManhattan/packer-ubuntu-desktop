@@ -21,7 +21,6 @@
     "latestos_tag": "ubuntu",
     "memory": "2048",
     "no_proxy": "{{ env `NO_PROXY` }}",
-    "preseed_path": "preseed.cfg",
     "shutdown_command": "echo '{{ user `ssh_password` }}' | sudo -S shutdown -P now",
     "ssh_password": "vagrant",
     "ssh_port": "22",
