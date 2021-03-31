@@ -15,7 +15,7 @@
 </div>
 <p style="text-align:center;">
   <a href="https://gitlab.com/megabyte-space/packer/Base-Ubuntu-Desktop">
-    <img alt="Version" src="https://img.shields.io/badge/version-20.04.2-blue.svg?cacheSeconds=2592000" />
+    <img alt="Version" src="https://img.shields.io/badge/version-20.10-blue.svg?cacheSeconds=2592000" />
   </a>
   <a href="https://megabyte.space/docs/packer" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
@@ -75,7 +75,7 @@ Please note that not all of [our Packer projects](https://gitlab.com/megabyte-sp
 
 ## ➤ Requirements
 
-* At least one of the above virtualization platforms installed ([VirtualBox]((https://gitlab.com/megabyte-space/ansible-roles/virtualbox)) is a good starting point if you do not already have one of the platforms installed)
+* At least one of the above virtualization platforms installed ([VirtualBox](https://gitlab.com/megabyte-space/ansible-roles/virtualbox) is a good starting point if you do not already have one of the platforms installed)
 * [Packer](https://gitlab.com/megabyte-space/ansible-roles/packer)
 * [Vagrant](https://gitlab.com/megabyte-space/ansible-roles/vagrant)
 
