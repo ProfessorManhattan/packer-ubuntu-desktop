@@ -1,1 +1,1 @@
-../modules/bento/packer_templates/ubuntu/http/user-data
+../.modules/bento/packer_templates/ubuntu/http/user-data
