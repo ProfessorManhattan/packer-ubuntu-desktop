@@ -1,12 +1,12 @@
 {
   "variables": {
-    "boot_command": " <wait> <wait> <wait> <wait> <wait><esc><wait><f6><wait><esc><wait><bs><bs><bs><bs><wait> autoinstall<wait5> ds=nocloud-net<wait5>;s=http://<wait5>{{ .HTTPIP }}<wait5>:{{ .HTTPPort }}/<wait5> ---<wait5><enter><wait5>",
+    "boot_command": " <wait> <wait> <wait> <wait> <wait>c<wait>set gfxpayload=keep<enter><wait>linux /casper/vmlinuz quiet<wait> autoinstall<wait> ds=nocloud-net<wait>\\;s=http://<wait>{{.HTTPIP}}<wait>:{{.HTTPPort}}/<wait> ---<enter><wait>initrd /casper/initrd<wait><enter><wait>boot<enter><wait>",
     "boot_wait": "10s",
     "box_basename": "Ubuntu-Desktop",
     "build_directory": "build",
     "compression_level": "9",
     "cpus": "2",
-    "description": "Ubuntu Desktop",
+    "description": "Ubuntu Desktop 20.10",
     "disk_size": "80000",
     "guest_additions_url": "",
     "headless": "false",
@@ -27,7 +27,7 @@
     "ssh_timeout": "30m",
     "ssh_username": "vagrant",
     "vagrantup_token": "{{ env `VAGRANT_CLOUD_TOKEN` }}",
-    "vagrantup_user": "ProfessorManhattan",
+    "vagrantup_user": "Megabyte",
     "vm_name": "{{ user `box_basename` }}-{{ user `iso_version` }}"
   },
   "builders": [
@@ -76,10 +76,13 @@
     },
     {
       "type": "qemu",
+      "accelerator": "hvf",
       "boot_command": "{{ user `boot_command` }}",
       "boot_wait": "{{ user `boot_wait` }}",
       "cpus": "{{ user `cpus` }}",
+      "disk_interface": "virtio",
       "disk_size": "{{ user `disk_size` }}",
+      "format": "qcow2",
       "headless": "{{ user `headless` }}",
       "http_directory": "{{ user `http_directory` }}",
       "iso_checksum": "file:{{ user `iso_checksum_url` }}",
@@ -95,22 +98,7 @@
     },
     {
       "type": "virtualbox-iso",
-      "boot_command": [
-        " <wait>",
-        " <wait>",
-        " <wait>",
-        " <wait>",
-        " <wait>",
-        "<esc><wait>",
-        "<f6><wait>",
-        "<esc><wait>",
-        "<bs><bs><bs><bs><wait>",
-        " autoinstall<wait5>",
-        " ds=nocloud-net<wait5>",
-        ";s=http://<wait5>{{.HTTPIP}}<wait5>:{{.HTTPPort}}/<wait5>",
-        " ---<wait5>",
-        "<enter><wait5>"
-      ],
+      "boot_command": "{{ user `boot_command` }}",
       "boot_wait": "{{ user `boot_wait` }}",
       "cpus": "{{ user `cpus` }}",
       "disk_size": "{{ user `disk_size` }}",
@@ -164,7 +152,8 @@
       {
         "type": "vagrant",
         "compression_level": "{{ user `compression_level` }}",
-        "output": "{{ user `build_directory` }}/{{ user `box_basename` }}.{{ .Provider }}.box"
+        "output": "{{ user `build_directory` }}/{{ user `box_basename` }}.{{ .Provider }}.box",
+        "vagrantfile_template": "{{ template_dir }}/Vagrantfile"
       },
       {
         "type": "vagrant-cloud",

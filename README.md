@@ -1,8 +1,12 @@
-<!-- ⚠️ This README has been generated from the file(s) "./.modules/docs/blueprint-readme.md" ⚠️-->\<div align="center">
-  <center><img alt="Ubuntu Desktop logo" src="./logo.png" /></center>
+<!-- ⚠️ This README has been generated from the file(s) "./.modules/docs/blueprint-readme.md" ⚠️--><div align="center">
+  <center>
+    <a href="https://gitlab.com/megabyte-labs/packer/ubuntu-desktop" title="Ubuntu Desktop 20.10 GitLab page" target="_blank">
+      <img width="100" height="100" alt="Ubuntu Desktop 20.10 logo" src="./logo.png" />
+    </a>
+  </center>
 </div>
 <div align="center">
-  <center><h1 align="center">Packer Template: Ubuntu Desktop</h1></center>
+  <center><h1 align="center">Packer Template: Ubuntu Desktop 20.10</h1></center>
 </div>
 
 <div align="center">
@@ -10,7 +14,7 @@
     <a href="https://megabyte.space" title="Megabyte Labs homepage" target="_blank">
       <img src="https://gitlab.com/megabyte-labs/assets/-/raw/master/svg/home-solid.svg" />
     </a>
-    <a href="https://app.vagrantup.com/ProfessorManhattan/boxes/Ubuntu-Desktop" title="Ubuntu Desktop box on VagrantUp.com" target="_blank">
+    <a href="https://app.vagrantup.com/Megabyte/boxes/Ubuntu-Desktop" title="Ubuntu Desktop 20.10 box on VagrantUp.com" target="_blank">
       <img height="50" src="https://gitlab.com/megabyte-labs/assets/-/raw/master/svg/vagrant.svg" />
     </a>
     <a href="https://gitlab.com/megabyte-labs/packer/ubuntu-desktop/-/blob/master/CONTRIBUTING.md" title="Learn about contributing" target="_blank">
@@ -40,13 +44,13 @@
       <img alt="Last commit date" src="https://img.shields.io/github/last-commit/ProfessorManhattan/packer-ubuntu-desktop?logo=git&logoColor=white&style=flat" />
     </a>
     <a href="https://megabyte.space/docs/packer" target="_blank">
-      <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg?logo=readthedocs&style=flat" />
+      <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg?style=flat" />
     </a>
     <a href="https://gitlab.com/megabyte-labs/packer/ubuntu-desktop/-/raw/master/LICENSE" target="_blank">
-      <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg?style=flat" />
+      <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow.svg?style=flat" />
     </a>
-    <a href="profile.opencollective" title="Support us on Open Collective" target="_blank">
-      <img alt="Open Collective sponsors" src="https://img.shields.io/opencollective/sponsors/megabytelabs?label=Open%20Collective%20sponsors&logo=opencollective&style=flat" />
+    <a href="https://opencollective.com/megabytelabs" title="Support us on Open Collective" target="_blank">
+      <img alt="Open Collective sponsors" src="https://img.shields.io/opencollective/sponsors/megabytelabs?label=Open%20Collective%20sponsors&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAAElBMVEUAAACvzfmFsft4pfD////w+P9tuc5RAAAABHRSTlMAFBERkdVu1AAAAFxJREFUKM9jgAAXIGBAABYXMHBA4yNEXGBAAU2BMz4FIIYTNhtFgRjZPkagFAuyAhGgHAuKAlQBCBtZB4gzQALoDsN0Oobn0L2PEUCoQYgZyOjRQFiJA67IRrEbAJImNwFBySjCAAAAAElFTkSuQmCC&style=flat" />
     </a>
     <a href="https://github.com/ProfessorManhattan" title="Support us on GitHub" target="_blank">
       <img alt="GitHub sponsors" src="https://img.shields.io/github/sponsors/ProfessorManhattan?label=GitHub%20sponsors&logo=github&style=flat" />
@@ -60,7 +64,7 @@
   </p>
 </div>
 
-> </br><h3 align="center">**A Packer project for building Ubuntu Desktop images using the Ubuntu Live Server image**</h3></br>
+> </br><h3 align="center">**A Ubuntu Desktop 20.10 Packer project based on chef bento's Ubuntu Server Packer project (with the addition of the desktop GUI and Plymouth)**</h3></br>
 
 <!--TERMINALIZER![terminalizer_title](https://gitlab.com/megabyte-labs/ansible-roles/role_name/-/raw/master/.demo.gif)TERMINALIZER-->
 
@@ -81,9 +85,9 @@
 
 ## ➤ Overview
 
-This repository contains the source code used to automatically build minimal Ubuntu Desktop VM images. The build process closely imitates the same process used by [chef/bento](https://github.com/chef/bento). In fact, you will see that most of the `scripts/` folder is symlinked to a chef/bento submodule.
+This repository contains the source code used to automatically build minimal Ubuntu Desktop 20.10 VM images. The build process closely imitates the same process used by [chef/bento](https://github.com/chef/bento). In fact, you will see that most of the `scripts/` folder is symlinked to a chef/bento submodule.
 
-This repository automates most of the process of keeping our [Ubuntu Desktop VM images](https://app.vagrantup.com/ProfessorManhattan/boxes/Ubuntu-Desktop) up-to-date with the latest upstream source by:
+This repository automates most of the process of keeping our [Ubuntu Desktop 20.10 VM images](https://app.vagrantup.com/Megabyte/boxes/Ubuntu-Desktop) up-to-date with the latest upstream source by:
 
 - Using the vagrant-cloud post-processor to automatically upload the box after it is built
 - Automating the retrieval of the source ISO file and checksum file by using another project of ours called [LatestOS](https://pypi.org/project/latestos/)
@@ -123,7 +127,7 @@ The default username and password are both _vagrant_.
 
 ## ➤ Creating Your Own Box
 
-You can quickly use this project to create your own minimal Ubuntu Desktop box by:
+You can quickly use this project to create your own minimal Ubuntu Desktop 20.10 box by:
 
 1. Creating a box on VagrantUp titled Ubuntu-Desktop (Note: The VagrantUp box name should match the `"box_basename"` in the `template.json` file.)
 2. Changing the `"vagrantup_user"` variable in `template.json` to your VagrantUp username
@@ -136,7 +140,7 @@ export VAGRANT_CLOUD_TOKEN=YourTokenHere
 packer build -only=virtualbox-iso template.json
 ```
 
-The example above will build a VirtualBox Ubuntu Desktop box and upload it to your VagrantUp box repository _(that you have to create before running the script that is above)_. If you want to build the box for another provider then look at the `template.json` in the `"builders"` section for the types of boxes you can create (e.g. `virtualbox-iso`, `vmware-iso`, `parallels-iso`, `qemu`).
+The example above will build a VirtualBox Ubuntu Desktop 20.10 box and upload it to your VagrantUp box repository _(that you have to create before running the script that is above)_. If you want to build the box for another provider then look at the `template.json` in the `"builders"` section for the types of boxes you can create (e.g. `virtualbox-iso`, `vmware-iso`, `parallels-iso`, `qemu`).
 
 If you do not want your box to be automatically uploaded to VagrantUp after you build it with Packer then you will need to remove the `"vagrant-cloud"` section under `"post-processors"`. The section is wrapped in a nested array. If you are removing the `vagrant-cloud` post-processor, then the section no longer has to be placed in a nested array.
 
@@ -144,7 +148,7 @@ If you do not want your box to be automatically uploaded to VagrantUp after you 
 
 ## ➤ Updating Your Box
 
-If a new release of the Ubuntu Desktop system is available, you can update your VagrantUp box. You can do this by changing the `"iso_checksum_url"`, `"iso_url"`, and `"iso_version"` variables in the `template.json` file. After that, run `packer build -only=virtualbox-iso template.json` and you should be golden.
+If a new release of the Ubuntu Desktop 20.10 system is available, you can update your VagrantUp box. You can do this by changing the `"iso_checksum_url"`, `"iso_url"`, and `"iso_version"` variables in the `template.json` file. After that, run `packer build -only=virtualbox-iso template.json` and you should be golden.
 
 You can also automate the process of retrieving the latest ISO and checksum URL by leveraging our [LatestOS](https://pypi.org/project/latestos/) Python package. This can be accomplished by running the following code with Python and pip already installed:
 

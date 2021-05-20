@@ -1,6 +1,6 @@
 {
   "name": "@megabytelabs/packer-ubuntu-desktop",
-  "description": "A Packer project for building Ubuntu Desktop images using the Ubuntu Live Server image",
+  "description": "A Ubuntu Desktop 20.10 Packer project based on chef bento's Ubuntu Server Packer project (with the addition of the desktop GUI and Plymouth)",
   "license": "MIT",
   "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
   "version": "1.0.0",
