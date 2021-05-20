@@ -12,8 +12,9 @@ Vagrant.configure("2") do |config|
   config.vm.define :ubuntu do |ubuntu|
     ubuntu.vm.box="Megabyte/Ubuntu-Desktop"
     ubuntu.vm.hostname = "vagrant-ubuntu"
-    ubuntu.vm.name = "Ubuntu Desktop 20.10"
+    ubuntu.vm.name = "Ubuntu Desktop 21.04"
     ubuntu.vm.network :forwarded_port, guest: 22, host: 58022, id: "ssh", auto_correct: true
+    ubuntu.vm.network :forwarded_port, guest: 3389, host: 53389, id: "rdp", auto_correct: true
     ubuntu.vm.network :forwarded_port, guest: 443, host: 58443, id: "https", auto_correct: true
     ubuntu.vm.network :forwarded_port, guest: 80, host: 58080, id: "http", auto_correct: true
     ubuntu.vm.network :private_network, ip: "172.24.24.2", netmask: "255.255.255.0"
@@ -53,6 +54,7 @@ Vagrant.configure("2") do |config|
     ubuntu.vm.provider :virtualbox do |v|
       v.check_guest_additions = true
       v.customize ["modifyvm", :id, "--accelerate3d", "on"]
+      v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
       v.customize ["modifyvm", :id, "--cpus", "4"]
       v.customize ["modifyvm", :id, "--graphicscontroller", "vmsvga"]
       v.customize ["modifyvm", :id, "--hwvirtex", "on"]

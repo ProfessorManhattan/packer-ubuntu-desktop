@@ -1,16 +1,16 @@
 {
   "name": "@megabytelabs/packer-ubuntu-desktop",
-  "description": "A Ubuntu Desktop 20.10 Packer project based on chef bento's Ubuntu Server Packer project (with the addition of the desktop GUI and Plymouth)",
+  "description": "An automated Ubuntu Desktop (currently, version 21.04) Packer project that builds boxes using the latest Ubuntu Live Server release",
   "license": "MIT",
   "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
   "version": "1.0.0",
   "scripts": {
-    "build": "packer build template.json",
-    "build:hyperv": "packer build -only=hyperv-iso template.json",
-    "build:kvm": "packer build -only=qemu template.json",
-    "build:parallels": "packer build -only=parallels-iso template.json",
-    "build:virtualbox": "packer build -only=virtualbox-iso template.json",
-    "build:vmware": "packer build -only=vmware-iso template.json",
+    "build": "trash build && packer build template.json",
+    "build:hyperv": "trash build && packer build -only=hyperv-iso template.json",
+    "build:kvm": "trash build && packer build -only=qemu template.json",
+    "build:parallels": "trash build && packer build -only=parallels-iso template.json",
+    "build:virtualbox": "trash build && packer build -only=virtualbox-iso template.json",
+    "build:vmware": "trash build && packer build -only=vmware-iso template.json",
     "commit": "git-cz",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"{scripts/*.custom.sh,*.json}\" --write",
@@ -44,7 +44,8 @@
     "prettier-package-json": "^2.5.0",
     "prettier-plugin-sh": "^0.6.1",
     "shellcheck": "^1.0.0",
-    "standard-version": "^9.3.0"
+    "standard-version": "^9.3.0",
+    "trash-cli": "^4.0.0"
   },
   "funding": [
     {

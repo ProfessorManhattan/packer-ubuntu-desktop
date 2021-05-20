@@ -1,7 +1,7 @@
 {
   "badge_style": "flat",
   "description_template": "Ubuntu Desktop MAJOR_VERSION.MINOR_VERSION",
-  "description_template_package": "A Ubuntu Desktop MAJOR_VERSION.MINOR_VERSION Packer project based on chef bento's Ubuntu Server Packer project (with the addition of the desktop GUI and Plymouth)",
+  "description_template_package": "An automated Ubuntu Desktop (currently, version MAJOR_VERSION.MINOR_VERSION) Packer project that builds boxes using the latest Ubuntu Live Server release",
   "hostname": "vagrant-ubuntu",
   "slug": "ubuntu-desktop",
   "vagrant_tag": "ubuntu",
