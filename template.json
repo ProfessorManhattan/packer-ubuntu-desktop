@@ -28,6 +28,7 @@
     "ssh_username": "vagrant",
     "vagrantup_token": "{{ env `VAGRANT_CLOUD_TOKEN` }}",
     "vagrantup_user": "Megabyte",
+    "version_description": "Minimal Ubuntu Desktop 20.10. Built from the Ubuntu Live Server 20.10 image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details.",
     "vm_name": "{{ user `box_basename` }}-{{ user `iso_version` }}"
   },
   "builders": [
@@ -159,7 +160,7 @@
         "type": "vagrant-cloud",
         "access_token": "{{ user `vagrantup_token` }}",
         "box_tag": "{{ user `vagrantup_user` }}/{{ user `box_basename` }}",
-        "version_description": "{{ user `description` }} version {{ user `iso_version` }}",
+        "version_description": "{{ user `version_description` }}",
         "version": "{{ user `iso_version` }}"
       }
     ]

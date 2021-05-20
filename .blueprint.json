@@ -4,5 +4,6 @@
   "description_template_package": "A Ubuntu Desktop MAJOR_VERSION.MINOR_VERSION Packer project based on chef bento's Ubuntu Server Packer project (with the addition of the desktop GUI and Plymouth)",
   "hostname": "vagrant-ubuntu",
   "slug": "ubuntu-desktop",
-  "vagrant_tag": "ubuntu"
+  "vagrant_tag": "ubuntu",
+  "version_description": "Minimal Ubuntu Desktop ISO_VERSION. Built from the Ubuntu Live Server ISO_VERSION image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details."
 }
