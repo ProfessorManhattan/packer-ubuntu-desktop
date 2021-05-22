@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
   config.vm.define :ubuntu do |ubuntu|
     ubuntu.vm.box="Megabyte/Ubuntu-Desktop"
     ubuntu.vm.hostname = "vagrant-ubuntu"
-    ubuntu.vm.name = "Ubuntu Desktop 21.04"
+    #ubuntu.vm.name = "Ubuntu Desktop 21.04" TODO: Figure out how to set name globally if possible
     ubuntu.vm.network :forwarded_port, guest: 22, host: 58022, id: "ssh", auto_correct: true
     ubuntu.vm.network :forwarded_port, guest: 3389, host: 53389, id: "rdp", auto_correct: true
     ubuntu.vm.network :forwarded_port, guest: 443, host: 58443, id: "https", auto_correct: true
