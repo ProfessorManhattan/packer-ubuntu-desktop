@@ -47,7 +47,7 @@ Vagrant.configure("2") do |config|
     ubuntu.vm.provider :parallels do |v|
       v.cpus = 2
       v.memory = 4096
-      v.name = "Ubuntu Desktop"
+      v.name = "Ubuntu Desktop 21.04"
       v.update_guest_tools = true
     end
 
