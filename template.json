@@ -28,8 +28,7 @@
     "ssh_username": "vagrant",
     "vagrantup_token": "{{ env `VAGRANT_CLOUD_TOKEN` }}",
     "vagrantup_user": "Megabyte",
-    "version_description": "Minimal Ubuntu Desktop 21.04. Built from the Ubuntu Live Server 21.04 image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details.",
-    "vm_name": "{{ user `box_basename` }}-{{ user `iso_version` }}"
+    "version_description": "Minimal Ubuntu Desktop 21.04. Built from the Ubuntu Live Server 21.04 image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details."
   },
   "builders": [
     {
@@ -73,7 +72,7 @@
       "ssh_port": "{{ user `ssh_port` }}",
       "ssh_timeout": "{{ user `ssh_timeout` }}",
       "ssh_username": "{{ user `ssh_username` }}",
-      "vm_name": "{{ user `vm_name` }}"
+      "vm_name": "{{ user `box_basename` }}-{{ user `iso_version` }}"
     },
     {
       "type": "qemu",
@@ -95,7 +94,7 @@
       "ssh_port": "{{ user `ssh_port` }}",
       "ssh_timeout": "{{ user `ssh_timeout` }}",
       "ssh_username": "{{ user `ssh_username` }}",
-      "vm_name": "{{ user `vm_name` }}"
+      "vm_name": "{{ user `box_basename` }}-{{ user `iso_version` }}"
     },
     {
       "type": "virtualbox-iso",
@@ -119,7 +118,7 @@
       "ssh_timeout": "{{ user `ssh_timeout` }}",
       "ssh_username": "{{ user `ssh_username` }}",
       "virtualbox_version_file": ".vbox_version",
-      "vm_name": "{{ user `vm_name` }}"
+      "vm_name": "{{ user `box_basename` }}-{{ user `iso_version` }}"
     },
     {
       "type": "vmware-iso",
@@ -140,7 +139,7 @@
       "ssh_timeout": "{{ user `ssh_timeout` }}",
       "ssh_username": "{{ user `ssh_username` }}",
       "tools_upload_flavor": "linux",
-      "vm_name": "{{ user `vm_name` }}",
+      "vm_name": "{{ user `box_basename` }}-{{ user `iso_version` }}",
       "vmx_data": {
         "cpuid.coresPerSocket": "1",
         "ethernet0.pciSlotNumber": "32"
