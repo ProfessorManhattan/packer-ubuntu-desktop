@@ -168,7 +168,7 @@
     "compression_level": "9",
     "cpus": "2",
     "description": "Ubuntu Desktop 21.10",
-    "disk_size": "12000",
+    "disk_size": "80000",
     "guest_additions_url": "",
     "headless": "false",
     "http_directory": "http",
@@ -180,7 +180,7 @@
     "iso_url": "https://releases.ubuntu.com/impish/ubuntu-21.10-desktop-amd64.iso",
     "iso_version": "21.10",
     "latestos_tag": "ubuntu",
-    "memory": "2300",
+    "memory": "4096",
     "no_proxy": "{{ env `NO_PROXY` }}",
     "shutdown_command": "echo '{{ user `ssh_password` }}' | sudo -S shutdown -P now",
     "ssh_password": "vagrant",
@@ -188,7 +188,7 @@
     "ssh_timeout": "230m",
     "ssh_username": "vagrant",
     "vagrantup_token": "{{ env `VAGRANT_CLOUD_TOKEN` }}",
-    "vagrantup_user": "manjeetsi",
+    "vagrantup_user": "Megabyte",
     "version_description": "Minimal Ubuntu Desktop 21.10. Built from the Ubuntu Live Server 21.10 image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details."
   }
 }
