@@ -57,26 +57,24 @@
 
 > </br><h3 align="center">**An automated Ubuntu Desktop (currently, version 21.04) Packer project that builds boxes using the latest Ubuntu Live Server release**</h3></br>
 
-
 <a href="#table-of-contents" style="width:100%"><img style="width:100%" src="https://gitlab.com/megabyte-labs/assets/-/raw/master/png/aqua-divider.png" /></a>
 
 ## Table of Contents
 
-* [Overview](#overview)
-* [Requirements](#requirements)
-	* [Developer Requirements](#developer-requirements)
-* [Quick Start](#quick-start)
-* [Creating Your Own Box](#creating-your-own-box)
-* [Updating Your Box](#updating-your-box)
-* [Contributing](#contributing)
-* [License](#license)
+- [Overview](#overview)
+- [Requirements](#requirements)
+  - [Developer Requirements](#developer-requirements)
+- [Quick Start](#quick-start)
+- [Creating Your Own Box](#creating-your-own-box)
+- [Updating Your Box](#updating-your-box)
+- [Contributing](#contributing)
+- [License](#license)
 
 <a href="#overview" style="width:100%"><img style="width:100%" src="https://gitlab.com/megabyte-labs/assets/-/raw/master/png/aqua-divider.png" /></a>
 
 ## Overview
 
 This project houses configurations that can be used to build performant Ubuntu Desktop images. It uses the Ubuntu Desktop Live image as a base, uses Packer to automate the build process, and then sets the image up using some [Bento scripts](https://github.com/chef/bento/tree/main/packer_templates/ubuntu/scripts) which take care of optimizing the image for your system (i.e. setting up SSH with the Vagrant default public key, setting up GuestAdditions for VirtualBox, etc.). This project is intended to be used to create desktop images that you would launch from your main desktop using a GUI. If you are looking for headless images, you should either use [Bento's server images](https://app.vagrantup.com/bento). You might also have some luck browsing through our [Packer projects](https://gitlab.com/megabyte-labs/packer).
-
 
 <a href="#requirements" style="width:100%"><img style="width:100%" src="https://gitlab.com/megabyte-labs/assets/-/raw/master/png/aqua-divider.png" /></a>
 
@@ -99,7 +97,6 @@ npm run help
 
 `npm run help` will ensure Bodega is installed and then open an interactive dialog where you can explore and learn about various developer commands.
 
-
 <a href="#quick-start" style="width:100%"><img style="width:100%" src="https://gitlab.com/megabyte-labs/assets/-/raw/master/png/aqua-divider.png" /></a>
 
 ## Quick Start
@@ -111,7 +108,6 @@ vagrant up
 ```
 
 The default username and password are both _vagrant_.
-
 
 <a href="#creating-your-own-box" style="width:100%"><img style="width:100%" src="https://gitlab.com/megabyte-labs/assets/-/raw/master/png/aqua-divider.png" /></a>
 
@@ -134,7 +130,6 @@ The example above will build a VirtualBox variables.description box and upload i
 
 If you do not want your box to be automatically uploaded to VagrantUp after you build it with Packer then you will need to remove the `"vagrant-cloud"` section under `"post-processors"`. The section is wrapped in a nested array. If you are removing the `vagrant-cloud` post-processor, then the section no longer has to be placed in a nested array.
 
-
 <a href="#updating-your-box" style="width:100%"><img style="width:100%" src="https://gitlab.com/megabyte-labs/assets/-/raw/master/png/aqua-divider.png" /></a>
 
 ## Updating Your Box
@@ -148,7 +143,6 @@ pip3 install latestos
 latestos variables.latestos_tag # Options include arch, centos, debian, fedora, and ubuntu
 packer build -only=virtualbox-iso template.json
 ```
-
 
 <a href="#contributing" style="width:100%"><img style="width:100%" src="https://gitlab.com/megabyte-labs/assets/-/raw/master/png/aqua-divider.png" /></a>
 
@@ -174,10 +168,8 @@ I create open source projects out of love. Although I have a job, shelter, and a
 
 </details>
 
-
 <a href="#license" style="width:100%"><img style="width:100%" src="https://gitlab.com/megabyte-labs/assets/-/raw/master/png/aqua-divider.png" /></a>
 
 ## License
 
 Copyright © 2020-2021 [Megabyte LLC](https://megabyte.space). This project is [MIT](https://gitlab.com/megabyte-labs/packer/ubuntu-desktop/-/blob/master/LICENSE) licensed.
-
