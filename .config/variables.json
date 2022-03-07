@@ -1,0 +1,507 @@
+{
+  "SPACE": "",
+  "alt_badge_style": "flat-square",
+  "author": {
+    "email": "brian@megabyte.space",
+    "name": "Brian Zalewski"
+  },
+  "autodoc_actions_description": "",
+  "autodoc_tags_description": "",
+  "autodoc_todo_description": "",
+  "autodoc_variables_description": "",
+  "badge_style": "for-the-badge",
+  "build_coverage_regex": "Lines\\s*:\\s*(\\d+.?\\d*)%",
+  "commit_help_url": "https://megabyte.space/docs/contributing/commit-guidelines",
+  "company": "Megabyte LLC",
+  "copyright": "2020-2021",
+  "docker_label_authors": "Brian Zalewski <brian@megabyte.space>",
+  "docs": {
+    "header_description_post": "<i></i>",
+    "header_description_pre": "A configuration managed by ",
+    "header_title_post": "<i></i>",
+    "header_title_pre": "<i></i>",
+    "link": "https://megabyte.space/docs/npm/config"
+  },
+  "email": {
+    "help": "help@megabyte.space"
+  },
+  "emoji_beginnings": ["🚀 ", "🔥👉 ", "👉 ", "😉 ", "🆓 ", "🐴 ", "👀 ", "🎉 ", "", "", "", "", "", "", "", ""],
+  "emoji_endings": [" 🚀", " 🔥🔥🔥", " 👏", " 😉", " 🐙", " 🐴", " 👀", " 🎟", " 🎉🎉", "", "", "", "", "", "", ""],
+  "github_prefix": "<i></i>",
+  "gitlab_pipelines": [
+    {
+      "active": true,
+      "cron": "0 12 * * 1",
+      "description": "Weekly Test",
+      "ref": "master",
+      "variable": {
+        "WEEKLY_TEST": true
+      }
+    },
+    {
+      "active": true,
+      "cron": "0 5 1 * *",
+      "description": "Monthly Repository Update",
+      "ref": "synchronize",
+      "variable": {
+        "REPOSITORY_UPDATE": true
+      }
+    }
+  ],
+  "gomodProxy": true,
+  "group": "common",
+  "homebrew": {
+    "folder": "Formula",
+    "name": "homebrew-tap",
+    "owner": "installdoc"
+  },
+  "idPost": "megabyte.space",
+  "json_top_keys": "",
+  "license": "MIT",
+  "link": {
+    "chat": "https://app.slack.com/client/T01ABCG4NK1/C01NN74H0LW/details/",
+    "docs": "https://megabyte.space/docs",
+    "home": "https://megabyte.space",
+    "installdoctor": "https://install.doctor",
+    "privacy": "https://megabyte.space/privacy",
+    "shield": "https://shields.io",
+    "terms": "https://megabyte.space/terms"
+  },
+  "misc": {
+    "appnest": "https://github.com/andreasbm/readme",
+    "husky": "https://www.npmjs.com/package/husky",
+    "tinypng": "https://tinypng.com/"
+  },
+  "name": "[[ package.json .blueprint.name - See CONTRIBUTING.md ]]",
+  "npm_publish_config_access": "public",
+  "npm_standard_version_prerelease": "git add --all",
+  "npm_type": "module",
+  "organization": "Megabyte Labs",
+  "overview": "[[ This is a new repository without the details filled in yet. Look for the section about blueprint data in the CONTRIBUTING.md to set up the project. ]]",
+  "plugins": {
+    "eslint": [
+      ["ESLint Plugin", "Description"],
+      [
+        "[`@typescript-eslint/eslint-plugin`](https://npmjs.com/package/@typescript-eslint/eslint-plugin)",
+        "An ESLint plugin which provides lint rules for TypeScript codebases"
+      ],
+      [
+        "[`@typescript-eslint/eslint-plugin-tslint`](https://npmjs.com/package/@typescript-eslint/eslint-plugin-tslint)",
+        "ESLint plugin that wraps a TSLint configuration and lints the whole source using TSLint"
+      ],
+      [
+        "[`@typescript-eslint/parser`](https://npmjs.com/package/@typescript-eslint/parser)",
+        "An ESLint parser which leverages TypeScript ESTree to allow for ESLint to lint TypeScript source code"
+      ],
+      [
+        "[`eslint-config-prettier`](https://npmjs.com/package/eslint-config-prettier)",
+        "Turns off all rules that are unnecessary or might conflict with Prettier"
+      ],
+      [
+        "[`eslint-formatter-git-log`](https://npmjs.com/package/eslint-formatter-git-log)",
+        "Formatter that displays results that include the name of the developer who is responsible for the error"
+      ],
+      [
+        "[`eslint-formatter-gitlab`](https://npmjs.com/package/eslint-formatter-gitlab)",
+        "Formatter for GitLab CI that integrates results into merge requests"
+      ],
+      [
+        "[`eslint-formatter-pretty`](https://npmjs.com/package/eslint-formatter-pretty)",
+        "Stylish formatter for terminal results that includes features such as clicking result to open code in editor"
+      ],
+      [
+        "[`eslint-formatter-summary`](https://npmjs.com/package/eslint-formatter-summary)",
+        "Alternate formatting style for the results that displays a table"
+      ],
+      ["[`eslint-plugin-angular`](https://npmjs.com/package/eslint-plugin-angular)", "Rules for Angular applications"],
+      [
+        "[`eslint-plugin-array-func`](https://npmjs.com/package/eslint-plugin-array-func)",
+        "Rules for Array functions and methods"
+      ],
+      [
+        "[`eslint-plugin-editorconfig`](https://npmjs.com/package/eslint-plugin-editorconfig)",
+        "An ESLint plugin to enforce EditorConfig rules"
+      ],
+      [
+        "[`eslint-plugin-eslint-comments`](https://npmjs.com/package/eslint-plugin-eslint-comments)",
+        "Additional ESLint rules for ESLint directive comments"
+      ],
+      [
+        "[`eslint-plugin-etc`](https://npmjs.com/package/eslint-plugin-etc)",
+        "More generalcpurpose TypeScript-related ESLint rules"
+      ],
+      ["[`eslint-plugin-ext`](https://npmjs.com/package/eslint-plugin-ext)", "eslint extended rules"],
+      [
+        "[`eslint-plugin-filenames`](https://npmjs.com/package/eslint-plugin-filenames)",
+        "ESLint plugin to check filenames"
+      ],
+      ["[`eslint-plugin-fp`](https://npmjs.com/package/eslint-plugin-fp)", "ESLint rules for functional programming"],
+      [
+        "[`eslint-plugin-functional`](https://npmjs.com/package/eslint-plugin-functional)",
+        "ESLint plugin to disable mutation and promote functional programming in JavaScript and TypeScript"
+      ],
+      [
+        "[`eslint-plugin-import`](https://npmjs.com/package/eslint-plugin-import)",
+        "ESLint plugin with rules that help validate proper imports"
+      ],
+      ["[`eslint-plugin-jest`](https://npmjs.com/package/eslint-plugin-jest)", "ESLint plugin for Jest "],
+      [
+        "[`eslint-plugin-jest-async`](https://npmjs.com/package/eslint-plugin-jest-async)",
+        "ESLint rules for Jest to detect improper test assertions for asynchronous actions"
+      ],
+      ["[`eslint-plugin-jest-dom`](https://npmjs.com/package/eslint-plugin-dom)", "Lint DOM API performance"],
+      [
+        "[`eslint-plugin-jest-formatting`](https://npmjs.com/package/eslint-plugin-formatting)",
+        "Linting rules for ESLint realted to code style formatting"
+      ],
+      [
+        "[`eslint-plugin-jsdoc`](https://npmjs.com/package/eslint-plugin-jsdoc)",
+        "Rules that enforce comments written in JSDoc syntax"
+      ],
+      [
+        "[`eslint-plugin-json-schema-validator`](https://npmjs.com/package/eslint-plugin-json-schema-validator)",
+        "ESLint plugin that validates data using JSON Schema Validator"
+      ],
+      [
+        "[`eslint-plugin-jsonc`](https://npmjs.com/package/eslint-plugin-jsonc)",
+        "ESLint plugin for JSON, JSONC and JSON5 files"
+      ],
+      [
+        "[`eslint-plugin-no-constructor-bind`](https://npmjs.com/package/eslint-plugin-no-constructor-bind)",
+        "Prefer class arrow functions to binding in the constructor"
+      ],
+      [
+        "[`eslint-plugin-no-explicit-type-exports`](https://npmjs.com/package/eslint-plugin-no-explicit-type-exports)",
+        "A plugin to guard against exporting imported types"
+      ],
+      [
+        "[`eslint-plugin-no-secrets`](https://npmjs.com/package/eslint-plugin-no-secrets)",
+        "An ESLint plugin to find strings that might be secrets or credentials"
+      ],
+      [
+        "[`eslint-plugin-no-unsanitized`](https://npmjs.com/package/eslint-plugin-no-unsanitized)",
+        "Custom ESLint rule to disallows unsafe innerHTML, outerHTML, insertAdjacentHTML and alike"
+      ],
+      [
+        "[`eslint-plugin-no-use-extend-native`](https://npmjs.com/package/eslint-plugin-no-use-extend-native)",
+        "ESLint plugin to prevent use of extended native objects"
+      ],
+      ["[`eslint-plugin-node`](https://npmjs.com/package/eslint-plugin-node)", "Additional ESLint's rules for Node.js"],
+      [
+        "[`eslint-plugin-optimize-regex`](https://npmjs.com/package/eslint-plugin-optimize-regex)",
+        "Optimize regex literals"
+      ],
+      [
+        "[`eslint-plugin-prefer-arrow`](https://npmjs.com/package/eslint-plugin-prefer-arrow)",
+        "ESLint plugin to prefer arrow functions"
+      ],
+      [
+        "[`eslint-plugin-prettier`](https://npmjs.com/package/eslint-plugin-prettier)",
+        "ESLint plugin to prefer arrow functions"
+      ],
+      [
+        "[`eslint-plugin-promise`](https://npmjs.com/package/eslint-plugin-promise)",
+        "Enforce best practices for JavaScript promises"
+      ],
+      [
+        "[`eslint-plugin-regexp`](https://npmjs.com/package/eslint-plugin-regexp)",
+        "ESLint plugin for finding RegExp mistakes and RegExp style guide violations"
+      ],
+      ["[`eslint-plugin-rxjs`](https://npmjs.com/package/eslint-plugin-rxjs)", "ESLint rules for RxJS "],
+      [
+        "[`eslint-plugin-security`](https://npmjs.com/package/eslint-plugin-security)",
+        "ESLint rules for Node Security"
+      ],
+      ["[`eslint-plugin-sonarjs`](https://npmjs.com/package/eslint-plugin-sonarjs)", "SonarJS rules for ESLint "],
+      [
+        "[`eslint-plugin-sort-class-members`](https://npmjs.com/package/eslint-plugin-sort-class-members)",
+        "ESLint rule for enforcing consistent ES6 class member order"
+      ],
+      [
+        "[`eslint-plugin-sort-keys-fix`](https://npmjs.com/package/eslint-plugin-sort-keys-fix)",
+        "Fork of eslint rule that sorts keys in objects with autofix enabled"
+      ],
+      [
+        "[`eslint-plugin-switch-case`](https://npmjs.com/package/eslint-plugin-switch-case)",
+        "Switch-case-specific linting rules for ESLint"
+      ],
+      [
+        "[`eslint-plugin-toml`](https://npmjs.com/package/eslint-plugin-toml)",
+        "ESLint plugin provides linting rules for TOML"
+      ],
+      [
+        "[`eslint-plugin-tsdoc`](https://npmjs.com/package/eslint-plugin-tsdoc)",
+        "This ESLint plugin provides a rule for validating that TypeScript doc comments conform to the TSDoc specification"
+      ],
+      [
+        "[`eslint-plugin-typescript-sort-keys`](https://npmjs.com/package/eslint-plugin-typescript-sort-keys)",
+        "A linter plugin to require sorting interface and string enum keys"
+      ],
+      ["[`eslint-plugin-unicorn`](https://npmjs.com/package/eslint-plugin-unicorn)", "Various awesome ESLint rules"],
+      [
+        "[`eslint-plugin-unused-imports`](https://npmjs.com/package/eslint-plugin-unused-imports)",
+        "Package to seperate no-unused-vars and no-unused-imports for ESLint as well as providing an autofixer for the latter"
+      ],
+      [
+        "[`eslint-plugin-woke`](https://npmjs.com/package/eslint-plugin-woke)",
+        "ESLint plugin to promote diversity and inclusion in codebases by restricting the presence of certain potentially offensive keywords"
+      ],
+      [
+        "[`eslint-plugin-yml`](https://npmjs.com/package/eslint-plugin-yml)",
+        "ESLint plugin provides linting rules for YAML"
+      ]
+    ],
+    "jest": [
+      ["Jest Plugin", "Description"],
+      [
+        "[`@jest-runner/electron`](https://npmjs.com/package/@jest-runner/electron)",
+        "custom test runner for Jest that allows tests to be run in Electron environment"
+      ],
+      [
+        "[`@storybook/addon-storyshots`](https://npmjs.com/package/@storybook/addon-storyshots)",
+        "StoryShots adds automatic Jest Snapshot Testing for Storybook"
+      ],
+      ["[`expect-puppeteer`](https://npmjs.com/package/expect-puppeteer)", "Run the tests using Jest & Puppeteer"],
+      [
+        "[`jest-chain`](https://npmjs.com/package/jest-chain)",
+        "Chain Jest matchers together to create one powerful assertion"
+      ],
+      ["[`jest-dom`](https://npmjs.com/package/jest-dom)", "Custom jest matchers to test the state of the DOM"],
+      [
+        "[`jest-html-reporters`](https://npmjs.com/package/jest-html-reporters)",
+        "Jest test results processor for generating a summary in HTML"
+      ],
+      ["[`jest-image-snapshot`](https://npmjs.com/package/jest-image-snapshot)", "Jest matcher for image comparisons"],
+      ["[`jest-json-schema`](https://npmjs.com/package/jest-json-schema)", "JSON schema matcher for Jest"],
+      [
+        "[`jest-preset-angular`](https://npmjs.com/package/jest-preset-angular)",
+        "A preset of Jest configuration for Angular projects"
+      ],
+      [
+        "[`jest-puppeteer`](https://npmjs.com/package/jest-puppeteer)",
+        "Jest preset containing all required configuration for writing integration tests using Puppeteer"
+      ],
+      ["[`jest-runner-eslint`](https://npmjs.com/package/jest-runner-eslint)", "ESLint runner for Jest"],
+      [
+        "[`jest-runner-groups`](https://npmjs.com/package/jest-runner-groups)",
+        "A custom runner that allows to tag test files and run groups of tests with Jest"
+      ],
+      ["[`jest-runner-prettier`](https://npmjs.com/package/jest-runner-prettier)", "Prettier runner for Jest"],
+      ["[`jest-runner-stylelint`](https://npmjs.com/package/jest-runner-stylelint)", "Stylelint runner for Jest"],
+      ["[`jest-runner-tsc`](https://npmjs.com/package/jest-runner-tsc)", "A Jest runner for the TypeScript compiler"],
+      [
+        "[`jest-watch-master`](https://npmjs.com/package/jest-watch-master)",
+        "Jest watch plugin for checking changes since master"
+      ],
+      [
+        "[`jest-watch-select-projects`](https://npmjs.com/package/jest-watch-select-projects)",
+        "Select which Jest projects to run"
+      ],
+      [
+        "[`jest-watch-typeahead`](https://npmjs.com/package/jest-watch-typeahead)",
+        "Jest watch plugin for filtering test by file name or test name"
+      ]
+    ],
+    "prettier": [
+      ["Prettier Plugin", "Description", "File Types"],
+      ["[`@prettier/plugin-php`](https://npmjs.com/package/@prettier/plugin-php)", "Adds support for PHP", "`*.php`"],
+      [
+        "[`@prettier/plugin-pug`](https://npmjs.com/package/@prettier/plugin-pug)",
+        "Adds support for Pug templates",
+        "`*.jade`, `*.pug`"
+      ],
+      [
+        "[`@prettier/plugin-ruby`](https://npmjs.com/package/@prettier/plugin-ruby)",
+        "Adds support for Ruby",
+        "`*.rb` and [many more](https://github.com/prettier/plugin-ruby/blob/main/src/plugin.ts#L20)"
+      ],
+      [
+        "[`@prettier/plugin-xml`](https://npmjs.com/package/@prettier/plugin-xml)",
+        "A prettier plugin for XML",
+        "`*.xml` and [many more](https://github.com/prettier/plugin-xml/blob/main/src/plugin.ts#L59)"
+      ],
+      [
+        "[`prettier-plugin-go-template`](https://npmjs.com/package/prettier-plugin-go-template)",
+        "Adds support for Go templates",
+        "`*.gohtml`, `*.gotmpl`, `*.go.tmpl`, `*.tmpl`, `*.tpl`, `*.html.tmpl`, `*.go.html`"
+      ],
+      [
+        "[`prettier-plugin-csharp`](https://npmjs.com/package/prettier-plugin-csharp)",
+        "Adds support for C#",
+        "`*.cs`, `*.cake`, `*.cshtml`, `*.csx`"
+      ],
+      [
+        "[`prettier-plugin-ini`](https://npmjs.com/package/prettier-plugin-ini)",
+        "Adds support for INI files",
+        "`*.ini`"
+      ],
+      ["[`prettier-plugin-java`](https://npmjs.com/package/prettier-plugin-java)", "Adds support for Java", "`*.java`"],
+      [
+        "[`prettier-plugin-jsdoc`](https://npmjs.com/package/prettier-plugin-jsdoc)",
+        "Adds support for JSDoc comments in TypeScript/JavaScript files",
+        "`*.js`, `*.ts`, `*.jsx`, `*.tsx`, `*.mdx`, possibly others"
+      ],
+      [
+        "[`prettier-plugin-organize-imports`](https://npmjs.com/package/prettier-plugin-organize-imports)",
+        "Makes Prettier organize your TypeScript imports using the `organizeImports` feature of the TypeScript language service API",
+        "`*.js`, `*.jsx`, `*.ts`, `*.tsx`, `*.vue`"
+      ],
+      [
+        "[`prettier-plugin-package-perfection`](https://npmjs.com/package/prettier-plugin-package-perfection)",
+        "Sorts the keys and does some auto-formatting of the `package.json` file (uses [prettier-package-json](https://www.npmjs.com/package/prettier-package-json) for the logic)",
+        "`package.json`"
+      ],
+      [
+        "[`prettier-plugin-properties`](https://npmjs.com/package/prettier-plugin-properties)",
+        "Adds support for `properties` files",
+        "`*.properties`"
+      ],
+      [
+        "[`prettier-plugin-sh`](https://npmjs.com/package/prettier-plugin-sh)",
+        "Adds support for running Prettier on shell scripts",
+        "`*.sh`, `Dockerfile`, `.gitignore`, `.dotenv`, possibly more"
+      ],
+      [
+        "[`prettier-plugin-solidity`](https://npmjs.com/package/prettier-plugin-solidity)",
+        "Adds support for Solidity code",
+        "`*.sol`"
+      ],
+      ["[`prettier-plugin-sql`](https://npmjs.com/package/prettier-plugin-sql)", "Adds support for SQL", "`*.sql`"]
+    ]
+  },
+  "profile": {
+    "dockerHubUser": "professormanhattan",
+    "dockerhub": "megabytelabs",
+    "galaxy": "professormanhattan",
+    "github": "ProfessorManhattan",
+    "linkedin": "blzalewski",
+    "npmjs": "thisismyfirstday",
+    "npmjs_organization": "mblabs",
+    "opencollective": "megabytelabs",
+    "patreon": "ProfessorManhattan",
+    "pypi": "ProfessorManhattan",
+    "replit": "ProfessorMegaby",
+    "stackblitz": "ProfessorManhattan",
+    "twitter": "MegabyteLabs",
+    "vagrant": "ProfessorManhattan"
+  },
+  "profile_link": {
+    "dockerhub": "https://hub.docker.com/u",
+    "galaxy": "https://galaxy.ansible.com",
+    "github": "https://github.com",
+    "linkedin": "https://www.linkedin.com/in/",
+    "npmjs": "https://www.npmjs.com/~",
+    "opencollective": "https://opencollective.com",
+    "patreon": "https://www.patreon.com",
+    "pypi": "https://pypi.org/user",
+    "replit": "https://repl.it/@",
+    "stackblitz": "https://stackblitz.com/@",
+    "twitter": "MegabyteLabs",
+    "vagrant": "https://app.vagrantup.com"
+  },
+  "redditApplicationId": "O3UxD7HlPpcN88gpEkPIXQ",
+  "redditUsername": "tsgangster",
+  "repository": {
+    "github": "",
+    "gitlab": "",
+    "gitlabBaseUrl": "https://gitlab.com/megabyte-labs",
+    "group": {
+      "ansible_roles": "https://gitlab.com/megabyte-labs/ansible-roles",
+      "ansible_roles_path": "megabyte-labs/ansible-roles",
+      "apps": "https://gitlab.com/megabyte-labs/apps",
+      "apps_path": "megabyte-labs/apps",
+      "ci": "https://gitlab.com/megabyte-labs/ci",
+      "ci_path": "megabyte-labs/ci",
+      "cloud": "https://gitlab.com/megabyte-labs/cloud",
+      "cloud_path": "megabyte-labs/cloud",
+      "common": "https://gitlab.com/megabyte-labs/common",
+      "common_path": "megabyte-labs/common",
+      "cryptocurrency": "https://gitlab.com/megabyte-labs/cryptocurrency",
+      "cryptocurrency_path": "megabyte-labs/cryptocurrency",
+      "docker_compose": "https://gitlab.com/megabyte-labs/docker-compose",
+      "docker_compose_path": "megabyte-labs/docker-compose",
+      "dockerfile": "https://gitlab.com/megabyte-labs/docker",
+      "dockerfile_path": "megabyte-labs/docker",
+      "documentation": "https://gitlab.com/megabyte-labs/documentation",
+      "documentation_path": "megabyte-labs/documentation",
+      "go": "https://gitlab.com/megabyte-labs/go",
+      "go_path": "megabyte-labs/go",
+      "kubernetes": "https://gitlab.com/megabyte-labs/kubernetes",
+      "kubernetes_path": "megabyte-labs/kubernetes_path",
+      "npm": "https://gitlab.com/megabyte-labs/npm",
+      "npm_path": "megabyte-labs/npm",
+      "packer": "https://gitlab.com/megabyte-labs/packer",
+      "packer_path": "megabyte-labs/packer",
+      "python": "https://gitlab.com/megabyte-labs/python",
+      "python_cli_path": "megabyte-labs/python/cli",
+      "python_path": "megabyte-labs/python",
+      "software": "https://gitlab.com/megabyte-labs/software",
+      "software_path": "megabyte-labs/software",
+      "web_components": "https://gitlab.com/megabyte-labs/web-components",
+      "web_components_path": "megabyte-labs/web-components"
+    },
+    "location": {
+      "commits": {
+        "github": "/commits/master",
+        "gitlab": "/-/commits/master",
+        "gitlab_e2e": "/-/commits/e2e"
+      },
+      "conduct": {
+        "github": "/blob/master/docs/CODE_OF_CONDUCT.md",
+        "gitlab": "/-/blob/master/docs/CODE_OF_CONDUCT.md"
+      },
+      "contributing": {
+        "github": "/blob/master/docs/CONTRIBUTING.md",
+        "gitlab": "/-/blob/master/docs/CONTRIBUTING.md"
+      },
+      "demo": {
+        "github": "/raw/master/docs/demo.gif",
+        "gitlab": "/-/raw/master/docs/demo.gif"
+      },
+      "issues": {
+        "github": "/issues",
+        "gitlab": "/-/issues"
+      },
+      "license": {
+        "github": "/blob/master/LICENSE",
+        "gitlab": "/-/blob/master/LICENSE"
+      },
+      "logo": {
+        "github": "/raw/master/logo.png",
+        "gitlab": "/-/raw/master/logo.png"
+      },
+      "readme": {
+        "github": "/blob/master/README.md",
+        "gitlab": "/-/blob/master/README.md"
+      }
+    },
+    "namespace": "",
+    "prefix": {
+      "github": ""
+    },
+    "project": {
+      "assets": "https://gitlab.com/megabyte-labs/assets/-/raw/master",
+      "autodoc": "https://github.com/AndresBott/ansible-autodoc",
+      "playbooks": "https://github.com/ProfessorManhattan/Gas-Station",
+      "wrangler": "https://gitlab.com/megabyte-labs/wrangler"
+    }
+  },
+  "scriptsBuild": "task npm:build:tsconfig",
+  "scriptsHelp": "task --menu",
+  "scriptsPrepare": "task common:husky",
+  "scriptsStart": "bash start.sh",
+  "scriptsTest": "task npm:test:none",
+  "sharp_instructions": [],
+  "slackNotificationChannel": "#misc",
+  "slackNotificationIcon": "https://gitlab.com/megabyte-labs/misc/assets/-/raw/master/logo/megabytelabs-color-icon-350x350.png",
+  "slackNotificationUsername": "Megabyte Labs Release Notification Bot",
+  "sponsorship": {
+    "author": "Brian Zalewski",
+    "text": "I create open source projects out of love. Although I have a job, shelter, and as much fast food as I can handle, it would still be pretty cool to be appreciated by the community for something I have spent a lot of time and money on. Please consider sponsoring me! Who knows? Maybe I will be able to quit my job and publish open source full time."
+  },
+  "subgroup": "config",
+  "teamsNotificationColor": "#1DA1F2",
+  "teamsNotificationIcon": "https://gitlab.com/megabyte-labs/misc/assets/-/raw/master/logo/megabytelabs-color-icon-350x350.png",
+  "title": "[[ package.json .blueprint.title - See CONTRIBUTING.md ]]",
+  "version": "0.0.1"
+}
