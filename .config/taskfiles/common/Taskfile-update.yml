@@ -168,6 +168,7 @@ tasks:
       start: Ensuring submodules in the `.modules/` folder are up-to-date
       success: Successfully ensured submodules in the `.modules/` folder are up-to-date
     cmds:
+      - git submodule update --init --recursive
       - |
         ROOT_DIR="$PWD"
         if ls .modules/*/ > /dev/null 2>&1; then
