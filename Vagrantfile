@@ -93,7 +93,7 @@ Vagrant.configure("2") do |config|
       v.vmx["gui.fullScreenAtPowerOn"] = "TRUE"
       v.vmx["gui.lastPoweredViewMode"] = "fullscreen"
       v.vmx["gui.viewModeAtPowerOn"] = "fullscreen"
-      v.vmx["memsize"] = memory.to_us
+      v.vmx["memsize"] = memory.to_s
       v.vmx["mks.enable3d"] = "TRUE"
       v.vmx["mks.forceDiscreteGPU"] = "TRUE"
       v.vmx["numvcpus"] = cpus.to_s

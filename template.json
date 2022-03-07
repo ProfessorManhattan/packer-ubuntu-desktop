@@ -109,11 +109,12 @@
       "tools_upload_flavor": "linux",
       "type": "vmware-iso",
       "vm_name": "{{ user `box_basename` }}-{{ user `iso_version` }}",
+      "vmdk_name": "{{ user `box_basename` }}-{{ user `iso_version` }}",
       "vmx_data": {
         "cpuid.coresPerSocket": "1",
+        "ethernet0.connectionType": "nat",
         "ethernet0.pciSlotNumber": "32"
-      },
-      "vmx_remove_ethernet_interfaces": true
+      }
     }
   ],
   "post-processors": [
