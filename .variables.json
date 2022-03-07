@@ -66,6 +66,7 @@
   "github_id": "R_kgDOG9WsCQ",
   "github_prefix": "<i></i>",
   "gitlab_encoded_path": "megabyte-labs%252Fpacker%252Fubuntu-desktop",
+  "gitlab_group_id": "10839950",
   "gitlab_pipelines": [
     {
       "active": true,
@@ -86,6 +87,7 @@
       }
     }
   ],
+  "gitlab_project_id": "24081095",
   "gomodProxy": true,
   "group": "packer",
   "homebrew": {
