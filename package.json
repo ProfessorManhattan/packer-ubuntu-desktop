@@ -13,8 +13,7 @@
     "email": "help@megabyte.space",
     "url": "https://gitlab.com/megabyte-labs/packer/ubuntu-desktop/-/issues"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"
@@ -35,10 +34,12 @@
     "subgroup": "desktop",
     "title": "Ubuntu Desktop Template for Packer",
     "vagrant_tag": "ubuntu",
-    "version_description": "Ubuntu Desktop ISO_VERSION. Built from the Ubuntu Live Desktop ISO_VERSION image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details."
+    "version_description": "Ubuntu Desktop ISO_VERSION. Built from the Ubuntu Live Desktop ISO_VERSION image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details.",
+    "github_id": "R_kgDOG9WsCQ",
+    "gitlab_project_id": "24081095",
+    "gitlab_group_id": "10839950"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "keywords": [
     "accelerated",
     "compressed",
