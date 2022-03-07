@@ -92,6 +92,12 @@ This project:
 
 This project supports creating boxes for the following virtualization platforms:
 
+- [Hyper-V](https://gitlab.com/megabyte-labs/ansible-roles/hyperv) <!-- SUPPORTED_OS_hyperv-iso -->
+- [KVM](https://gitlab.com/megabyte-labs/ansible-roles/kvm) <!-- SUPPORTED_OS_qemu -->
+- [Parallels](https://gitlab.com/megabyte-labs/ansible-roles/parallels) <!-- SUPPORTED_OS_parallels-iso -->
+- [VirtualBox](https://gitlab.com/megabyte-labs/ansible-roles/virtualbox) <!-- SUPPORTED_OS_virtualbox-iso -->
+- [VMWare](https://gitlab.com/megabyte-labs/ansible-roles/vmware) <!-- SUPPORTED_OS_vmware-iso -->
+
 <a href="#requirements" style="width:100%"><img style="width:100%" src="https://gitlab.com/megabyte-labs/assets/-/raw/master/png/aqua-divider.png" /></a>
 
 ## Requirements
