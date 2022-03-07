@@ -1,11 +1,8 @@
-{{ load:.config/docs/common/contributing/header.md }}
+{{ load:.config/docs/contributing/header.md }}
 {{ template:toc }}
-{{ load:.config/docs/common/contributing/code-of-conduct.md }}
+{{ load:.config/docs/contributing/code-of-conduct.md }}
 {{ load:.config/docs/contributing/overview.md }}
-{{ load:.config/docs/contributing/architecture.md }}
-{{ load:.config/docs/contributing/tools.md }}
-{{ load:.config/docs/contributing/eslint.md }}
-{{ load:.config/docs/contributing/testing.md }}
+{{ load:.config/docs/contributing/philosophy.md }}
+{{ load:.config/docs/contributing/getting-started.md }}
 {{ load:.config/docs/contributing/pull-requests.md }}
-{{ load:.config/docs/common/contributing/styleguides.md }}
-{{ load:.config/docs/common/contributing/contributors.md }}
+{{ load:.config/docs/contributing/formatting.md }}

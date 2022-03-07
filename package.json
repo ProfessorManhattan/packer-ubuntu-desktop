@@ -15,9 +15,7 @@
   },
   "scripts": {},
   "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
+    "commitizen": {}
   },
   "blueprint": {
     "description": "An automated Ubuntu Desktop (currently, version MAJOR_VERSION.MINOR_VERSION) Packer project that builds boxes using the latest Ubuntu Live Server release",
@@ -39,7 +37,17 @@
     "gitlab_project_id": "24081095",
     "gitlab_group_id": "10839950"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@commitlint/config-conventional": "^16.0.0",
+    "eslint-config-strict-mode": "latest",
+    "git-cz-emoji": "latest",
+    "glob": "^7.2.0",
+    "handlebars-helpers": "^0.10.0",
+    "prettier-config-sexy-mode": "latest",
+    "semantic-release-config": "latest",
+    "typescript": "^4.5.5",
+    "@washingtondc/development": "latest"
+  },
   "keywords": [
     "accelerated",
     "compressed",
@@ -62,22 +70,11 @@
       "url": "https://www.patreon.com/ProfessorManhattan"
     }
   ],
-  "lint-staged": {
-    "*.{json}": [
-      "prettier --write"
-    ],
-    "scripts/*.custom.sh": [
-      "prettier --write"
-    ],
-    "package.json": [
-      "prettier-package-json --write"
-    ]
-  },
-  "standard-version": {
-    "scripts": {
-      "prebump": "jq -r '.variables.iso_version' template.json",
-      "prerelease": "git add --all",
-      "pretag": "PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && if git show-ref --tags v$PACKAGE_VERSION --quiet; then git tag -d v$PACKAGE_VERSION; fi"
-    }
+  "private": false,
+  "prettier": "prettier-config-sexy-mode",
+  "dependencies": {},
+  "optionalDependencies": {},
+  "eslintConfig": {
+    "extends": "eslint-config-strict-mode"
   }
 }

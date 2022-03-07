@@ -10,8 +10,8 @@ tasks:
       - :lint:commit
     log:
       error: '`commit-msg` hook encountered an error!'
-
       start: '`commit-msg` hook running..'
+
   post-checkout:
     deps:
       - :install:npm:git-notify
@@ -60,14 +60,14 @@ tasks:
       - :security:private-keys
     log:
       error: '`pre-commit` hook encountered an error!'
-
       start: '`pre-commit` hook running..'
+
   pre-push:
     vars:
-      GITLAB_TOKEN:
-        sh: echo "$GITLAB_TOKEN"
       GITHUB_TOKEN:
         sh: echo "$GITHUB_TOKEN"
+      GITLAB_TOKEN:
+        sh: echo "$GITLAB_TOKEN"
     log:
       error: '`pre-push` hook encountered an error!'
       start: '`pre-push` hook running..'

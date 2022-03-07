@@ -1,13 +1,19 @@
 ---
 stages:
   - update
-  - fix
   - lint
-
+variables:
+  PIP_CACHE_DIR: '${CI_PROJECT_DIR}/.cache/pip'
+cache:
+  key: '${CI_JOB_NAME}'
+  paths:
+    - .cache/pip
+    - .pnpm-store
+    - .venv
 include:
-  - remote: https://gitlab.com/megabyte-labs/ci/gitlab-ci-templates/-/raw/master/packer-validate.gitlab-ci.yml
-  - remote: https://gitlab.com/megabyte-labs/ci/gitlab-ci-templates/-/raw/master/prettier.gitlab-ci.yml
-  - remote: https://gitlab.com/megabyte-labs/ci/gitlab-ci-templates/-/raw/master/prettier-fix.gitlab-ci.yml
-  - remote: https://gitlab.com/megabyte-labs/ci/gitlab-ci-templates/-/raw/master/shellcheck.gitlab-ci.yml
-  - remote: https://gitlab.com/megabyte-labs/ci/gitlab-ci-templates/-/raw/master/update.gitlab-ci.yml
-  # - remote: https://gitlab.com/megabyte-labs/ci/gitlab-ci-templates/-/raw/master/vagrant-validate.gitlab-ci.yml
+  - remote: https://gitlab.com/megabyte-labs/gitlab-ci/-/raw/master/lint/eslint.gitlab-ci.yml
+  - remote: https://gitlab.com/megabyte-labs/gitlab-ci/-/raw/master/lint/packer.gitlab-ci.yml
+  - remote: https://gitlab.com/megabyte-labs/gitlab-ci/-/raw/master/lint/prettier.gitlab-ci.yml
+  - remote: https://gitlab.com/megabyte-labs/gitlab-ci/-/raw/master/lint/shellcheck.gitlab-ci.yml
+  - remote: https://gitlab.com/megabyte-labs/gitlab-ci/-/raw/master/lint/yamllint.gitlab-ci.yml
+  - remote: https://gitlab.com/megabyte-labs/gitlab-ci/-/raw/master/update/project.gitlab-ci.yml

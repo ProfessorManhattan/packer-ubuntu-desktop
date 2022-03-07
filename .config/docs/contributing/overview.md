@@ -1,47 +1,23 @@
 ## Overview
 
-This repository uses a customized starting template that is inspired by the [TypeScript Starter](https://github.com/bitjson/typescript-starter) project on GitHub. It includes many different build tools and files meant to improve team efficiency. All of the code and assets are stored in the `src/` folder. All of our NPM packages should follow the same format and use the same design patterns so it is important to check out a few of [our NPM repositories]({{ repository.group.npm }}) before diving into the code. Our [Buildr]({{ repository.project.buildr }}) project is a great example of what we are looking for.
+Our VM images aim to be minimal, performant, and pretty. They are minimal because they remove unnecessary files and are compressed before uploading them to [VagrantUp](https://www.vagrantup.com/). Our images are performant because we choose the right configurations. We also ensure there is a seamless experience by including the Plymouth boot loader (which makes them _prettier_).
 
-After you clone this repository, you can get started by running `npm i` (with [Node.js >9]({{ repository.project.node }}) installed). This will install the dependencies as well as perform a few maintenance tasks such as synchronizing the common development-related dotfiles and re-generating the documentation.
+A popular repository on GitHub called [chef/bento](https://github.com/chef/bento/tree/master/packer_templates) has already done most of the work we are trying to accomplish. They have Packer templates for everything we aim to support except [Archlinux]({{ repository.group.packer }}/base-archlinux-desktop) and [Mac OS X]({{ repository.group.packer }}/base-mac-desktop). Since it has a huge following, updates are likely to be provided. We use chef/bento's source wherever possible. They provide shell scripts that do a lot of the setup needed to initialize boxes. In each of our repositories (except Archlinux and Mac OS X), you can see that we symlink to a chef/bento submodule. By doing this, we are able to receive updates directly from our upstream code provider.
 
-### List Build Tool Commands
+However, chef/bento's work is not perfect for our use case. There are a few changes we make to each of our repositories. The `template.json` is reformatted to be neater and slightly easier to read. There are also additional scripts we run to convert the distribution into a desktop environment. These scripts that we make and add to the build routine all end with `.custom.sh` and are located in the `scripts/` folder.
 
-After you run `npm i`, you can view the available pre-defined build tool commands by running `npm run info`. A chart will be displayed in your terminal that looks something like this:
+Ideally, five years from now, if you go to [our VagrantUp repositories]({{ profile.vagrant }}) you will be able to browse through all the various releases in any OS distribution. Our goal is to accomplish this through automation by:
 
-```
-❯ npm run info
+- Including the [vagrant-cloud post-processor](https://www.packer.io/docs/post-processors/vagrant-cloud)
+- Leveraging [LatestOS](https://pypi.org/project/latestos/) to automatically detect the latest release of the Linux variants we build boxes for
+- Running the builds on a cronjob
 
-> {{ pkg.name }}@1.0.4 info
-> npm-scripts-info
+### Virtualization Platforms
 
-build:
-  Clean and rebuild the project
-commit:
-  Automatically fix errors and guides you through the commit process
-cov:
-  Rebuild, run tests, then create and open the coverage report
-doc:json:
-  Generate API documentation in typedoc JSON format
-doc:
-  Generate HTML API documentation and open it in a browser
-fix:
-  Try to automatically fix any linting problems
-info:
-  Display information about the package scripts
-prepare-release:
-  One-step: clean, build, test, publish docs, and prep a release
-reset:
-  Delete all untracked files and reset the repo to the last commit
-test:
-  Lint and unit test the project
-version:
-  Bump package.json version, update CHANGELOG.md, tag release
-watch:
-  Watch and rebuild the project on save, then rerun relevant tests
-```
+We aim to support the following virtualization platforms:
 
-You should then realize that you can build the project by running `npm run build` or test the project by running `npm run test`.
-
-### Dotfiles
-
-As you may have noticed, this project contains many files in the root directory. Many of these files are dotfiles. These files are intended to help our team of developers create code that is consistent and also compliant with industry best practices. Most of the dotfiles (and dot-folders) are synchronized across all of [our NPM packages]({{ repository.group.npm }}). This means that any changes you make to the dotfiles will eventually be over-written. If you need to make a change to any of the dotfiles, you will have to open a pull request against our [common NPM files repository]({{ repository.group.common }}/npm). Bear in mind that any changes you make to the common NPM files will be propagated to all of our NPM repositories.
+- [Hyper-V]({{ repository.group.ansible_roles }}/hyperv)
+- [KVM]({{ repository.group.ansible_roles }}/kvm)
+- [Parallels]({{ repository.group.ansible_roles }}/parallels)
+- [VirtualBox]({{ repository.group.ansible_roles }}/virtualbox)
+- [VMWare]({{ repository.group.ansible_roles }}/vmware)

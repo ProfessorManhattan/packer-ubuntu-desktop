@@ -10,11 +10,14 @@ tasks:
       start: Installing Homebrew software bundle defined in `.config/Brewfile`
       success: Successfully installed Homebrew software bundle defined in `.config/Brewfile`
     cmds:
+      - brew tap Homebrew/bundle
+      - mkdir -p local
+      - cp .config/Brewfile local/Brewfile.common
+      - brew bundle install --file local/Brewfile.common
       - |
-        brew tap Homebrew/bundle
-        cd .config
-        brew bundle
-        .config/log warn 'A reboot is recommended'
+        if [ -f local/Brewfile ]; then
+          brew bundle install --file local/Brewfile
+        fi
 
   install-doctor:
     log:
@@ -57,28 +60,52 @@ tasks:
       - :install:npm:{{.NPM_PROGRAM_LOCAL}}
       - :install:npm:cz-emoji
       - :install:software:jq
+    env:
+      SEMANTIC_PYTHON_POST_INSTALL: '{{if eq .SEMANTIC_RELEASE "true"}}true{{else}}false{{end}}'
     run: once
     log:
       error: Encountered error while installing local NPM dependencies
       start: Installing local NPM dependencies
       success: Successfully installed local NPM dependencies
     cmds:
-      - cmd: |
-          if [ -n "$AUTO_UPDATE_NPM_PACKAGES" ]; then
-            {{.NPM_PROGRAM_LOCAL}} update
-          else
-            {{.NPM_PROGRAM_LOCAL}} install || EXIT_CODE=$?
-            if [ -n "$EXIT_CODE" ]; then
-              {{.NPM_PROGRAM_LOCAL}} update
-            fi
-          fi
-        ignore_error: true
       - |
-        if [ "$(jq -r '.devDependencies.glob' package.json)" == 'null' ]; then
+        if [ -n "$AUTO_UPDATE_NPM_PACKAGES" ]; then
+          {{.NPM_PROGRAM_LOCAL}} update
+        else
+          {{.NPM_PROGRAM_LOCAL}} install || EXIT_CODE=$?
+          if [ -n "$EXIT_CODE" ]; then
+            .config/log info 'Running `{{.NPM_PROGRAM_LOCAL}} update` because install had non-zero exit code '"(Code $EXIT_CODE)"
+            {{.NPM_PROGRAM_LOCAL}} update
+          fi
+        fi
+      - |
+        if [ "$(jq -r '.devDependencies.glob' package.json)" == 'null' ] && [ "$(jq -r '.dependencies.glob' package.json)" == 'null' ]; then
           pnpm install --save-dev glob
         fi
     sources:
       - package.json
+
+  modules:local:lockfiles:
+    deps:
+      - :install:npm:pnpm-lock-export
+      - :install:npm:synp
+    cmds:
+      - |
+        if [ ! -f package-lock.json ]; then
+          pnpm-lock-export
+          MOVE_PACKAGE_LOCK=true
+        fi
+        if [ ! -f yarn.lock ] && [ -f package-lock.json ]; then
+          synp --source-file package-lock.json
+          mkdir -p local
+          mv yarn.lock local/yarn.lock
+        fi
+        if [ -n "$MOVE_PACKAGE_LOCK" ]; then
+          mkdir -p local
+          mv package-lock.json local/package-lock.json
+        fi
+    sources:
+      - pnpm-lock.yaml
 
   modules:local:sync:
     log:
@@ -155,6 +182,10 @@ tasks:
         else
           .config/log error "System type not recognized ($OSTYPE)"
         fi
+
+  pipx:bundle:
+    cmds:
+      - task: pipx:global
 
   pipx:global:
     deps:

@@ -10,7 +10,6 @@
   "autodoc_todo_description": "",
   "autodoc_variables_description": "",
   "badge_style": "for-the-badge",
-  "build_coverage_regex": "Lines\\s*:\\s*(\\d+.?\\d*)%",
   "commit_help_url": "https://megabyte.space/docs/contributing/commit-guidelines",
   "company": "Megabyte LLC",
   "copyright": "2020-2021",
@@ -20,14 +19,48 @@
     "header_description_pre": "<i></i>",
     "header_title_post": "<i></i>",
     "header_title_pre": "<i></i>",
-    "link": "https://megabyte.space/docs/common/npm"
+    "link": "https://megabyte.space/docs/common/packer"
   },
   "email": {
     "help": "help@megabyte.space"
   },
-  "emoji_beginnings": ["🚀 ", "🔥👉 ", "👉 ", "😉 ", "🆓 ", "🐴 ", "👀 ", "🎉 ", "", "", "", "", "", "", "", ""],
-  "emoji_endings": [" 🚀", " 🔥🔥🔥", " 👏", " 😉", " 🐙", " 🐴", " 👀", " 🎟", " 🎉🎉", "", "", "", "", "", "", ""],
-  "github_prefix": "<i></i>",
+  "emoji_beginnings": [
+    "🚀 ",
+    "🔥👉 ",
+    "👉 ",
+    "😉 ",
+    "🆓 ",
+    "🐴 ",
+    "👀 ",
+    "🎉 ",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+  ],
+  "emoji_endings": [
+    " 🚀",
+    " 🔥🔥🔥",
+    " 👏",
+    " 😉",
+    " 🐙",
+    " 🐴",
+    " 👀",
+    " 🎟",
+    " 🎉🎉",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+  ],
+  "github_prefix": "packer-",
   "gitlab_pipelines": [
     {
       "active": true,
@@ -41,13 +74,49 @@
   ],
   "gomodProxy": true,
   "group": "none",
+  "groups": {
+    "angular": [
+      "app",
+      "website"
+    ],
+    "ansible": [
+      "playbook",
+      "role"
+    ],
+    "docker": [
+      "ansible-molecule",
+      "app",
+      "ci-pipeline",
+      "codeclimate",
+      "software"
+    ],
+    "go": [
+      "cli",
+      "library"
+    ],
+    "npm": [
+      "app",
+      "cli",
+      "config",
+      "library",
+      "plugin"
+    ],
+    "packer": [
+      "desktop",
+      "server"
+    ],
+    "python": [
+      "cli",
+      "library"
+    ]
+  },
   "homebrew": {
     "folder": "Formula",
     "name": "homebrew-tap",
     "owner": "installdoc"
   },
   "idPost": "megabyte.space",
-  "json_top_keys": "",
+  "json_top_keys": "variables,type",
   "license": "MIT",
   "link": {
     "chat": "https://app.slack.com/client/T01ABCG4NK1/C01NN74H0LW/details/",
@@ -185,7 +254,9 @@
   },
   "scriptsBuild": "task donothing",
   "scriptsHelp": "task --menu",
-  "scriptsPrepare": "task common:husky",
+  "scriptsPrepare": "npm run start && (test -f Taskfile.yml && task common:husky) || true",
+  "scriptsReplaceThis": "\"",
+  "scriptsReplaceWith": "\\\"",
   "scriptsStart": "bash start.sh",
   "scriptsTest": "task donothing",
   "sharp_instructions": [],
