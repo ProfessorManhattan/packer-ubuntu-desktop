@@ -206,7 +206,8 @@
       "prepare": "A hook triggered by running npm install that runs logic such as installing pre-commit hooks",
       "repair": "Fixes basic issues in projects that are having trouble running basic commands like 'task start'",
       "start": "Entrypoint for new developers that installs requirements and then runs 'task start'",
-      "test": "Runs the appropriate test logic by running the test command defined under scripts in package.json"
+      "test": "Runs the appropriate test logic by running the test command defined under scripts in package.json",
+      "vagrant": "Opens an interactive dialog that lets you choose between virtualization platforms to use with the \"vagrant up\" command"
     }
   },
   "pnpm": {

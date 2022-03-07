@@ -41,6 +41,7 @@ tasks:
       start: Running `packer build` for all supported platforms that are installed
       success: Successfully built the Packer images
     cmds:
+      - task: prepare:template
       - rm -rf build
       - |
         IMAGES=","
@@ -96,3 +97,22 @@ tasks:
     preconditions:
       - sh: test -f {{.TEMPLATE_FILE}}
         msg: The `{{.TEMPLATE_FILE}}` file is missing from the root of this project.
+
+  prepare:template:
+    deps:
+      - :install:software:jq
+    log:
+      error: Error preparing Packer template
+      start: Preparing Packer template
+      success: Successfully prepared Packer template
+    cmds:
+      - |
+        TMP="$(mktemp)"
+        if [ '{{OS}}' == 'linux' ]; then
+          jq '.variables.accelerator = "kvm"' {{.TEMPLATE_FILE}} > "$TMP"
+        elif [ '{{OS}}' == 'darwin' ]; then
+          jq '.variables.accelerator = "hvf"' {{.TEMPLATE_FILE}} > "$TMP"
+        else
+          .config/log warn 'Windows not yet tested'
+        fi
+        mv "$TMP" {{.TEMPLATE_FILE}}

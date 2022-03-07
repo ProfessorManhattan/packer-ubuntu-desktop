@@ -213,7 +213,7 @@ tasks:
       - task: markdown:scrub
         vars:
           SCRUB_FILE: README.md
-      - task: ':{{if eq .REPOSITORY_TYPE "packer"}}packer:update:readme{{else}}donothing{{end}}'
+      - task: ':{{if eq .REPOSITORY_TYPE "packer"}}{{if eq .REPOSITORY_SUBTYPE "server"}}packer:update:readme{{else}}donothing{{end}}{{else}}donothing{{end}}'
       - '{{.NPX_HANDLE}}prettier --write README.md > /dev/null'
     sources:
       - .autodoc/*

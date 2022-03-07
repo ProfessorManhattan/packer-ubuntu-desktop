@@ -29,6 +29,7 @@ tasks:
       start: Running `packer build -only=qemu {{.TEMPLATE_FILE}}`
       success: Successfully ran `packer build -only=qemu {{.TEMPLATE_FILE}}`
     cmds:
+      - task: :packer:prepare:template
       - rm -rf build
       - packer build -only=qemu {{.TEMPLATE_FILE}}
 
