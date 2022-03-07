@@ -66,7 +66,7 @@ tasks:
         fi
         packer build -only=$(echo $IMAGES | sed 's/^.//') {{if .CLI_ARGS}}{{.CLI_ARGS}}{{else}}template.json{{end}}
 
-  install:
+  install:platforms:
     desc: Install all available virtualization providers
     hide:
       sh: '[ "{{.REPOSITORY_TYPE}}" != "packer" ]'

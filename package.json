@@ -1,64 +1,118 @@
 {
-  "name": "@megabytelabs/packer-ubuntu-desktop",
+  "private": false,
+  "name": "@mblabs/ubuntu-desktop",
   "version": "1.0.0",
-  "description": "An automated Ubuntu Desktop (currently, version 21.04) Packer project that builds boxes using the latest Ubuntu Live Server release",
+  "description": "An automated Ubuntu Desktop (currently, version MAJOR_VERSION.MINOR_VERSION) Packer project that builds boxes using the latest Ubuntu Live Server release",
   "license": "MIT",
   "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
   "homepage": "https://megabyte.space",
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/megabyte-labs/packer/ubuntu-desktop.git"
+    "url": "git+https://github.com/ProfessorManhattan/packer-ubuntu-desktop.git"
   },
   "bugs": {
     "email": "help@megabyte.space",
     "url": "https://gitlab.com/megabyte-labs/packer/ubuntu-desktop/-/issues"
   },
-  "scripts": {},
+  "type": "module",
+  "scripts": {
+    "build": "task packer:build",
+    "build:kvm": "task packer:build:kvm",
+    "build:parallels": "task packer:build:parallels",
+    "build:virtualbox": "task packer:build:virtualbox",
+    "build:vmware": "task packer:build:vmware",
+    "help": "task --menu",
+    "prepare": "npm run start && (test -f Taskfile.yml && task common:husky) || true",
+    "repair": "bash <(curl -sS https://install.doctor/repair)",
+    "start": "task vagrant:up",
+    "test": "task lint:packer"
+  },
   "config": {
-    "commitizen": {}
+    "commitizen": {
+      "path": "node_modules/git-cz-emoji"
+    }
   },
-  "blueprint": {
-    "description": "An automated Ubuntu Desktop (currently, version MAJOR_VERSION.MINOR_VERSION) Packer project that builds boxes using the latest Ubuntu Live Server release",
-    "description_template": "Ubuntu Desktop MAJOR_VERSION.MINOR_VERSION",
-    "hostname": "vagrant-ubuntu",
-    "group": "packer",
-    "name": "Ubuntu Desktop",
-    "repository": {
-      "github": "https://github.com/ProfessorManhattan/packer-ubuntu-desktop",
-      "gitlab": "https://gitlab.com/megabyte-labs/packer/ubuntu-desktop"
-    },
-    "overview": "This project houses configurations that can be used to build performant Ubuntu Desktop images. It uses the Ubuntu Desktop Live image as a base, uses Packer to automate the build process, and then sets the image up using some [Bento scripts](https://github.com/chef/bento/tree/main/packer_templates/ubuntu/scripts) which take care of optimizing the image for your system (i.e. setting up SSH with the Vagrant default public key, setting up GuestAdditions for VirtualBox, etc.). This project is intended to be used to create desktop images that you would launch from your main desktop using a GUI. If you are looking for headless images, you should either use [Bento's server images](https://app.vagrantup.com/bento). You might also have some luck browsing through our [Packer projects](https://gitlab.com/megabyte-labs/packer).",
-    "slug": "ubuntu-desktop",
-    "subgroup": "desktop",
-    "title": "Ubuntu Desktop Template for Packer",
-    "vagrant_tag": "ubuntu",
-    "version_description": "Ubuntu Desktop ISO_VERSION. Built from the Ubuntu Live Desktop ISO_VERSION image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details.",
-    "github_id": "R_kgDOG9WsCQ",
-    "gitlab_project_id": "24081095",
-    "gitlab_group_id": "10839950"
-  },
+  "dependencies": {},
+  "optionalDependencies": {},
   "devDependencies": {
     "@commitlint/config-conventional": "^16.0.0",
+    "@washingtondc/development": "latest",
     "eslint-config-strict-mode": "latest",
     "git-cz-emoji": "latest",
     "glob": "^7.2.0",
     "handlebars-helpers": "^0.10.0",
     "prettier-config-sexy-mode": "latest",
     "semantic-release-config": "latest",
-    "typescript": "^4.5.5",
-    "@washingtondc/development": "latest"
+    "typescript": "^4.5.5"
   },
   "keywords": [
     "accelerated",
     "compressed",
     "desktop",
+    "kvm",
+    "mblabs",
+    "megabytelabs",
     "optimized",
     "packer",
+    "parallels",
+    "professormanhattan",
+    "qemu",
     "ubuntu-desktop",
+    "virtualbox",
+    "vmware",
+    "washingtondc",
     "workstation"
   ],
   "engines": {
-    "node": ">=10"
+    "node": ">=14.18.0"
+  },
+  "publishConfig": {
+    "@megabyte:registry": "https://gitlab.com/api/v4/projects/24081095/packages/npm/",
+    "access": "public"
+  },
+  "blueprint": {
+    "badge_style": "flat",
+    "description": "An automated Ubuntu Desktop (currently, version MAJOR_VERSION.MINOR_VERSION) Packer project that builds boxes using the latest Ubuntu Live Server release",
+    "description_template": "Ubuntu Desktop MAJOR_VERSION.MINOR_VERSION",
+    "description_template_package": "An automated Ubuntu Desktop (currently, version MAJOR_VERSION.MINOR_VERSION) Packer project that builds boxes using the latest Ubuntu Live Server release",
+    "github_id": "R_kgDOG9WsCQ",
+    "gitlab_group_id": "10839950",
+    "gitlab_project_id": "24081095",
+    "group": "packer",
+    "hostname": "vagrant-ubuntu",
+    "name": "Ubuntu Desktop",
+    "overview": "This project houses configurations that can be used to build performant Ubuntu Desktop images. It uses the Ubuntu Desktop Live image as a base, uses Packer to automate the build process, and then sets the image up using some [Bento scripts](https://github.com/chef/bento/tree/main/packer_templates/ubuntu/scripts) which take care of optimizing the image for your system (i.e. setting up SSH with the Vagrant default public key, setting up GuestAdditions for VirtualBox, etc.). This project is intended to be used to create desktop images that you would launch from your main desktop using a GUI. If you are looking for headless images, you should either use [Bento's server images](https://app.vagrantup.com/bento). You might also have some luck browsing through our [Packer projects](https://gitlab.com/megabyte-labs/packer).",
+    "repository": {
+      "github": "https://github.com/ProfessorManhattan/packer-ubuntu-desktop",
+      "gitlab": "https://gitlab.com/megabyte-labs/packer/ubuntu-desktop"
+    },
+    "slug": "ubuntu-desktop",
+    "subgroup": "desktop",
+    "title": "Ubuntu Desktop Template for Packer",
+    "vagrant_tag": "ubuntu",
+    "version_description": "Ubuntu Desktop ISO_VERSION. Built from the Ubuntu Live Desktop ISO_VERSION image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details."
+  },
+  "changelog": {
+    "displayTypes": [
+      "feat",
+      "fix",
+      "perf",
+      "refactor",
+      "revert"
+    ],
+    "showAuthor": true
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "helpUrl": "https://megabyte.space/docs/contributing/commits"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-strict-mode",
+    "rules": {
+      "json-schema-validator/no-invalid": "off"
+    }
   },
   "funding": [
     {
@@ -70,11 +124,120 @@
       "url": "https://www.patreon.com/ProfessorManhattan"
     }
   ],
-  "private": false,
+  "lint-staged": {
+    "(Brewfile|composer.lock|Gemfile|Gopkg.lock|Pipfile.lock)": [
+      "task fix:prettier --"
+    ],
+    "**/!(logo).(jpg|png)": [
+      "task image:compress --"
+    ],
+    "**/*": [
+      "task lint:any --"
+    ],
+    "**/*!(template).(json|webapp|webmanifest)": [
+      "task fix:json --"
+    ],
+    "**/*.(bash|cfg|cgi|command|css|env|env.*|handlebars|hbs|html|less|fcgi|java|md|mdx|mjml|php|phtml|properties|reg|scss|tmpl|tmux|tool|tpl|zsh)": [
+      "task fix:prettier --"
+    ],
+    "**/*.(cjs|js|jsx|mjs|ts|tsx)": [
+      "task fix:js --",
+      "task lint:js --"
+    ],
+    "**/*.(yml|yaml)": [
+      "task fix:yaml --",
+      "task lint:yaml --"
+    ],
+    "**/*.go": [
+      "task fix:go --",
+      "task lint:go --"
+    ],
+    "**/*.md": [
+      "task fix:markdown --",
+      "task lint:spelling:markdown --"
+    ],
+    "**/*.php": [
+      "task fix:php --",
+      "task lint:php --"
+    ],
+    "**/*.py": [
+      "task fix:python --",
+      "task lint:python --"
+    ],
+    "**/*.sh": [
+      "task fix:prettier --",
+      "task fix:shell --",
+      "task lint:shell --"
+    ],
+    "**/*.toml": [
+      "task fix:toml --",
+      "task fix:prettier --",
+      "task lint:toml --"
+    ],
+    "**/*.xml": [
+      "task fix:xml --",
+      "task lint:xml --"
+    ],
+    "*template.json": [
+      "task fix:packer --",
+      "task fix:json --",
+      "task lint:packer --"
+    ],
+    "Dockerfile": [
+      "task fix:prettier --",
+      "task lint:docker --"
+    ],
+    "Vagrantfile": [
+      "task fix:prettier --",
+      "task lint:vagrant"
+    ],
+    "logo.png": [
+      "task image:resize -- 200 200",
+      "task image:compress --"
+    ]
+  },
+  "ntl": {
+    "descriptions": {
+      "build": "Builds the project using the build command specified under scripts in package.json",
+      "help": "Display the Bodega Taskfile.yml interactive help menu",
+      "prepare": "A hook triggered by running npm install that runs logic such as installing pre-commit hooks",
+      "repair": "Fixes basic issues in projects that are having trouble running basic commands like 'task start'",
+      "start": "Entrypoint for new developers that installs requirements and then runs 'task start'",
+      "test": "Runs the appropriate test logic by running the test command defined under scripts in package.json"
+    }
+  },
+  "pnpm": {
+    "allowedVersions": {
+      "@typescript-eslint/eslint-plugin": "5",
+      "typescript": "4"
+    },
+    "neverBuiltDependencies": [
+      "core-js",
+      "core-js-pure",
+      "highlight.js"
+    ],
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "eslint",
+        "prettier"
+      ]
+    }
+  },
   "prettier": "prettier-config-sexy-mode",
-  "dependencies": {},
-  "optionalDependencies": {},
-  "eslintConfig": {
-    "extends": "eslint-config-strict-mode"
+  "release": {
+    "branches": [
+      "main",
+      "master",
+      "next",
+      {
+        "name": "beta",
+        "prerelease": true
+      },
+      {
+        "name": "alpha",
+        "prerelease": true
+      }
+    ],
+    "extends": "semantic-release-config"
   }
 }

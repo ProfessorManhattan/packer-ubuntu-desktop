@@ -31,3 +31,13 @@ tasks:
       success: Configured Ionic
     cmds:
       - ionic config set -g npmClient {{.NPM_PROGRAM_LOCAL}}
+
+  serve:
+    deps:
+      - :install:npm:ionic
+    log:
+      error: Failed to run `ionic serve`
+      start: Running `ionic serve`
+      success: Successfully finished running `ionic serve`
+    cmds:
+      - ionic serve

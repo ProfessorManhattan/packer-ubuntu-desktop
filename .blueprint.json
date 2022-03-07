@@ -1,9 +1,0 @@
-{
-  "badge_style": "flat",
-  "description_template": "Ubuntu Desktop MAJOR_VERSION.MINOR_VERSION",
-  "description_template_package": "An automated Ubuntu Desktop (currently, version MAJOR_VERSION.MINOR_VERSION) Packer project that builds boxes using the latest Ubuntu Live Server release",
-  "hostname": "vagrant-ubuntu",
-  "slug": "ubuntu-desktop",
-  "vagrant_tag": "ubuntu",
-  "version_description": "Minimal Ubuntu Desktop ISO_VERSION. Built from the Ubuntu Live Server ISO_VERSION image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details."
-}

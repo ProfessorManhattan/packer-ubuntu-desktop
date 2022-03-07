@@ -1,3 +1,19 @@
 {
-  "keywords": ["installdoc", "installdoctor", "mblabs", "megabytelabs", "professormanhattan"]
+  "keywords": [
+    "accelerated",
+    "compressed",
+    "desktop",
+    "kvm",
+    "mblabs",
+    "megabytelabs",
+    "optimized",
+    "packer",
+    "parallels",
+    "professormanhattan",
+    "qemu",
+    "virtualbox",
+    "vmware",
+    "washingtondc",
+    "workstation"
+  ]
 }

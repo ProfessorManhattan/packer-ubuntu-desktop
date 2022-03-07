@@ -457,9 +457,9 @@
       "command": "bash .config/scripts/start.sh && task packer:build:vmware"
     },
     {
-      "label": "(packer:install): Install all available virtualization providers",
+      "label": "(packer:install:platforms): Install all available virtualization providers",
       "type": "shell",
-      "command": "bash .config/scripts/start.sh && task packer:install"
+      "command": "bash .config/scripts/start.sh && task packer:install:platforms"
     },
     {
       "label": "(preload): Set up your workstation in advance by installing commonly used programs",

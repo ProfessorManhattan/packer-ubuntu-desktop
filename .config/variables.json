@@ -16,7 +16,7 @@
   "docker_label_authors": "Brian Zalewski <brian@megabyte.space>",
   "docs": {
     "header_description_post": "<i></i>",
-    "header_description_pre": "<i></i>",
+    "header_description_pre": "Curated by ",
     "header_title_post": "<i></i>",
     "header_title_pre": "<i></i>",
     "link": "https://megabyte.space/docs/common/packer"
@@ -24,42 +24,8 @@
   "email": {
     "help": "help@megabyte.space"
   },
-  "emoji_beginnings": [
-    "🚀 ",
-    "🔥👉 ",
-    "👉 ",
-    "😉 ",
-    "🆓 ",
-    "🐴 ",
-    "👀 ",
-    "🎉 ",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
-  ],
-  "emoji_endings": [
-    " 🚀",
-    " 🔥🔥🔥",
-    " 👏",
-    " 😉",
-    " 🐙",
-    " 🐴",
-    " 👀",
-    " 🎟",
-    " 🎉🎉",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
-  ],
+  "emoji_beginnings": ["🚀 ", "🔥👉 ", "👉 ", "😉 ", "🆓 ", "🐴 ", "👀 ", "🎉 ", "", "", "", "", "", "", "", ""],
+  "emoji_endings": [" 🚀", " 🔥🔥🔥", " 👏", " 😉", " 🐙", " 🐴", " 👀", " 🎟", " 🎉🎉", "", "", "", "", "", "", ""],
   "github_prefix": "packer-",
   "gitlab_pipelines": [
     {
@@ -79,45 +45,68 @@
       "variable": {
         "REPOSITORY_UPDATE": true
       }
+    },
+    {
+      "active": true,
+      "cron": "0 5 24 * *",
+      "description": "Hyper-V Automated Build",
+      "ref": "hyperv",
+      "variable": {
+        "AUTOMATED_BUILD": true,
+        "AUTOMATED_BUILD_TYPE": "hyperv-iso"
+      }
+    },
+    {
+      "active": true,
+      "cron": "0 5 25 * *",
+      "description": "KVM/QEMU Automated Build",
+      "ref": "qemu",
+      "variable": {
+        "AUTOMATED_BUILD": true,
+        "AUTOMATED_BUILD_TYPE": "qemu"
+      }
+    },
+    {
+      "active": true,
+      "cron": "0 5 26 * *",
+      "description": "Parallels Automated Build",
+      "ref": "parallels",
+      "variable": {
+        "AUTOMATED_BUILD": true,
+        "AUTOMATED_BUILD_TYPE": "parallels-iso"
+      }
+    },
+    {
+      "active": true,
+      "cron": "0 5 27 * *",
+      "description": "VirtualBox Automated Build",
+      "ref": "virtualbox",
+      "variable": {
+        "AUTOMATED_BUILD": true,
+        "AUTOMATED_BUILD_TYPE": "virtualbox-iso"
+      }
+    },
+    {
+      "active": true,
+      "cron": "0 5 28 * *",
+      "description": "VMWare Automated Build",
+      "ref": "vmware",
+      "variable": {
+        "AUTOMATED_BUILD": true,
+        "AUTOMATED_BUILD_TYPE": "vmware-iso"
+      }
     }
   ],
   "gomodProxy": true,
   "group": "common",
   "groups": {
-    "angular": [
-      "app",
-      "website"
-    ],
-    "ansible": [
-      "playbook",
-      "role"
-    ],
-    "docker": [
-      "ansible-molecule",
-      "app",
-      "ci-pipeline",
-      "codeclimate",
-      "software"
-    ],
-    "go": [
-      "cli",
-      "library"
-    ],
-    "npm": [
-      "app",
-      "cli",
-      "config",
-      "library",
-      "plugin"
-    ],
-    "packer": [
-      "desktop",
-      "server"
-    ],
-    "python": [
-      "cli",
-      "library"
-    ]
+    "angular": ["app", "website"],
+    "ansible": ["playbook", "role"],
+    "docker": ["ansible-molecule", "app", "ci-pipeline", "codeclimate", "software"],
+    "go": ["cli", "library"],
+    "npm": ["app", "cli", "config", "library", "plugin"],
+    "packer": ["desktop", "server"],
+    "python": ["cli", "library"]
   },
   "homebrew": {
     "folder": "Formula",
@@ -261,7 +250,7 @@
       "wrangler": "https://gitlab.com/megabyte-labs/wrangler"
     }
   },
-  "scriptsBuild": "task packer:build:all",
+  "scriptsBuild": "task packer:build",
   "scriptsHelp": "task --menu",
   "scriptsPrepare": "npm run start && (test -f Taskfile.yml && task common:husky) || true",
   "scriptsReplaceThis": "\"",

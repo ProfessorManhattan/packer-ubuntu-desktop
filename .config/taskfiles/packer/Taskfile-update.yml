@@ -94,6 +94,10 @@ tasks:
         jq -S --arg templatejson "$TEMPLATE_JSON" '.template_json = ($templatejson | fromjson)' '{{.VARIABLES_PATH}}' > "$TMP"
         mv "$TMP" '{{.VARIABLES_PATH}}'
       - task: variables:{{OS}}
+        vars:
+          ISO_VERSION: '{{.ISO_VERSION}}'
+          MAJOR_VERSION: '{{.MAJOR_VERSION}}'
+          MINOR_VERSION: '{{.MINOR_VERSION}}'
     sources:
       - '{{.TEMPLATE_FILE}}'
       - '{{.VARIABLES_PATH}}'

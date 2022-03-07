@@ -1,36 +1,47 @@
 <div align="center">
-  <h4 align="center">
-    <a href="{{ website.homepage }}" title="Megabyte Labs homepage" target="_blank">
-      <img src="https://gitlab.com/megabyte-labs/assets/-/raw/master/svg/home-solid.svg" />
-    </a>
-    <a href="{{ repository.group.packer }}/{{ slug }}/-/blob/master/CONTRIBUTING.md" title="Learn about contributing" target="_blank">
-      <img src="https://gitlab.com/megabyte-labs/assets/-/raw/master/svg/contributing-solid.svg" />
-    </a>
-    <a href="{{ chat_url }}" title="Slack chat room" target="_blank">
-      <img src="https://gitlab.com/megabyte-labs/assets/-/raw/master/svg/chat-solid.svg" />
-    </a>
-    <a href="{{ profile.github }}/packer-{{ slug }}" title="GitHub mirror" target="_blank">
-      <img src="https://gitlab.com/megabyte-labs/assets/-/raw/master/svg/github-solid.svg" />
-    </a>
-    <a href="{{ repository.group.packer }}/{{ slug }}" title="GitLab repository" target="_blank">
-      <img src="https://gitlab.com/megabyte-labs/assets/-/raw/master/svg/gitlab-solid.svg" />
-    </a>
-  </h4>
-  <p align="center">
-    <a href="{{ repository.group.npm }}/{{ slug }}" target="_blank">
-      <img alt="Version: {{ pkg.version }}" src="https://img.shields.io/badge/version-{{ pkg.version }}-blue.svg?cacheSeconds=2592000" />
-    </a>
-    <a href="{{ repository.group.packer }}/{{ slug }}/commits/master" target="_blank">
-      <img alt="Pipeline status" src="{{ repository.group.packer }}/{{ slug }}/badges/master/pipeline.svg">
-    </a>
-    <a href="{{ repository.group.packer }}/{{ slug }}" target="_blank">
-      <img alt="Last commit date" src="https://img.shields.io/github/last-commit/{{ profile.github_user }}/packer-{{ slug }}?logo=git&logoColor=white&style={{ badge_style }}" />
-    </a>
-    <a href="{{ website.documentation }}/packer" target="_blank">
-      <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg?style={{ badge_style }}" />
-    </a>
-    <a href="{{ repository.group.packer }}/{{ slug }}/-/raw/master/LICENSE" target="_blank">
-      <img alt="License: {{ pkg.license }}" src="https://img.shields.io/badge/license-{{ pkg.license }}-yellow.svg?style={{ badge_style }}" />
-    </a>
-  </p>
+  <a href="{{ link.home }}" title="{{ organization }} homepage" target="_blank">
+    <img alt="Homepage" src="https://img.shields.io/website?down_color=%23FF4136&down_message=Down&label=Homepage&logo=home-assistant&logoColor=white&up_color=%232ECC40&up_message=Up&url=https%3A%2F%2Fmegabyte.space&style={{ badge_style }}" />
+  </a>
+  <a href="{{ repository.github }}{{ repository.location.contributing.github }}" title="Learn about contributing" target="_blank">
+    <img alt="Contributing" src="https://img.shields.io/badge/Contributing-Guide-0074D9?logo=github-sponsors&logoColor=white&style={{ badge_style }}" />
+  </a>
+  <a href="{{ link.chat }}" title="Chat with us on Slack" target="_blank">
+    <img alt="Slack" src="https://img.shields.io/badge/Slack-Chat-e01e5a?logo=slack&logoColor=white&style={{ badge_style }}" />
+  </a>
+  <a href="{{ repository.github }}" title="GitHub mirror" target="_blank">
+    <img alt="GitHub" src="https://img.shields.io/badge/Mirror-GitHub-333333?logo=github&style={{ badge_style }}" />
+  </a>
+  <a href="{{ repository.gitlab }}" title="GitLab repository" target="_blank">
+    <img alt="GitLab" src="https://img.shields.io/badge/Repo-GitLab-fc6d26?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAD///+l2Z/dAAAAAXRSTlMAQObYZgAAAHJJREFUCNdNxKENwzAQQNEfWU1ZPUF1cxR5lYxQqQMkLEsUdIxCM7PMkMgLGB6wopxkYvAeI0xdHkqXgCLL0Beiqy2CmUIdeYs+WioqVF9C6/RlZvblRNZD8etRuKe843KKkBPw2azX13r+rdvPctEaFi4NVzAN2FhJMQAAAABJRU5ErkJggg==&style={{ badge_style }}" />
+  </a>
+</div>
+<br/>
+<div align="center">
+  <a title="Version: {{ pkg.version }}" href="{{ repository.github }}" target="_blank">
+    <img alt="Version: {{ pkg.version }}" src="https://img.shields.io/badge/version-{{ pkg.version }}-blue.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAD///+l2Z/dAAAAAXRSTlMAQObYZgAAACNJREFUCNdjIACY//+BEp9hhM3hAzYQwoBIAqEDYQrCZLwAAGlFKxU1nF9cAAAAAElFTkSuQmCC&cacheSeconds=2592000&style={{ alt_badge_style }}" />
+  </a>
+  <a title="Pipeline status" href="{{ repository.gitlab }}{{ repository.location.commits.gitlab }}" target="_blank">
+    <img alt="Pipeline status" src="https://img.shields.io/gitlab/pipeline-status/{{ playbook_path }}?branch=master&label=build&logo=gitlab&style={{ alt_badge_style }}">
+  </a>
+  <a title="Hyper-V build status" href="{{ repository.gitlab }}{{ repository.location.commits.gitlab }}" target="_blank">
+    <img alt="Hyper-V build status" src="https://img.shields.io/gitlab/pipeline-status/megabyte-labs/packer/{{ slug }}?branch=hyperv&label=build&logo=hyper&style={{ alt_badge_style }}">
+  </a>
+  <a title="KVM/QEMU build status" href="{{ repository.gitlab }}{{ repository.location.commits.gitlab }}" target="_blank">
+    <img alt="KVM/QEMU build status" src="https://img.shields.io/gitlab/pipeline-status/megabyte-labs/packer/{{ slug }}?branch=qemu&label=build&logo=qemu&style={{ alt_badge_style }}">
+  </a>
+  <a title="Parallels build status" href="{{ repository.gitlab }}{{ repository.location.commits.gitlab }}" target="_blank">
+    <img alt="Parallels build status" src="https://img.shields.io/gitlab/pipeline-status/megabyte-labs/packer/{{ slug }}?branch=parallels&label=build&logo=macos&style={{ alt_badge_style }}">
+  </a>
+  <a title="VirtualBox build status" href="{{ repository.gitlab }}{{ repository.location.commits.gitlab }}" target="_blank">
+    <img alt="VirtualBox build status" src="https://img.shields.io/gitlab/pipeline-status/megabyte-labs/packer/{{ slug }}?branch=virtualbox&label=build&logo=virtualbox&style={{ alt_badge_style }}">
+  </a>
+  <a title="VMWare build status" href="{{ repository.gitlab }}{{ repository.location.commits.gitlab }}" target="_blank">
+    <img alt="VMWare build status" src="https://img.shields.io/gitlab/pipeline-status/megabyte-labs/packer/{{ slug }}?branch=vmware&label=build&logo=vmware&style={{ alt_badge_style }}">
+  </a>
+  <a title="Documentation" href="{{ link.docs }}/{{ group }}" target="_blank">
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg?logo=readthedocs&style={{ alt_badge_style }}" />
+  </a>
+  <a title="License: {{ license }}" href="{{ repository.github }}{{ repository.location.license.github }}" target="_blank">
+    <img alt="License: {{ license }}" src="https://img.shields.io/badge/license-{{ license }}-yellow.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAD///+l2Z/dAAAAAXRSTlMAQObYZgAAAHpJREFUCNdjYOD/wMDAUP+PgYHxhzwDA/MB5gMM7AwMDxj4GBgKGGQYGCyAEEgbMDDwAAWAwmk8958xpIOI5zKH2RmOyhxmZjguAiKmgIgtQOIYmFgCIp4AlaQ9OczGkJYCJEAGgI0CGwo2HmwR2Eqw5SBnNIAdBHYaAJb6KLM15W/CAAAAAElFTkSuQmCC&style={{ alt_badge_style }}" />
+  </a>
 </div>

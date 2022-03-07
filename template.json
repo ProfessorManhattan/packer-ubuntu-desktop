@@ -167,7 +167,7 @@
     "build_directory": "build",
     "compression_level": "9",
     "cpus": "2",
-    "description": "Ubuntu Desktop MAJOR_VERSION.MINOR_VERSION",
+    "description": "Ubuntu Desktop 21.10",
     "disk_size": "80000",
     "guest_additions_url": "",
     "headless": "false",
@@ -176,8 +176,8 @@
     "https_proxy": "{{ env `HTTPS_PROXY` }}",
     "hyperv_generation": "2",
     "hyperv_switch": "bento",
-    "iso_checksum_url": "https://releases.ubuntu.com/impish/SHA256SUMS",
-    "iso_url": "https://releases.ubuntu.com/impish/ubuntu-21.10-desktop-amd64.iso",
+    "iso_checksum_url": "https://mirror.arizona.edu/ubuntu-releases/21.10/SHA256SUMS",
+    "iso_url": "https://mirror.arizona.edu/ubuntu-releases/21.10/ubuntu-21.10-live-server-amd64.iso",
     "iso_version": "21.10",
     "latestos_tag": "ubuntu",
     "memory": "4096",
@@ -189,6 +189,6 @@
     "ssh_username": "vagrant",
     "vagrantup_token": "{{ env `VAGRANT_CLOUD_TOKEN` }}",
     "vagrantup_user": "Megabyte",
-    "version_description": "Ubuntu Desktop ISO_VERSION. Built from the Ubuntu Live Desktop ISO_VERSION image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details."
+    "version_description": "Ubuntu Desktop 21.10. Built from the Ubuntu Live Desktop 21.10 image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details."
   }
 }
