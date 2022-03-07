@@ -13,8 +13,8 @@
   "commit_help_url": "https://megabyte.space/docs/contributing/commit-guidelines",
   "company": "Megabyte LLC",
   "copyright": "2020-2021",
-  "description": "An automated Ubuntu Desktop (currently, version .) Packer project that builds boxes using the latest Ubuntu Live Server release",
-  "description_template": "Ubuntu Desktop .",
+  "description": "An automated Ubuntu Desktop (currently, version 21.10) Packer project that builds boxes using the latest Ubuntu Live Server release",
+  "description_template": "Ubuntu Desktop 21.10",
   "docker_label_authors": "Brian Zalewski <brian@megabyte.space>",
   "docs": {
     "header_description_post": "<i></i>",
@@ -457,7 +457,7 @@
       "build_directory": "build",
       "compression_level": "9",
       "cpus": "2",
-      "description": "Ubuntu Desktop .",
+      "description": "Ubuntu Desktop 21.10",
       "disk_size": "80000",
       "guest_additions_url": "",
       "headless": "false",
@@ -479,11 +479,11 @@
       "ssh_username": "vagrant",
       "vagrantup_token": "{{ env `VAGRANT_CLOUD_TOKEN` }}",
       "vagrantup_user": "Megabyte",
-      "version_description": "Ubuntu Desktop . Built from the Ubuntu Live Desktop  image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details."
+      "version_description": "Ubuntu Desktop 21.10. Built from the Ubuntu Live Desktop 21.10 image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details."
     }
   },
   "title": "Ubuntu Desktop Template for Packer",
   "vagrant_tag": "ubuntu",
   "version": "1.0.0",
-  "version_description": "Ubuntu Desktop . Built from the Ubuntu Live Desktop  image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details."
+  "version_description": "Ubuntu Desktop 21.10. Built from the Ubuntu Live Desktop 21.10 image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details."
 }
