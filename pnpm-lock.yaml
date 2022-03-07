@@ -1,5 +1,10 @@
 lockfileVersion: 5.3
 
+neverBuiltDependencies:
+  - core-js
+  - core-js-pure
+  - highlight.js
+
 specifiers:
   '@commitlint/config-conventional': ^16.0.0
   '@washingtondc/development': latest
@@ -1548,6 +1553,8 @@ packages:
       typescript: 4.6.2
       yarnhook: 0.5.1
     transitivePeerDependencies:
+      - '@swc/core'
+      - '@swc/wasm'
       - supports-color
     dev: true
 
@@ -2723,8 +2730,6 @@ packages:
       semantic-release: 19.0.2
       tslib: 2.3.1
     transitivePeerDependencies:
-      - '@swc/core'
-      - '@swc/wasm'
       - encoding
       - supports-color
     dev: true
@@ -2791,12 +2796,10 @@ packages:
 
   /core-js-pure/3.21.1:
     resolution: {integrity: sha512-12VZfFIu+wyVbBebyHmRTuEE/tZrB4tJToWcwAMcsp3h4+sHR+fMJWbKpYiCRWlhFBq+KNyO8rIV9rTkeVmznQ==}
-    requiresBuild: true
     dev: true
 
   /core-js/3.21.1:
     resolution: {integrity: sha512-FRq5b/VMrWlrmCzwRrpDYNxyHP9BcAZC+xHJaqTgIE5091ZV1NTmyh0sGOg5XqpnHvR0svdy0sv1gWA1zmhxig==}
-    requiresBuild: true
     dev: true
 
   /core-util-is/1.0.3:
@@ -4723,9 +4726,6 @@ packages:
       commitizen: 4.2.4
       tslib: 2.3.1
       word-wrap: 1.2.3
-    transitivePeerDependencies:
-      - '@swc/core'
-      - '@swc/wasm'
     dev: true
 
   /git-log-parser/1.2.0:
@@ -5130,7 +5130,6 @@ packages:
   /highlight.js/9.18.5:
     resolution: {integrity: sha512-a5bFyofd/BHCX52/8i8uJkjr9DYwXIPnM/plwI6W7ezItLGqzt7X2G2nXuYSfsIJdkwwj/g9DG1LkcGJI/dDoA==}
     deprecated: Support has ended for 9.x series. Upgrade to @latest
-    requiresBuild: true
     dev: true
 
   /homedir-polyfill/1.0.3:
@@ -8242,8 +8241,6 @@ packages:
       tslib: 2.3.1
       yaml: 1.10.2
     transitivePeerDependencies:
-      - '@swc/core'
-      - '@swc/wasm'
       - encoding
       - supports-color
     dev: true

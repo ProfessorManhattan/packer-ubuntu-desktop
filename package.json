@@ -1,75 +1,5 @@
 {
-  "private": false,
-  "name": "@mblabs/ubuntu-desktop",
-  "version": "1.0.0",
-  "description": "An automated Ubuntu Desktop (currently, version MAJOR_VERSION.MINOR_VERSION) Packer project that builds boxes using the latest Ubuntu Live Server release",
-  "license": "MIT",
   "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
-  "homepage": "https://megabyte.space",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ProfessorManhattan/packer-ubuntu-desktop.git"
-  },
-  "bugs": {
-    "email": "help@megabyte.space",
-    "url": "https://gitlab.com/megabyte-labs/packer/ubuntu-desktop/-/issues"
-  },
-  "type": "module",
-  "scripts": {
-    "build": "task packer:build",
-    "build:kvm": "task packer:build:kvm",
-    "build:parallels": "task packer:build:parallels",
-    "build:virtualbox": "task packer:build:virtualbox",
-    "build:vmware": "task packer:build:vmware",
-    "help": "task --menu",
-    "prepare": "npm run start && (test -f Taskfile.yml && task common:husky) || true",
-    "repair": "bash <(curl -sS https://install.doctor/repair)",
-    "start": "task vagrant:up",
-    "test": "task lint:packer"
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/git-cz-emoji"
-    }
-  },
-  "dependencies": {},
-  "optionalDependencies": {},
-  "devDependencies": {
-    "@commitlint/config-conventional": "^16.0.0",
-    "@washingtondc/development": "latest",
-    "eslint-config-strict-mode": "latest",
-    "git-cz-emoji": "latest",
-    "glob": "^7.2.0",
-    "handlebars-helpers": "^0.10.0",
-    "prettier-config-sexy-mode": "latest",
-    "semantic-release-config": "latest",
-    "typescript": "^4.5.5"
-  },
-  "keywords": [
-    "accelerated",
-    "compressed",
-    "desktop",
-    "kvm",
-    "mblabs",
-    "megabytelabs",
-    "optimized",
-    "packer",
-    "parallels",
-    "professormanhattan",
-    "qemu",
-    "ubuntu-desktop",
-    "virtualbox",
-    "vmware",
-    "washingtondc",
-    "workstation"
-  ],
-  "engines": {
-    "node": ">=14.18.0"
-  },
-  "publishConfig": {
-    "@megabyte:registry": "https://gitlab.com/api/v4/projects/24081095/packages/npm/",
-    "access": "public"
-  },
   "blueprint": {
     "badge_style": "flat",
     "description": "An automated Ubuntu Desktop (currently, version MAJOR_VERSION.MINOR_VERSION) Packer project that builds boxes using the latest Ubuntu Live Server release",
@@ -88,9 +18,14 @@
     },
     "slug": "ubuntu-desktop",
     "subgroup": "desktop",
+    "test": "yo",
     "title": "Ubuntu Desktop Template for Packer",
     "vagrant_tag": "ubuntu",
     "version_description": "Ubuntu Desktop ISO_VERSION. Built from the Ubuntu Live Desktop ISO_VERSION image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details."
+  },
+  "bugs": {
+    "email": "help@megabyte.space",
+    "url": "https://gitlab.com/megabyte-labs/packer/ubuntu-desktop/-/issues"
   },
   "changelog": {
     "displayTypes": [
@@ -108,6 +43,27 @@
     ],
     "helpUrl": "https://megabyte.space/docs/contributing/commits"
   },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/git-cz-emoji"
+    }
+  },
+  "dependencies": {},
+  "description": "An automated Ubuntu Desktop (currently, version MAJOR_VERSION.MINOR_VERSION) Packer project that builds boxes using the latest Ubuntu Live Server release",
+  "devDependencies": {
+    "@commitlint/config-conventional": "^16.0.0",
+    "@washingtondc/development": "latest",
+    "eslint-config-strict-mode": "latest",
+    "git-cz-emoji": "latest",
+    "glob": "^7.2.0",
+    "handlebars-helpers": "^0.10.0",
+    "prettier-config-sexy-mode": "latest",
+    "semantic-release-config": "latest",
+    "typescript": "^4.5.5"
+  },
+  "engines": {
+    "node": ">=14.18.0"
+  },
   "eslintConfig": {
     "extends": "eslint-config-strict-mode",
     "rules": {
@@ -124,6 +80,26 @@
       "url": "https://www.patreon.com/ProfessorManhattan"
     }
   ],
+  "homepage": "https://megabyte.space",
+  "keywords": [
+    "accelerated",
+    "compressed",
+    "desktop",
+    "kvm",
+    "mblabs",
+    "megabytelabs",
+    "optimized",
+    "packer",
+    "parallels",
+    "professormanhattan",
+    "qemu",
+    "ubuntu-desktop",
+    "virtualbox",
+    "vmware",
+    "washingtondc",
+    "workstation"
+  ],
+  "license": "MIT",
   "lint-staged": {
     "(Brewfile|composer.lock|Gemfile|Gopkg.lock|Pipfile.lock)": [
       "task fix:prettier --"
@@ -196,6 +172,7 @@
       "task image:compress --"
     ]
   },
+  "name": "@mblabs/ubuntu-desktop",
   "ntl": {
     "descriptions": {
       "build": "Builds the project using the build command specified under scripts in package.json",
@@ -206,6 +183,7 @@
       "test": "Runs the appropriate test logic by running the test command defined under scripts in package.json"
     }
   },
+  "optionalDependencies": {},
   "pnpm": {
     "allowedVersions": {
       "@typescript-eslint/eslint-plugin": "5",
@@ -224,6 +202,11 @@
     }
   },
   "prettier": "prettier-config-sexy-mode",
+  "private": false,
+  "publishConfig": {
+    "@megabyte:registry": "https://gitlab.com/api/v4/projects/24081095/packages/npm/",
+    "access": "public"
+  },
   "release": {
     "branches": [
       "main",
@@ -239,5 +222,25 @@
       }
     ],
     "extends": "semantic-release-config"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProfessorManhattan/packer-ubuntu-desktop.git"
+  },
+  "scripts": {
+    "build": "task packer:build",
+    "build:hyperv": "task packer:build:hyperv",
+    "build:kvm": "task packer:build:kvm",
+    "build:parallels": "task packer:build:parallels",
+    "build:virtualbox": "task packer:build:virtualbox",
+    "build:vmware": "task packer:build:vmware",
+    "help": "task --menu",
+    "prepare": "npm run start && (test -f Taskfile.yml && task common:husky) || true",
+    "repair": "bash <(curl -sS https://install.doctor/repair)",
+    "start": "bash start.sh",
+    "test": "task lint:packer",
+    "vagrant": "task vagrant:up"
+  },
+  "type": "module",
+  "version": "1.0.0"
 }

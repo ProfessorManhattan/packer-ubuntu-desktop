@@ -47,7 +47,24 @@ description = "An automated Ubuntu Desktop (currently, version MAJOR_VERSION.MIN
 documentation = "https://megabyte.space/docs/common/packer"
 homepage = "https://megabyte.space"
 include = ["docs/CHANGELOG.md", "LICENSE"]
-keywords = ["accelerated", "compressed", "desktop", "optimized", "packer", "ubuntu-desktop", "workstation"]
+keywords = [
+  "accelerated",
+  "compressed",
+  "desktop",
+  "kvm",
+  "mblabs",
+  "megabytelabs",
+  "optimized",
+  "packer",
+  "parallels",
+  "professormanhattan",
+  "qemu",
+  "ubuntu-desktop",
+  "virtualbox",
+  "vmware",
+  "washingtondc",
+  "workstation"
+]
 license = "MIT"
 name = "ubuntu-desktop"
 readme = "README.md"

@@ -197,6 +197,11 @@
       "command": "bash .config/scripts/start.sh && task fix:yaml"
     },
     {
+      "label": "(get:links): Log useful links such as the current",
+      "type": "shell",
+      "command": "bash .config/scripts/start.sh && task get:links"
+    },
+    {
       "label": "(git:remotes): Configure the the `origin`, `gitlab`, `github`, and `all` git remotes",
       "type": "shell",
       "command": "bash .config/scripts/start.sh && task git:remotes"

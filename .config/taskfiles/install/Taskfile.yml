@@ -61,14 +61,16 @@ tasks:
       - :install:npm:cz-emoji
       - :install:software:jq
     env:
+      SEMANTIC_PYTHON_POST_INSTALL: '{{if eq .SEMANTIC_RELEASE "true"}}true{{else}}false{{end}}'
       DEPS:
-        sh: jq -r '.dependencies + .devDependencies + .optionalDependencies + .peerDependencies' package.json
+        sh: jq -r -S '.dependencies + .devDependencies + .optionalDependencies + .peerDependencies' package.json
       PREVIOUS_DEPS:
         sh: |
           if [ -f .task/npm-deps ]; then
             cat .task/npm-deps
+          else
+            echo ""
           fi
-      SEMANTIC_PYTHON_POST_INSTALL: '{{if eq .SEMANTIC_RELEASE "true"}}true{{else}}false{{end}}'
     run: once
     log:
       error: Encountered error while installing local NPM dependencies
