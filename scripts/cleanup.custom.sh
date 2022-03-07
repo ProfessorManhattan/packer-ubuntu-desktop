@@ -67,6 +67,9 @@ echo "delete the massive firmware files"
 rm -rf /lib/firmware/*
 rm -rf /usr/share/doc/linux-firmware/*
 
+echo "Fix error E: /usr/share/initramfs-tools/hooks/plymouth failed with return 1."
+apt purge --reinstall -y plymouth
+
 echo "autoremoving packages and cleaning apt data"
 apt-get -y autoremove
 apt-get -y clean
