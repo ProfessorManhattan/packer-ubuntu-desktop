@@ -72,7 +72,6 @@
       "prettier-package-json --write"
     ]
   },
-  "prettier": "@megabytelabs/prettier-config",
   "standard-version": {
     "scripts": {
       "prebump": "jq -r '.variables.iso_version' template.json",
