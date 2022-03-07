@@ -43,7 +43,7 @@ classifiers = [
   "Topic :: System :: Installation/Setup",
   "Topic :: Utilities"
 ]
-description = "An automated Ubuntu Desktop (currently, version MAJOR_VERSION.MINOR_VERSION) Packer project that builds boxes using the latest Ubuntu Live Server release"
+description = "An automated Ubuntu Desktop (currently, version 21.10) Packer project that builds boxes using the latest Ubuntu Live Server release"
 documentation = "https://megabyte.space/docs/common/packer"
 homepage = "https://megabyte.space"
 include = ["docs/CHANGELOG.md", "LICENSE"]

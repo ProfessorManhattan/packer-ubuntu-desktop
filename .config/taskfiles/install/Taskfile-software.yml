@@ -553,6 +553,13 @@ tasks:
     status:
       - type node > /dev/null
 
+  packer:
+    run: once
+    cmds:
+      - task: brew:formulae
+        vars:
+          FORMULAE: packer
+
   parallels:
     run: once
     cmds:

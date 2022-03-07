@@ -271,3 +271,7 @@ tasks:
         if [ '{{.REPOSITORY_TYPE}}' == 'ansible' ] && [ -f meta/main.yml ]; then
           task ansible:update:variables:descriptions
         fi
+      - |
+        if [ '{{.REPOSITORY_TYPE}}' == 'packer' ]; then
+          task packer:update:variables
+        fi
