@@ -191,6 +191,6 @@
     "ssh_username": "vagrant",
     "vagrantup_token": "{{ env `VAGRANT_CLOUD_TOKEN` }}",
     "vagrantup_user": "Megabyte",
-    "version_description": "Ubuntu Desktop 21.10. Built from the Ubuntu Live Desktop 21.10 image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details."
+    "version_description": "Ubuntu Desktop 21.10. Built from the Ubuntu Desktop Live 21.10 image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details."
   }
 }

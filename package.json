@@ -2,7 +2,7 @@
   "private": false,
   "name": "@mblabs/ubuntu-desktop",
   "version": "1.0.0",
-  "description": "An automated Ubuntu Desktop (currently, version 21.10) Packer project that builds boxes using the latest Ubuntu Live Server release",
+  "description": "An automated Ubuntu Desktop Packer project (currently, version 21.10) that builds boxes using the latest Ubuntu Desktop Live release",
   "license": "MIT",
   "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
   "homepage": "https://megabyte.space",
@@ -82,7 +82,7 @@
     "tag": "edge"
   },
   "blueprint": {
-    "description": "An automated Ubuntu Desktop (currently, version MAJOR_VERSION.MINOR_VERSION) Packer project that builds boxes using the latest Ubuntu Live Server release",
+    "description": "An automated Ubuntu Desktop Packer project (currently, version MAJOR_VERSION.MINOR_VERSION) that builds boxes using the latest Ubuntu Desktop Live release",
     "description_template": "Ubuntu Desktop MAJOR_VERSION.MINOR_VERSION",
     "github_id": "R_kgDOG9WsCQ",
     "gitlab_group_id": "10839950",
@@ -90,7 +90,7 @@
     "group": "packer",
     "hostname": "vagrant-ubuntu",
     "name": "Ubuntu Desktop",
-    "overview": "This project houses configurations that can be used to build performant Ubuntu Desktop images. It uses the Ubuntu Desktop Live image as a base, uses Packer to automate the build process, and then sets the image up using some [Bento scripts](https://github.com/chef/bento/tree/main/packer_templates/ubuntu/scripts) which take care of optimizing the image for your system (i.e. setting up SSH with the Vagrant default public key, setting up GuestAdditions for VirtualBox, etc.). This project is intended to be used to create desktop images that you would launch from your main desktop using a GUI. If you are looking for headless images, you should either use [Bento's server images](https://app.vagrantup.com/bento). You might also have some luck browsing through our [Packer projects](https://gitlab.com/megabyte-labs/packer).",
+    "overview": "This project houses configurations that can be used to build performant [Ubuntu](https://ubuntu.com/) Desktop images. It uses the Ubuntu Desktop Live image as a base, uses Packer to automate the build process, and then sets the image up using some [Bento scripts](https://github.com/chef/bento/tree/main/packer_templates/ubuntu/scripts) which take care of optimizing the image for your system (i.e. setting up SSH with the Vagrant default public key, setting up GuestAdditions for VirtualBox, etc.). This project is intended to be used to create desktop images that you would launch from your main desktop using a GUI. If you are looking for headless images, you should either use [Bento's server images](https://app.vagrantup.com/bento). You might also have some luck browsing through our [Packer projects](https://gitlab.com/megabyte-labs/packer).",
     "repository": {
       "github": "https://github.com/megabyte-labs/packer-ubuntu-desktop",
       "gitlab": "https://gitlab.com/megabyte-labs/packer/ubuntu-desktop"
@@ -99,7 +99,7 @@
     "subgroup": "desktop",
     "title": "Ubuntu Desktop Template for Packer",
     "vagrant_tag": "ubuntu",
-    "version_description": "Ubuntu Desktop ISO_VERSION. Built from the Ubuntu Live Desktop ISO_VERSION image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details."
+    "version_description": "Ubuntu Desktop ISO_VERSION. Built from the Ubuntu Desktop Live ISO_VERSION image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details."
   },
   "changelog": {
     "displayTypes": [
