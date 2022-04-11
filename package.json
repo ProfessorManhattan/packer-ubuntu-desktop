@@ -82,10 +82,8 @@
     "tag": "edge"
   },
   "blueprint": {
-    "badge_style": "flat",
     "description": "An automated Ubuntu Desktop (currently, version MAJOR_VERSION.MINOR_VERSION) Packer project that builds boxes using the latest Ubuntu Live Server release",
     "description_template": "Ubuntu Desktop MAJOR_VERSION.MINOR_VERSION",
-    "description_template_package": "An automated Ubuntu Desktop (currently, version MAJOR_VERSION.MINOR_VERSION) Packer project that builds boxes using the latest Ubuntu Live Server release",
     "github_id": "R_kgDOG9WsCQ",
     "gitlab_group_id": "10839950",
     "gitlab_project_id": "24081095",
@@ -99,7 +97,6 @@
     },
     "slug": "ubuntu-desktop",
     "subgroup": "desktop",
-    "test": "yo",
     "title": "Ubuntu Desktop Template for Packer",
     "vagrant_tag": "ubuntu",
     "version_description": "Ubuntu Desktop ISO_VERSION. Built from the Ubuntu Live Desktop ISO_VERSION image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details."
