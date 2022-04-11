@@ -88,6 +88,7 @@ tasks:
       start: Running `packer build -only=virtualbox-iso {{.TEMPLATE_FILE}}`
       success: Successfully ran `packer build -only=virtualbox-iso {{.TEMPLATE_FILE}}`
     cmds:
+      - task: :app:virtualbox:clear
       - rm -rf build
       - packer build -only=virtualbox-iso {{.TEMPLATE_FILE}}
 

@@ -8,6 +8,7 @@ ansible_variables.json
 .AppleDB
 .AppleDesktop
 .AppleDouble
+artifacts/
 .autodoc/
 *.box
 build/
@@ -22,6 +23,8 @@ build/
 .classpath
 *.code-workspace
 .com.apple.timemachine.donotpresent
+common-shared/
+.config/dummy.go
 .config-old/
 connect.lock
 *.cover
@@ -47,6 +50,7 @@ htmlcov/
 .hypothesis/
 Icon
 .idea/
+.issues/
 .jest-cache/
 .junit/
 *.launch
@@ -58,6 +62,7 @@ local_settings.py
 Network Trash Folder
 .nfs*
 node_modules/
+node_modules.bak/
 nosetests.xml
 .nox/
 .npm/
@@ -70,6 +75,7 @@ pip-log.txt
 __pycache__/
 .pytest_cache/
 pytestdebug.log
+.release.json
 *.retry
 .sass-cache/
 .settings/
@@ -78,7 +84,9 @@ pytestdebug.log
 snap.login
 .Spotlight-V100
 *.sublime-workspace
+*.tar
 .task/
+Taskfile.yml.model
 .TemporaryItems
 Temporary Items
 testem.log

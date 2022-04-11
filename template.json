@@ -169,7 +169,7 @@
     "build_directory": "build",
     "compression_level": "9",
     "cpus": "2",
-    "description": "Ubuntu Desktop MAJOR_VERSION.MINOR_VERSION",
+    "description": "Ubuntu Desktop 21.10",
     "disk_size": "80000",
     "guest_additions_url": "",
     "headless": "false",
@@ -191,6 +191,6 @@
     "ssh_username": "vagrant",
     "vagrantup_token": "{{ env `VAGRANT_CLOUD_TOKEN` }}",
     "vagrantup_user": "Megabyte",
-    "version_description": "Ubuntu Desktop ISO_VERSION. Built from the Ubuntu Live Desktop ISO_VERSION image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details."
+    "version_description": "Ubuntu Desktop 21.10. Built from the Ubuntu Live Desktop 21.10 image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details."
   }
 }

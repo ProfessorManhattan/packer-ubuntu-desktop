@@ -8,7 +8,7 @@ vars:
   MOLECULE_RESULTS_PATH: molecule/.results
   REQUIREMENTS_PATH: requirements.yml
   ROLE_NAME: '{{.GALAXY_NAMESPACE}}.{{.GALAXY_ROLE_NAME}}'
-  SAMPLE_PROJECT: https://github.com/ProfessorManhattan/ansible-snapd
+  SAMPLE_PROJECT: https://github.com/megabyte-labs/ansible-snapd
   VARIABLES_PATH: .variables.json
 
 tasks:
@@ -156,22 +156,19 @@ tasks:
           CLI_ARGS: meta/main.yml
 
   mod-ansible-autodoc:
+    todo: Add ansible-autodoc-fork to the includes of the package
     cmds:
+      - |
+        if [ -n "$CI" ]; then
+          pip3 install ansible-autodoc-fork
+        fi
       - task: mod-ansible-autodoc:generate
       - task: mod-ansible-autodoc:variables
 
-  mod-ansible-autodoc:ansible-autodoc-fork:
-    cmds:
-      - task: :install:software:pipx
-      - task: :install:python:pipx
-        vars:
-          PACKAGE: ansible-autodoc-fork
-
   mod-ansible-autodoc:generate:
     deps:
-      - :install:python:requirements
+      - :install:pipx:mod-ansible-autodoc
       - :install:software:jq
-      - mod-ansible-autodoc:ansible-autodoc-fork
     env:
       ACTIONS_DESCRIPTION:
         sh: jq -r '.autodoc_actions_description' '{{.VARIABLES_PATH}}'
@@ -216,6 +213,8 @@ tasks:
         mv "$TMP" '{{.VARIABLES_PATH}}'
 
   prepare:
+    deps:
+      - :ci:commit:config
     log:
       error: Failed to ensure GitLab and GitHub are in sync
       start: Preparing for Ansible Galaxy upload
@@ -247,9 +246,11 @@ tasks:
       - if [ ! -f ansible.cfg.bak ]; then cp ansible.cfg ansible.cfg.bak; fi
       - cp test/{{OS}}/ansible.cfg ansible.cfg
       - touch install_in_progress
-      - |
-        .config/log info 'Prompting for sudo password which is required to run the playbook'
-        {{.PYTHON_HANDLE}}ansible-playbook --ask-sudo-pass{{if eq .INSTALLING 'false'}} --skip-tags "skip_on_init" playbooks/init.yml{{else}} main.yml{{end}}
+      - .config/log info 'Prompting for sudo password and vault password which is required to run the playbook'
+      - .config/log info 'If you do not have a vault password, just enter a blank password at the vault password prompt'
+      - >
+        {{.PYTHON_HANDLE}}ansible-playbook --ask-sudo-pass {{.CLI_ARGS}}{{if eq .INSTALLING 'false'}} --skip-tags "skip_on_init"
+        playbooks/init.yml{{else}} main.yml{{end}}
       - if [ -f ansible.cfg.bak ]; then mv ansible.cfg.bak ansible.cfg; fi
       - if [ -f inventory ]; then rm inventory; fi
 

@@ -1,6 +1,6 @@
 <!-- ⚠️ This README has been generated from the file(s) ".config/docs/blueprint-readme-desktop.md" ⚠️--><div align="center">
   <center>
-    <a href="https://github.com/ProfessorManhattan/packer-ubuntu-desktop">
+    <a href="https://github.com/megabyte-labs/packer-ubuntu-desktop">
       <img width="148" height="148" alt="Ubuntu Desktop logo" src="https://gitlab.com/megabyte-labs/packer/ubuntu-desktop/-/raw/master/logo.png" />
     </a>
   </center>
@@ -14,13 +14,16 @@
   <a href="https://megabyte.space" title="Megabyte Labs homepage" target="_blank">
     <img alt="Homepage" src="https://img.shields.io/website?down_color=%23FF4136&down_message=Down&label=Homepage&logo=home-assistant&logoColor=white&up_color=%232ECC40&up_message=Up&url=https%3A%2F%2Fmegabyte.space&style=flat" />
   </a>
-  <a href="https://github.com/ProfessorManhattan/packer-ubuntu-desktop/blob/master/docs/CONTRIBUTING.md" title="Learn about contributing" target="_blank">
+  <a href="https://github.com/megabyte-labs/packer-ubuntu-desktop/blob/master/docs/CONTRIBUTING.md" title="Learn about contributing" target="_blank">
     <img alt="Contributing" src="https://img.shields.io/badge/Contributing-Guide-0074D9?logo=github-sponsors&logoColor=white&style=flat" />
   </a>
   <a href="https://app.slack.com/client/T01ABCG4NK1/C01NN74H0LW/details/" title="Chat with us on Slack" target="_blank">
     <img alt="Slack" src="https://img.shields.io/badge/Slack-Chat-e01e5a?logo=slack&logoColor=white&style=flat" />
   </a>
-  <a href="https://github.com/ProfessorManhattan/packer-ubuntu-desktop" title="GitHub mirror" target="_blank">
+  <a href="https://gitter.im/megabyte-labs/community" title="Chat with the community on Gitter" target="_blank">
+    <img alt="Gitter" src="https://img.shields.io/gitter/room/megabyte-labs/community?logo=gitter&logoColor=white&style=flat" />
+  </a>
+  <a href="https://github.com/megabyte-labs/packer-ubuntu-desktop" title="GitHub mirror" target="_blank">
     <img alt="GitHub" src="https://img.shields.io/badge/Mirror-GitHub-333333?logo=github&style=flat" />
   </a>
   <a href="https://gitlab.com/megabyte-labs/packer/ubuntu-desktop" title="GitLab repository" target="_blank">
@@ -29,7 +32,7 @@
 </div>
 <br/>
 <div align="center">
-  <a title="Version: 1.0.0" href="https://github.com/ProfessorManhattan/packer-ubuntu-desktop" target="_blank">
+  <a title="Version: 1.0.0" href="https://github.com/megabyte-labs/packer-ubuntu-desktop" target="_blank">
     <img alt="Version: 1.0.0" src="https://img.shields.io/badge/version-1.0.0-blue.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAD///+l2Z/dAAAAAXRSTlMAQObYZgAAACNJREFUCNdjIACY//+BEp9hhM3hAzYQwoBIAqEDYQrCZLwAAGlFKxU1nF9cAAAAAElFTkSuQmCC&cacheSeconds=2592000&style=flat-square" />
   </a>
   <a title="Pipeline status" href="https://gitlab.com/megabyte-labs/packer/ubuntu-desktop/-/commits/master" target="_blank">
@@ -53,7 +56,7 @@
   <a title="Documentation" href="https://megabyte.space/docs/packer" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg?logo=readthedocs&style=flat-square" />
   </a>
-  <a title="License: MIT" href="https://github.com/ProfessorManhattan/packer-ubuntu-desktop/blob/master/LICENSE" target="_blank">
+  <a title="License: MIT" href="https://github.com/megabyte-labs/packer-ubuntu-desktop/blob/master/LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAD///+l2Z/dAAAAAXRSTlMAQObYZgAAAHpJREFUCNdjYOD/wMDAUP+PgYHxhzwDA/MB5gMM7AwMDxj4GBgKGGQYGCyAEEgbMDDwAAWAwmk8958xpIOI5zKH2RmOyhxmZjguAiKmgIgtQOIYmFgCIp4AlaQ9OczGkJYCJEAGgI0CGwo2HmwR2Eqw5SBnNIAdBHYaAJb6KLM15W/CAAAAAElFTkSuQmCC&style=flat-square" />
   </a>
 </div>
@@ -153,7 +156,7 @@ If a new release of the variables.description system is available, you can updat
 
 ## Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/ProfessorManhattan/packer-ubuntu-desktop/issues). If you would like to contribute, please take a look at the [contributing guide](https://github.com/ProfessorManhattan/packer-ubuntu-desktop/blob/master/docs/CONTRIBUTING.md).
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/megabyte-labs/packer-ubuntu-desktop/issues). If you would like to contribute, please take a look at the [contributing guide](https://github.com/megabyte-labs/packer-ubuntu-desktop/blob/master/docs/CONTRIBUTING.md).
 
 <details>
 <summary><b>Sponsorship</b></summary>

@@ -188,6 +188,7 @@
   "link": {
     "chat": "https://app.slack.com/client/T01ABCG4NK1/C01NN74H0LW/details/",
     "docs": "https://megabyte.space/docs",
+    "gitter": "https://gitter.im/megabyte-labs/community",
     "home": "https://megabyte.space",
     "installdoctor": "https://install.doctor",
     "privacy": "https://megabyte.space/privacy",
@@ -200,6 +201,113 @@
     "tinypng": "https://tinypng.com/"
   },
   "name": "Ubuntu Desktop",
+  "newProjectTemplates": {
+    "angular-app": {
+      "group": "angular",
+      "subgroup": "app",
+      "title": "Angular App"
+    },
+    "angular-website": {
+      "group": "angular",
+      "subgroup": "website",
+      "title": "Angular Website"
+    },
+    "ansible-role": {
+      "group": "ansible",
+      "subgroup": "role",
+      "title": "Ansible Role"
+    },
+    "docker-app": {
+      "group": "docker",
+      "subgroup": "app",
+      "title": "Dockerfile (App)"
+    },
+    "docker-ci-pipeline": {
+      "group": "docker",
+      "subgroup": "ci-pipeline",
+      "title": "CI/CD Pipeline Dockerfile"
+    },
+    "docker-codeclimate": {
+      "group": "docker",
+      "subgroup": "codeclimate",
+      "title": "CodeClimate Engine / Linter Dockerfile"
+    },
+    "docker-docker-compose": {
+      "group": "docker",
+      "subgroup": "docker-compose",
+      "title": "Docker Compose"
+    },
+    "go-cli": {
+      "group": "go",
+      "subgroup": "cli",
+      "title": "Go CLI"
+    },
+    "go-library": {
+      "group": "go",
+      "subgroup": "library",
+      "title": "Go Library"
+    },
+    "misc": {
+      "group": "misc",
+      "subgroup": "misc",
+      "title": "Miscellaneous project"
+    },
+    "npm-app": {
+      "group": "npm",
+      "subgroup": "app",
+      "title": "Node.js App"
+    },
+    "npm-cli": {
+      "group": "npm",
+      "subgroup": "cli",
+      "title": "Node.js CLI"
+    },
+    "npm-configs": {
+      "group": "npm",
+      "subgroup": "configs",
+      "title": "NPM Config Package"
+    },
+    "npm-library": {
+      "group": "npm",
+      "subgroup": "library",
+      "title": "Node.js Library"
+    },
+    "npm-plugin": {
+      "group": "npm",
+      "subgroup": "plugin",
+      "title": "NPM Plugin"
+    },
+    "npm-web-component": {
+      "group": "npm",
+      "subgroup": "web-component",
+      "title": "Web Component"
+    },
+    "packer-desktop": {
+      "group": "packer",
+      "subgroup": "desktop",
+      "title": "Packer (Desktop)"
+    },
+    "packer-server": {
+      "group": "packer",
+      "subgroup": "server",
+      "title": "Packer (Server)"
+    },
+    "python-cli": {
+      "group": "python",
+      "subgroup": "cli",
+      "title": "Python CLI"
+    },
+    "python-library": {
+      "group": "python",
+      "subgroup": "library",
+      "title": "Python Library"
+    },
+    "website": {
+      "group": "npm",
+      "subgroup": "website",
+      "title": "Website"
+    }
+  },
   "npm_publish_config_access": "public",
   "npm_standard_version_prerelease": "git add --all",
   "npm_type": "module",
@@ -211,6 +319,7 @@
     "dockerhub": "megabytelabs",
     "galaxy": "professormanhattan",
     "github": "ProfessorManhattan",
+    "githubOrg": "megabyte-labs",
     "linkedin": "blzalewski",
     "npmjs": "thisismyfirstday",
     "npmjs_organization": "mblabs",
@@ -239,7 +348,7 @@
   "redditApplicationId": "O3UxD7HlPpcN88gpEkPIXQ",
   "redditUsername": "tsgangster",
   "repository": {
-    "github": "https://github.com/ProfessorManhattan/packer-ubuntu-desktop",
+    "github": "https://github.com/megabyte-labs/packer-ubuntu-desktop",
     "gitlab": "https://gitlab.com/megabyte-labs/packer/ubuntu-desktop",
     "gitlabBaseUrl": "https://gitlab.com/megabyte-labs",
     "group": {
@@ -450,11 +559,12 @@
         "tools_upload_flavor": "linux",
         "type": "vmware-iso",
         "vm_name": "{{ user `box_basename` }}-{{ user `iso_version` }}",
+        "vmdk_name": "{{ user `box_basename` }}-{{ user `iso_version` }}",
         "vmx_data": {
           "cpuid.coresPerSocket": "1",
+          "ethernet0.connectionType": "nat",
           "ethernet0.pciSlotNumber": "32"
-        },
-        "vmx_remove_ethernet_interfaces": true
+        }
       }
     ],
     "post-processors": [
@@ -518,8 +628,8 @@
       "https_proxy": "{{ env `HTTPS_PROXY` }}",
       "hyperv_generation": "2",
       "hyperv_switch": "bento",
-      "iso_checksum_url": "https://mirror.arizona.edu/ubuntu-releases/21.10/SHA256SUMS",
-      "iso_url": "https://mirror.arizona.edu/ubuntu-releases/21.10/ubuntu-21.10-live-server-amd64.iso",
+      "iso_checksum_url": "https://releases.ubuntu.com/impish/SHA256SUMS",
+      "iso_url": "https://releases.ubuntu.com/impish/ubuntu-21.10-desktop-amd64.iso",
       "iso_version": "21.10",
       "latestos_tag": "ubuntu",
       "memory": "4096",

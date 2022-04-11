@@ -8,7 +8,7 @@
   "homepage": "https://megabyte.space",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ProfessorManhattan/packer-ubuntu-desktop.git"
+    "url": "git+https://github.com/megabyte-labs/packer-ubuntu-desktop.git"
   },
   "bugs": {
     "email": "help@megabyte.space",
@@ -22,12 +22,20 @@
     "build:parallels": "task packer:build:parallels",
     "build:virtualbox": "task packer:build:virtualbox",
     "build:vmware": "task packer:build:vmware",
-    "help": "task --menu",
-    "prepare": "npm run start && (test -f Taskfile.yml && task common:husky) || true",
+    "commit": "bash start.sh && task commit",
+    "fix": "bash start.sh && task fix",
+    "help": "bash start.sh && task --menu",
+    "lint": "bash start.sh && task lint",
+    "preload": "bash start.sh && task preload",
+    "prepare": "bash start.sh && (test -f Taskfile.yml && task npm:prepare) || true",
+    "release": "bash start.sh && task publish:semantic-release",
     "repair": "bash <(curl -sS https://install.doctor/repair)",
-    "start": "bash start.sh",
+    "start": "test -z $SKIP_NPM_START && bash start.sh || true",
     "test": "task lint:packer",
-    "vagrant": "task vagrant:up"
+    "unpack": "bash start.sh && task npm:bundle:unpack",
+    "update": "bash start.sh && task update",
+    "vagrant": "task vagrant:up",
+    "vscode": "bash start.sh && task vscode"
   },
   "config": {
     "commitizen": {
@@ -37,12 +45,10 @@
   "dependencies": {},
   "optionalDependencies": {},
   "devDependencies": {
-    "@commitlint/config-conventional": "^16.0.0",
-    "@washingtondc/development": "latest",
+    "@commitlint/config-conventional": "latest",
     "eslint-config-strict-mode": "latest",
     "git-cz-emoji": "latest",
-    "glob": "^7.2.0",
-    "handlebars-helpers": "^0.10.0",
+    "handlebars-helpers": "latest",
     "prettier-config-sexy-mode": "latest",
     "semantic-release-config": "latest",
     "typescript": "^4.5.5"
@@ -69,8 +75,11 @@
     "node": ">=14.18.0"
   },
   "publishConfig": {
+    "@gitlab:registry": "https://gitlab.com/api/v4/projects/24081095/packages/npm/",
     "@megabyte:registry": "https://gitlab.com/api/v4/projects/24081095/packages/npm/",
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/",
+    "tag": "edge"
   },
   "blueprint": {
     "badge_style": "flat",
@@ -85,7 +94,7 @@
     "name": "Ubuntu Desktop",
     "overview": "This project houses configurations that can be used to build performant Ubuntu Desktop images. It uses the Ubuntu Desktop Live image as a base, uses Packer to automate the build process, and then sets the image up using some [Bento scripts](https://github.com/chef/bento/tree/main/packer_templates/ubuntu/scripts) which take care of optimizing the image for your system (i.e. setting up SSH with the Vagrant default public key, setting up GuestAdditions for VirtualBox, etc.). This project is intended to be used to create desktop images that you would launch from your main desktop using a GUI. If you are looking for headless images, you should either use [Bento's server images](https://app.vagrantup.com/bento). You might also have some luck browsing through our [Packer projects](https://gitlab.com/megabyte-labs/packer).",
     "repository": {
-      "github": "https://github.com/ProfessorManhattan/packer-ubuntu-desktop",
+      "github": "https://github.com/megabyte-labs/packer-ubuntu-desktop",
       "gitlab": "https://gitlab.com/megabyte-labs/packer/ubuntu-desktop"
     },
     "slug": "ubuntu-desktop",
@@ -127,6 +136,10 @@
       "url": "https://www.patreon.com/ProfessorManhattan"
     }
   ],
+  "jscpd": {
+    "gitignore": true,
+    "threshold": 0.1
+  },
   "lint-staged": {
     "(Brewfile|composer.lock|Gemfile|Gopkg.lock|Pipfile.lock)": [
       "task fix:prettier --"
@@ -202,11 +215,18 @@
   "ntl": {
     "descriptions": {
       "build": "Builds the project using the build command specified under scripts in package.json",
+      "commit": "If unsure, use this task to commit your code so that it adheres to our commit rules",
+      "fix": "Run auto-fixing with all available auto-fixers",
       "help": "Display the Bodega Taskfile.yml interactive help menu",
+      "lint": "Lint the project with all available linters",
+      "preload": "Preload the operating system with commonly used libraries and tools",
       "prepare": "A hook triggered by running npm install that runs logic such as installing pre-commit hooks",
+      "release": "Publish the software to all supported channels using semantic-release",
       "repair": "Fixes basic issues in projects that are having trouble running basic commands like 'task start'",
       "start": "Entrypoint for new developers that installs requirements and then runs 'task start'",
       "test": "Runs the appropriate test logic by running the test command defined under scripts in package.json",
+      "unpack": "Populates production node_modules from compressed copies saved in the .modules/ folder",
+      "update": "Update and refresh the repository with upstream changes and templated parts",
       "vagrant": "Opens an interactive dialog that lets you choose between virtualization platforms to use with the \"vagrant up\" command"
     }
   },
@@ -223,7 +243,8 @@
     "peerDependencyRules": {
       "ignoreMissing": [
         "eslint",
-        "prettier"
+        "prettier",
+        "puppeteer"
       ]
     }
   },
@@ -235,10 +256,6 @@
       "next",
       {
         "name": "beta",
-        "prerelease": true
-      },
-      {
-        "name": "alpha",
         "prerelease": true
       }
     ],

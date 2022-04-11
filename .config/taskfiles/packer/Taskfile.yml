@@ -55,6 +55,7 @@ tasks:
         fi
         if type vboxmanage &> /dev/null; then
           .config/log info 'VirtualBox is installed'
+          task app:virtualbox:clear
           IMAGES="${IMAGES},virtualbox-iso"
         fi
         if [ '{{OS}}' == 'linux' ] && type vmware &> /dev/null; then
@@ -79,7 +80,7 @@ tasks:
 
   latestos:
     deps:
-      - :install:python:requirements
+      - :install:pipx:latestos
       - :install:software:jq
     vars:
       TAG:
@@ -97,6 +98,8 @@ tasks:
     preconditions:
       - sh: test -f {{.TEMPLATE_FILE}}
         msg: The `{{.TEMPLATE_FILE}}` file is missing from the root of this project.
+
+  prepare: 'true'
 
   prepare:template:
     deps:
@@ -116,3 +119,7 @@ tasks:
           .config/log warn 'Windows not yet tested'
         fi
         mv "$TMP" {{.TEMPLATE_FILE}}
+
+  publish: 'true'
+
+  verify: 'true'
