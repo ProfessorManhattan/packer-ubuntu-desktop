@@ -1,0 +1,217 @@
+---
+version: '3'
+
+todo: Collect YUBI_USER_PIN, YUBI_ADMIN_PIN, YUBI_LAST_NAME, YUBI_EMAIL, YUBI_FIRST_NAME, YUBI_TITLE (Principal Software Engineer), YUBI_ALT_NAME, YUBI_ALT_EMAIL, YUBI_ALT_TITLE
+
+env:
+  GNUPGHOME:
+    sh: echo "$HOME/.gnupghome"
+  MASTER_KEY:
+    sh: LC_ALL=C tr -dc '[:upper:]' < /dev/urandom | fold -w 30 | head -n1
+
+tasks:
+  add:identities:
+    env:
+      YUBI_ALT_EMAIL:
+        sh: jq -r '.YUBI_ALT_EMAIL' .yubi.json
+      YUBI_ALT_NAME:
+        sh: jq -r '.YUBI_ALT_NAME' .yubi.json
+      YUBI_ALT_TITLE:
+        sh: jq -r '.YUBI_ALT_TITLE' .yubi.json
+      YUBI_EMAIL:
+        sh: jq -r '.YUBI_EMAIL' .yubi.json
+      YUBI_FIRST_NAME:
+        sh: jq -r '.YUBI_FIRST_NAME' .yubi.json
+      YUBI_LAST_NAME:
+        sh: jq -r '.YUBI_LAST_NAME' .yubi.json
+      YUBI_TITLE:
+        sh: jq -r '.YUBI_TITLE' .yubi.json
+    cmds:
+      - echo -e "${YUBI_FIRST_NAME} ${YUBI_LAST_NAME}\n${YUBI_EMAIL}\n${YUBI_TITLE}\n" | gpg --command-fd 0 --pinentry-mode loopback
+        --passphrase "$MASTER_KEY" --expert --edit-key "$KEYID" adduid save
+      - echo -e "${YUBI_ALT_NAME}\n${YUBI_ALT_EMAIL}\n${YUBI_ALT_TITLE}\n" | gpg --command-fd 0 --pinentry-mode loopback
+        --passphrase "$MASTER_KEY" --expert --edit-key "$KEYID" adduid save
+
+  card:
+    env:
+      KEYID:
+        sh: gpg --keyid-format long --list-keys no-reply@megabyte.space | grep "pub   rsa" | sed 's/pub   rsa4096\///' | sed 's/^\([^ ]*\).*/\1/'
+      YUBI_ADMIN_PIN:
+        sh: jq -r '.YUBI_ADMIN_PIN' .yubi.json
+      YUBI_EMAIL:
+        sh: jq -r '.YUBI_EMAIL' .yubi.json
+      YUBI_FIRST_NAME:
+        sh: jq -r '.YUBI_FIRST_NAME' .yubi.json
+      YUBI_LAST_NAME:
+        sh: jq -r '.YUBI_LAST_NAME' .yubi.json
+      YUBI_USER_PIN:
+        sh: jq -r '.YUBI_USER_PIN' .yubi.json
+    cmds:
+      - cp -rf ~/.gnupg ~/.gnupg.bak
+      - task: card:reset
+      - echo -e "admin\nkdf-setup\n12345678\n" | gpg --command-fd 0 --pinentry-mode loopback --card-edit
+      - echo -e "admin\npasswd\n1\n123456\n${YUBI_USER_PIN}\n${YUBI_USER_PIN}\nq\n" | gpg --command-fd 0 --pinentry-mode loopback --card-edit
+      - echo -e "admin\npasswd\n3\n12345678\n${YUBI_ADMIN_PIN}\n${YUBI_ADMIN_PIN}\nq\n" | gpg --command-fd 0 --pinentry-mode loopback --card-edit
+      - echo -e "admin\nname\n${YUBI_LAST_NAME}\n${YUBI_FIRST_NAME}\nlang\nen\nlogin\n${YUBI_EMAIL}\nquit" | gpg --command-fd 0 --card-edit
+      - task: card:keys
+      - gpg --delete-secret-key "$KEYID"
+      - mv ~/.gnupg /mnt/public/gnupg-
+        rm -rf ~/.gnupg
+      - mv ~/.gnupg.bak ~/.gnupg
+
+  card:keys:
+    env:
+      YUBI_ADMIN_PIN:
+        sh: jq -r '.YUBI_ADMIN_PIN' .yubi.json
+    cmds:
+      - echo -e "key 1\nkeytocard\n1\n${MASTER_KEY}\n${YUBI_ADMIN_PIN}\n" | gpg --command-fd 0 --pinentry-mode loopback --edit-key "$KEYID"
+      - echo -e "key 2\nkeytocard\n2\n${MASTER_KEY}\n${YUBI_ADMIN_PIN}\n" | gpg --command-fd 0 --pinentry-mode loopback --edit-key "$KEYID"
+      - echo -e "key 3\nkeytocard\n3\n${MASTER_KEY}\n${YUBI_ADMIN_PIN}\n" | gpg --command-fd 0 --pinentry-mode loopback --edit-key "$KEYID"
+
+  card:reset:
+    cmds:
+      - echo -e "admin\nfactory-reset\ny\nyes\n" | gpg --command-fd 0 --pinentry-mode loopback --card-edit
+    status:
+      - '[ -n "$DONT_RESET_YUBIKEY" ]'
+
+  check:entropy:
+    vars:
+      ENTROPY_AVAIL:
+        sh: cat /proc/sys/kernel/random/entropy_avail
+    cmds:
+      - |
+        if [ '{{.ENTROPY_AVAIL}}' -lt '2000' ]; then
+          .config/log error 'The entropy pool value is not high enough. It must be greater than 2000!' && exit 1
+        fi
+    status:
+      - '[ -f /proc/sys/kernel/random/entropy_avail ]'
+
+  export:
+    env:
+      KEYID:
+        sh: gpg --keyid-format long --list-keys no-reply@megabyte.space | grep "pub   rsa" | sed 's/pub   rsa4096\///' | sed 's/^\([^ ]*\).*/\1/'
+    cmds:
+      - task: public:export
+      - task: revocation:export
+      - task: secrets:export
+      - task: public:upload
+      - task: usb
+      - task: card
+      - task: usb:unmount
+
+  generate:authentication:
+    cmds:
+      - echo -e "8\nS\nE\nA\nQ\n4096\n1y\n" | gpg --command-fd 0 --pinentry-mode loopback --passphrase "$MASTER_KEY"
+        --expert --edit-key "$KEYID" addkey save
+
+  generate:encryption:
+    cmds:
+      - echo -e "6\n4096\n1y\n" | gpg --command-fd 0 --pinentry-mode loopback --passphrase "$MASTER_KEY" --expert --edit-key "$KEYID" addkey save
+
+  generate:master:
+    cmds:
+      - mkdir -p "$HOME/.gnupg/private-keys-v1.d"
+      - chmod 700 "$HOME/.gnupg/private-keys-v1.d"
+      - echo -e "8\nE\nS\nQ\n4096\n0\ny\nMegabyte Labs\nno-reply@megabyte.space\n\no\n" | gpg --expert --command-fd 0
+        --pinentry-mode loopback --passphrase "$MASTER_KEY" --full-generate-key
+
+  generate:signing:
+    cmds:
+      - echo -e "4\n4096\n1y\n" | gpg --command-fd 0 --pinentry-mode loopback --passphrase "$MASTER_KEY" --expert --edit-key "$KEYID" addkey save
+
+  generate:subkeys:
+    env:
+      KEYID:
+        sh: gpg --keyid-format long --list-keys no-reply@megabyte.space | grep "pub   rsa" | sed 's/pub   rsa4096\///' | sed 's/^\([^ ]*\).*/\1/'
+    cmds:
+      - task: generate:signing
+      - task: generate:encryption
+      - task: generate:authentication
+      - task: add:identities
+
+  prepare:
+    desc: Prepares an environment by provisioning all the required software / preliminary steps
+    cmds:
+      - task: prepare:init
+      - task: :install:service:start
+        vars:
+          SERVICE: pcscd
+      - task: check:entropy
+      - task: generate:master
+      - task: generate:subkeys
+      - task: export
+      - task: :security:ssh:yubikey
+
+  prepare:init:
+    deps:
+      - :install:requirements:yubikey
+      - :security:gpg:conf
+      - task: :security:gpg:conf
+        vars:
+          CONFIG_DIR_PATH:
+            sh: echo "$GNUPGHOME"
+      - :security:gpg:conf:agent
+      - task: :security:gpg:conf:agent
+        vars:
+          CONFIG_DIR_PATH:
+            sh: echo "$GNUPGHOME"
+
+  public:export:
+    todo: This differs from guide
+    cmds:
+      - mkdir -p "$GNUPGHOME"
+      - gpg --armor --export "$KEYID" > "$GNUPGHOME/gpg-$KEYID-$(date +%F).asc"
+
+  public:upload:
+    cmds:
+      - gpg --send-key "$KEYID"
+      - gpg --keyserver pgp.mit.edu --send-key "$KEYID"
+      - gpg --keyserver keys.gnupg.net --send-key "$KEYID"
+      - gpg --keyserver hkps://keyserver.ubuntu.com:443 --send-key "$KEYID"
+    status:
+      - |
+        [ "$(echo -e "GET http://google.com HTTP/1.0\n\n" | nc google.com 80 > /dev/null 2>&1)" != "0" ]
+
+  revocation:export:
+    cmds:
+      - mkdir -p "$GNUPGHOME"
+      - gpg --output $GNUPGHOME/revoke.asc --gen-revoke "$KEYID"
+
+  secrets:export:
+    cmds:
+      - mkdir -p "$GNUPGHOME"
+      - gpg --armor --export-secret-keys "$KEYID" > $GNUPGHOME/mastersub.key
+      - gpg --armor --export-secret-subkeys "$KEYID" > $GNUPGHOME/sub.key
+
+  secure:delete:
+    cmds:
+      - sudo srm -r "$GNUPGHOME" || sudo rm -rf "$GNUPGHOME"
+      - gpg --delete-secret-key "$KEYID"
+
+  stub:
+    summary: |
+      Run this to re-stub the GPG files to point to the current YubiKey.
+    cmds:
+      - gpg-connect-agent "scd serialno" "learn --force" /bye
+
+  usb:
+    cmds:
+      - task: usb:create
+      - task: usb:mount
+      - cp -rf $GNUPGHOME /mnt/gpg-encrypted-storage
+      - cp $GNUPGHOME/gpg-$KEYID* /mnt/gpg-public
+
+  usb:create:
+    deps:
+      - :security:disk:encrypt:create
+      - :security:disk:unencrypted:create
+
+  usb:mount:
+    deps:
+      - :security:disk:encrypt:mount
+      - :security:disk:unencrypted:mount
+
+  usb:unmount:
+    deps:
+      - :security:disk:encrypt:unmount
+      - :security:disk:unencrypted:unmount
