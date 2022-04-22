@@ -122,6 +122,11 @@
       {
         "compression_level": "{{ user `compression_level` }}",
         "output": "{{ user `build_directory` }}/{{ user `box_basename` }}.{{ .Provider }}.box",
+        "override": {
+          "virtualbox": {
+            "keep_input_artifact": true
+          }
+        },
         "type": "vagrant",
         "vagrantfile_template": "{{ template_dir }}/Vagrantfile"
       },
