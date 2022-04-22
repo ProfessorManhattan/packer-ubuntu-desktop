@@ -4,7 +4,7 @@
 Vagrant.require_version ">= 1.6.2"
 
 cpus = 2
-description = "Ubuntu Desktop 21.10"
+description = "Ubuntu Desktop 22.04"
 memory = 4096
 
 Vagrant.configure("2") do |config|

@@ -149,21 +149,6 @@
       ],
       "execute_command": "echo 'vagrant' | {{ .Vars }} sudo -S -E sh -eux '{{ .Path }}'",
       "expect_disconnect": true,
-      "scripts": [
-        "scripts/update.symlink.sh",
-        "scripts/sshd.symlink.sh",
-        "scripts/networking.symlink.sh",
-        "scripts/sudoers.symlink.sh",
-        "scripts/vagrant.symlink.sh",
-        "scripts/virtualbox.symlink.sh",
-        "scripts/vmware.symlink.sh",
-        "scripts/parallels.symlink.sh",
-        "scripts/hyperv.symlink.sh",
-        "scripts/cleanup.custom.sh",
-        "scripts/minimize.symlink.sh",
-        "scripts/desktop.custom.sh"
-      ],
-      "type": "shell",
       "override": {
         "hyperv-iso": {
           "scripts": [
@@ -229,7 +214,22 @@
             "scripts/desktop.custom.sh"
           ]
         }
-      }
+      },
+      "scripts": [
+        "scripts/update.symlink.sh",
+        "scripts/sshd.symlink.sh",
+        "scripts/networking.symlink.sh",
+        "scripts/sudoers.symlink.sh",
+        "scripts/vagrant.symlink.sh",
+        "scripts/virtualbox.symlink.sh",
+        "scripts/vmware.symlink.sh",
+        "scripts/parallels.symlink.sh",
+        "scripts/hyperv.symlink.sh",
+        "scripts/cleanup.custom.sh",
+        "scripts/minimize.symlink.sh",
+        "scripts/desktop.custom.sh"
+      ],
+      "type": "shell"
     }
   ],
   "variables": {
@@ -262,6 +262,6 @@
     "ssh_username": "vagrant",
     "vagrantup_token": "{{ env `VAGRANT_CLOUD_TOKEN` }}",
     "vagrantup_user": "Megabyte",
-    "version_description": "Ubuntu Desktop 21.10. Built from the Ubuntu Desktop Live 21.10 image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details."
+    "version_description": "Ubuntu Desktop 22.04. Built from the Ubuntu Desktop Live 22.04 image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details."
   }
 }

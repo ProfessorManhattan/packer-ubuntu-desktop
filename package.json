@@ -2,7 +2,7 @@
   "private": false,
   "name": "@mblabs/ubuntu-desktop",
   "version": "1.0.0",
-  "description": "An automated Ubuntu Desktop Packer project (currently, version 21.10) that builds boxes using the latest Ubuntu Desktop Live release",
+  "description": "An automated Ubuntu Desktop Packer project (currently, version 22.04) that builds boxes using the latest Ubuntu Desktop Live release",
   "license": "MIT",
   "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
   "homepage": "https://megabyte.space",
