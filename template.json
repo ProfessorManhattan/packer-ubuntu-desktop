@@ -163,7 +163,73 @@
         "scripts/minimize.symlink.sh",
         "scripts/desktop.custom.sh"
       ],
-      "type": "shell"
+      "type": "shell",
+      "override": {
+        "hyperv-iso": {
+          "scripts": [
+            "scripts/update.symlink.sh",
+            "scripts/sshd.symlink.sh",
+            "scripts/networking.symlink.sh",
+            "scripts/sudoers.symlink.sh",
+            "scripts/vagrant.symlink.sh",
+            "scripts/hyperv.symlink.sh",
+            "scripts/cleanup.custom.sh",
+            "scripts/minimize.symlink.sh",
+            "scripts/desktop.custom.sh"
+          ]
+        },
+        "parallels-iso": {
+          "scripts": [
+            "scripts/update.symlink.sh",
+            "scripts/sshd.symlink.sh",
+            "scripts/networking.symlink.sh",
+            "scripts/sudoers.symlink.sh",
+            "scripts/vagrant.symlink.sh",
+            "scripts/parallels.symlink.sh",
+            "scripts/cleanup.custom.sh",
+            "scripts/minimize.symlink.sh",
+            "scripts/desktop.custom.sh"
+          ]
+        },
+        "qemu": {
+          "scripts": [
+            "scripts/update.symlink.sh",
+            "scripts/sshd.symlink.sh",
+            "scripts/networking.symlink.sh",
+            "scripts/sudoers.symlink.sh",
+            "scripts/vagrant.symlink.sh",
+            "scripts/cleanup.custom.sh",
+            "scripts/minimize.symlink.sh",
+            "scripts/desktop.custom.sh"
+          ]
+        },
+        "virtualbox-iso": {
+          "scripts": [
+            "scripts/update.symlink.sh",
+            "scripts/sshd.symlink.sh",
+            "scripts/networking.symlink.sh",
+            "scripts/sudoers.symlink.sh",
+            "scripts/vagrant.symlink.sh",
+            "scripts/virtualbox.symlink.sh",
+            "scripts/cleanup.custom.sh",
+            "scripts/minimize.symlink.sh",
+            "scripts/desktop.custom.sh"
+          ]
+        },
+        "vmware-iso": {
+          "scripts": [
+            "scripts/update.symlink.sh",
+            "scripts/sshd.symlink.sh",
+            "scripts/networking.symlink.sh",
+            "scripts/sudoers.symlink.sh",
+            "scripts/vagrant.symlink.sh",
+            "scripts/vmware.symlink.sh",
+            "scripts/cleanup.custom.sh",
+            "scripts/minimize.symlink.sh",
+            "scripts/desktop.custom.sh"
+          ]
+        }
+      }
     }
   ],
   "variables": {
