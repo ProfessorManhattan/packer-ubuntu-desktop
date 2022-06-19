@@ -90,9 +90,7 @@ tasks:
             .config/log info 'Attempting to install Homebrew - you may be prompted for your `sudo` password'
             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
           fi
-          if [ '{{.BODEGA}}' != 'true' ]; then
-            task install:software:exit:notice:reload
-          fi
+          task install:software:exit:notice:reload
         fi
       - task: brew:utils
     status:
@@ -122,9 +120,7 @@ tasks:
           fi
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           ensureSource "$HOME/.profile"
-          if [ '{{.BODEGA}}' != 'true' ]; then
-            task install:software:exit:notice:reload
-          fi
+          task install:software:exit:notice:reload
         fi
     status:
       - type brew &> /dev/null
@@ -549,8 +545,7 @@ tasks:
   exit:notice:reload:
     cmds:
       - .config/log warn 'Software was installed that requires a terminal session reload'
-      - .config/log info 'Please close and re-open the terminal. Then, re-run the same command to continue.'
-      - exit 1
+      - .config/log warn 'Please close and re-open the terminal. Then, re-run the same command to continue if you face any issues.'
     status:
       - '[ -f /.dockerenv ]'
 
@@ -678,7 +673,7 @@ tasks:
         vars:
           PACKAGE: glab
     status:
-      - type
+      - type glab > /dev/null
 
   go:
     run: once
@@ -741,6 +736,13 @@ tasks:
     status:
       - type gzip > /dev/null
 
+  hey:
+    run: once
+    cmds:
+      - task: install:software
+        vars:
+          PACKAGE: hey
+
   install:software:
     vars:
       BIN: '{{if .BIN_NAME}}{{.BIN_NAME}}{{else}}{{last (splitList "/" .PACKAGE)}}{{end}}'
@@ -787,6 +789,16 @@ tasks:
       - task: install:software
         vars:
           PACKAGE: node
+    status:
+      - type node &> /dev/null
+
+  p7zip:
+    run: once
+    cmds:
+      - task: install:software
+        vars:
+          BIN_NAME: 7z
+          PACKAGE: p7zip
 
   packer:
     run: once
@@ -930,6 +942,14 @@ tasks:
           BIN_NAME: cargo
           PACKAGE: rust
 
+  s5cmd:
+    run: once
+    cmds:
+      - task: install:software
+        vars:
+          BIN_NAME: s5cmd
+          PACKAGE: peak/tap/s5cmd
+
   sentry:
     cmds:
       - task: :install:github:sentry
@@ -981,7 +1001,7 @@ tasks:
 
   system:
     vars:
-      PACKAGE: '{{if .CLI_ARGS}}{{.CLI_ARGS}}{{else}}{{.PACKAGE}}{{end}}'
+      PACKAGE: '{{if .PACKAGE}}{{.PACKAGE}}{{else}}{{.CLI_ARGS}}{{end}}'
     log:
       error: Failed to install `{{.PACKAGE}}` with the system package manager
       start: Attempting to install `{{.PACKAGE}}` using the system package manager
@@ -1005,7 +1025,7 @@ tasks:
         vars:
           PACKAGE: '{{.PACKAGE}}'
     status:
-      - type {{.PACKAGE}} > /dev/null
+      - type {{.PACKAGE}} > /dev/null || [ '{{.PACKAGE}}' == 'null' ]
 
   system:apk:
     vars:
@@ -1177,7 +1197,7 @@ tasks:
       - task: vmware:{{OS}}
       - task: exit:notice:restart
     status:
-      - type vmware > /dev/null
+      - type vmrun > /dev/null
 
   vmware:darwin:
     run: once
@@ -1210,3 +1230,10 @@ tasks:
       - task: install:software
         vars:
           PACKAGE: yq
+
+  yubikey-agent:
+    run: once
+    cmds:
+      - task: install:software
+        vars:
+          PACKAGE: yubikey-agent
