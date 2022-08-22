@@ -1,111 +1,14 @@
 {
-  "private": false,
-  "name": "@mblabs/ubuntu-desktop",
-  "version": "1.0.0",
-  "description": "An automated Ubuntu Desktop Packer project (currently, version 22.04) that builds boxes using the latest Ubuntu Desktop Live release",
-  "license": "MIT",
-  "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
-  "homepage": "https://megabyte.space",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/megabyte-labs/packer-ubuntu-desktop.git"
+  "author": "{{author.name}} <{{author.email}}> ({{link.home}})",
+  "blueprint": {
+    "repository": {
+      "github": "{{#if repository.github}}{{repository.github}}{{else}}https://github.com/{{profile.github}}/{{repository.prefix.github}}{{slug}}{{/if}}",
+      "gitlab": "{{#if repository.gitlab}}{{repository.gitlab}}{{else}}{{repository.gitlabBaseUrl}}/{{group}}/{{subgroup}}/{{slug}}{{/if}}"
+    }
   },
   "bugs": {
-    "email": "help@megabyte.space",
-    "url": "https://gitlab.com/megabyte-labs/packer/ubuntu-desktop/-/issues"
-  },
-  "type": "module",
-  "scripts": {
-    "build": "task packer:build",
-    "build:hyperv": "task packer:build:hyperv",
-    "build:kvm": "task packer:build:kvm",
-    "build:parallels": "task packer:build:parallels",
-    "build:virtualbox": "task packer:build:virtualbox",
-    "build:vmware": "task packer:build:vmware",
-    "commit": "bash start.sh && task commit",
-    "fix": "bash start.sh && task fix",
-    "help": "bash start.sh && task --menu",
-    "lint": "bash start.sh && task lint",
-    "preload": "bash start.sh && task preload",
-    "prepare": "bash start.sh && (test -f Taskfile.yml && task npm:prepare) || true",
-    "release": "bash start.sh && task publish:semantic-release",
-    "repair": "bash <(curl -sS https://install.doctor/repair)",
-    "start": "test -z $SKIP_NPM_START && bash start.sh || true",
-    "test": "task lint:packer",
-    "unpack": "bash start.sh && task npm:bundle:unpack",
-    "update": "bash start.sh && task update",
-    "vagrant": "task vagrant:up",
-    "vscode": "bash start.sh && task vscode"
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/git-cz-emoji"
-    }
-  },
-  "dependencies": {},
-  "peerDependenciesMeta": {
-    "eslint": {
-      "optional": true
-    }
-  },
-  "optionalDependencies": {},
-  "devDependencies": {
-    "@commitlint/config-conventional": "latest",
-    "eslint-config-strict-mode": "latest",
-    "git-cz-emoji": "latest",
-    "handlebars-helpers": "latest",
-    "prettier": "^2.4.1",
-    "prettier-config-sexy-mode": "latest",
-    "semantic-release-config": "latest",
-    "typescript": "^4.5.5"
-  },
-  "keywords": [
-    "accelerated",
-    "compressed",
-    "desktop",
-    "kvm",
-    "mblabs",
-    "megabytelabs",
-    "optimized",
-    "packer",
-    "parallels",
-    "professormanhattan",
-    "qemu",
-    "ubuntu-desktop",
-    "virtualbox",
-    "vmware",
-    "washingtondc",
-    "workstation"
-  ],
-  "engines": {
-    "node": ">=14.18.0"
-  },
-  "publishConfig": {
-    "@gitlab:registry": "https://gitlab.com/api/v4/projects/24081095/packages/npm/",
-    "@megabyte:registry": "https://gitlab.com/api/v4/projects/24081095/packages/npm/",
-    "access": "public",
-    "registry": "https://registry.npmjs.org/",
-    "tag": "edge"
-  },
-  "blueprint": {
-    "description": "An automated Ubuntu Desktop Packer project (currently, version MAJOR_VERSION.MINOR_VERSION) that builds boxes using the latest Ubuntu Desktop Live release",
-    "description_template": "Ubuntu Desktop MAJOR_VERSION.MINOR_VERSION",
-    "github_id": "R_kgDOG9WsCQ",
-    "gitlab_group_id": "10839950",
-    "gitlab_project_id": "24081095",
-    "group": "packer",
-    "hostname": "vagrant-ubuntu",
-    "name": "Ubuntu Desktop",
-    "overview": "This project houses configurations that can be used to build performant [Ubuntu](https://ubuntu.com/) Desktop images. It uses the Ubuntu Desktop Live image as a base, uses Packer to automate the build process, and then sets the image up using some [Bento scripts](https://github.com/chef/bento/tree/main/packer_templates/ubuntu/scripts) which take care of optimizing the image for your system (i.e. setting up SSH with the Vagrant default public key, setting up GuestAdditions for VirtualBox, etc.). This project is intended to be used to create desktop images that you would launch from your main desktop using a GUI. If you are looking for headless images, you should either use [Bento's server images](https://app.vagrantup.com/bento). You might also have some luck browsing through our [Packer projects](https://gitlab.com/megabyte-labs/packer).",
-    "repository": {
-      "github": "https://github.com/megabyte-labs/packer-ubuntu-desktop",
-      "gitlab": "https://gitlab.com/megabyte-labs/packer/ubuntu-desktop"
-    },
-    "slug": "ubuntu-desktop",
-    "subgroup": "desktop",
-    "title": "Ubuntu Desktop Template for Packer",
-    "vagrant_tag": "ubuntu",
-    "version_description": "Ubuntu Desktop ISO_VERSION. Built from the Ubuntu Desktop Live ISO_VERSION image. See https://gitlab.com/megabyte-labs/packer/ubuntu-desktop for more details."
+    "email": "{{email.help}}",
+    "url": "{{#if repository.gitlab}}{{repository.gitlab}}{{else}}{{repository.gitlabBaseUrl}}/{{group}}/{{subgroup}}/{{slug}}{{/if}}{{repository.location.issues.gitlab}}"
   },
   "changelog": {
     "displayTypes": [
@@ -123,6 +26,26 @@
     ],
     "helpUrl": "https://megabyte.space/docs/contributing/commits"
   },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/git-cz-emoji"
+    }
+  },
+  "dependencies": {},
+  "description": "{{description}}",
+  "devDependencies": {
+    "@commitlint/config-conventional": "latest",
+    "eslint-config-strict-mode": "latest",
+    "git-cz-emoji": "latest",
+    "handlebars-helpers": "latest",
+    "prettier": "^2.4.1",
+    "prettier-config-sexy-mode": "latest",
+    "semantic-release-config": "latest",
+    "typescript": "^4.5.5"
+  },
+  "engines": {
+    "node": ">=14.18.0"
+  },
   "eslintConfig": {
     "extends": "eslint-config-strict-mode",
     "rules": {
@@ -132,17 +55,36 @@
   "funding": [
     {
       "type": "opencollective",
-      "url": "https://opencollective.com/megabytelabs"
+      "url": "{{profile_link.opencollective}}/{{profile.opencollective}}"
     },
     {
       "type": "patreon",
-      "url": "https://www.patreon.com/ProfessorManhattan"
+      "url": "{{profile_link.patreon}}/{{profile.patreon}}"
     }
   ],
+  "homepage": "{{link.home}}",
   "jscpd": {
     "gitignore": true,
     "threshold": 0.1
   },
+  "keywords": [
+    "accelerated",
+    "compressed",
+    "desktop",
+    "kvm",
+    "mblabs",
+    "megabytelabs",
+    "optimized",
+    "packer",
+    "parallels",
+    "professormanhattan",
+    "qemu",
+    "virtualbox",
+    "vmware",
+    "washingtondc",
+    "workstation"
+  ],
+  "license": "{{license}}",
   "lint-staged": {
     "(Brewfile|composer.lock|Gemfile|Gopkg.lock|Pipfile.lock)": [
       "task fix:prettier --"
@@ -218,6 +160,7 @@
       "task image:compress --"
     ]
   },
+  "name": "{{#if customPackageName}}{{customPackageName}}{{else}}@{{profile.npmjs_organization}}/{{repository.prefix.github}}{{slug}}{{/if}}",
   "ntl": {
     "descriptions": {
       "build": "Builds the project using the build command specified under scripts in package.json",
@@ -234,6 +177,12 @@
       "unpack": "Populates production node_modules from compressed copies saved in the .modules/ folder",
       "update": "Update and refresh the repository with upstream changes and templated parts",
       "vagrant": "Opens an interactive dialog that lets you choose between virtualization platforms to use with the \"vagrant up\" command"
+    }
+  },
+  "optionalDependencies": {},
+  "peerDependenciesMeta": {
+    "eslint": {
+      "optional": true
     }
   },
   "pnpm": {
@@ -255,6 +204,13 @@
     }
   },
   "prettier": "prettier-config-sexy-mode",
+  "private": false,
+  "publishConfig": {
+    "@gitlab:registry": "https://gitlab.com/api/v4/projects/{{gitlab_project_id}}/packages/npm/",
+    "access": "{{npm_publish_config_access}}",
+    "registry": "https://registry.npmjs.org/",
+    "tag": "edge"
+  },
   "release": {
     "branches": [
       "main",
@@ -267,6 +223,34 @@
     ],
     "extends": "semantic-release-config"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+{{#if repository.github}}{{repository.github}}{{else}}https://github.com/{{profile.github}}/{{repository.prefix.github}}{{slug}}{{/if}}.git"
+  },
+  "scripts": {
+    "build": "task packer:build",
+    "build:hyperv": "task packer:build:hyperv",
+    "build:kvm": "task packer:build:kvm",
+    "build:parallels": "task packer:build:parallels",
+    "build:virtualbox": "task packer:build:virtualbox",
+    "build:vmware": "task packer:build:vmware",
+    "commit": "bash start.sh && task commit",
+    "fix": "bash start.sh && task fix",
+    "help": "bash start.sh && task --menu",
+    "lint": "bash start.sh && task lint",
+    "preload": "bash start.sh && task preload",
+    "prepare": "bash start.sh && (test -f Taskfile.yml && task npm:prepare) || true",
+    "release": "bash start.sh && task publish:semantic-release",
+    "repair": "bash <(curl -sS https://install.doctor/repair)",
+    "start": "test -z $SKIP_NPM_START && bash start.sh || true",
+    "test": "task lint:packer",
+    "unpack": "bash start.sh && task npm:bundle:unpack",
+    "update": "bash start.sh && task update",
+    "vagrant": "task vagrant:up",
+    "vscode": "bash start.sh && task vscode"
+  },
+  "type": "{{npm_type}}",
+  "version": "{{version}}",
   "volta": {
     "node": "18.4.0",
     "yarn": "1.22.19"
